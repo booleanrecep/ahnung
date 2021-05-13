@@ -2,12 +2,11 @@
 import  {Header} from "./Header" 
 import  {Navcol} from "./Navcol" 
 import  {MetaHead} from "./MetaHead" 
-import  {Footer} from "./Footer" 
 export const Layout=(props)=> {
   return (
     <>
       <MetaHead />
-      <div>
+      <div className="container">
         <Header />
         <main className="main">
           <Navcol />
@@ -15,7 +14,7 @@ export const Layout=(props)=> {
             {props.children}
           </div>
         </main>
-        <Footer />
+        <footer className="footer">Here comes the footer</footer>
       </div>
     </>
   );

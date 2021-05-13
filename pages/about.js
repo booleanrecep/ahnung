@@ -35,7 +35,7 @@ export default function About() {
     <Layout>
       <div className={styles.about}>
         <div className={styles.imagediv}>
-          <Image src="/static/me.png" width={500} height={500} />
+          <Image src="/static/me.png" width={600} height={600} />
           <h4>Recep Öztürk</h4>
           <ul>
             <li>
