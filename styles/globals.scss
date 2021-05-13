@@ -10,19 +10,25 @@ body {
   font-family: "Frank Ruhl Libre", serif;
 }
 
-/* a {
-  color: inherit;
-  text-decoration: none;
-} */
-
 * {
   box-sizing: border-box;
 }
 
-/* div{
-  padding:1em;
-} */
+.main {
+  // height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: #c8c2bc;
+  height: 80vh;
+}
 
-.pad-1em {
-  padding: 1em;
+.content {
+  width: 90%;
+  flex-grow: 8;
+  font-size: 22px;
+  padding: 0.5em;
+  border: 1px solid #21094e;
+  border-top: none;
+  // height: 20vh;
 }

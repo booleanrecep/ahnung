@@ -3,9 +3,7 @@
   height: fit-content;
   display: flex;
   border: 1px solid #511281;
-
   .imagediv {
-    // border: 1px solid #511281;
     height: fit-content;
     border-right: 1px solid #511281;
     width: 250px;
@@ -14,7 +12,6 @@
     padding: 0 0.5em;
     img {
       width: 90%;
-      // height: 50%;
       border-radius: 50%;
       margin: 0.5em;
     }
@@ -42,13 +39,9 @@
     }
   }
   .descriptiondiv {
-    // border: 1px solid #511281;
     border-left: none;
-
     width: 80%;
     flex-grow: 5;
-    // height: 100%;
-    // padding:1em ;
     h3 {
       margin: 1em;
     }

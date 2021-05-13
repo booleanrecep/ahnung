@@ -1,7 +1,9 @@
+// import About from "./about";
+import { Layout } from "../components/Layout";
 export default function Contact() {
   return (
-    <div>
-      <h3>CONTACT</h3>
-    </div>
+    <>
+      <Layout>Contact</Layout>
+    </>
   );
 }
