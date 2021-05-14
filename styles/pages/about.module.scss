@@ -5,17 +5,11 @@
   display: flex;
   border: 1px solid #511281;
   .imagediv {
-    // height: fit-content;
     border-right: 1px solid #511281;
     width: 250px;
     flex-grow: 1;
-    // height: 68vh;
     padding:  0.5em;
-    // padding: 1em;
-
-
     img {
-      // width: 100%;
       padding: 1em;
       border-radius: 50%;
     }

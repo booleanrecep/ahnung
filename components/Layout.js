@@ -1,21 +1,23 @@
-// import About from "./about";
-import  {Header} from "./Header" 
-import  {Navcol} from "./Navcol" 
-import  {MetaHead} from "./MetaHead" 
-export const Layout=(props)=> {
+import { Header } from "./Header";
+import { Navcol } from "./Navcol";
+import Head from "next/head";
+
+export const Layout = ({children}) => {
   return (
     <>
-      <MetaHead />
+      <Head>
+        <title>AHNUNG</title>
+        <meta name="description" content="Coming soon.." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="container">
         <Header />
         <main className="main">
           <Navcol />
-          <div className="content">
-            {props.children}
-          </div>
+          <div className="content">{children}</div>
         </main>
         <footer className="footer">Here comes the footer</footer>
       </div>
     </>
   );
-}
+};

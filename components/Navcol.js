@@ -9,8 +9,8 @@ export const Navcol = () => (
     <div>
       <Link href="/blog">BLOG</Link>
     </div>
-    <div>
+    {/* <div>
       <Link href="/contact">CONTACT</Link>
-    </div>
+    </div> */}
   </div>
 );
