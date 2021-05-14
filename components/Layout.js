@@ -5,6 +5,7 @@ import Head from "next/head";
 export const Layout = ({children}) => {
   return (
     <>
+    
       <Head>
         <title>AHNUNG</title>
         <meta name="description" content="Coming soon.." />

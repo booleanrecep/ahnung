@@ -6,21 +6,27 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 100%;
+    // width: 100%;
     div {
-      margin: 1.2em;
+      // margin: 1.2em;
+      display: flex;
+      flex-direction: row;
+      margin: 10px;
+      position: fixed;
+      transition: flex-direction 2s;
   
       a {
-        width: 2em;
-        height: 2em;
+        width: fit-content;
+        height: fit-content;
         cursor: pointer;
         border: 1px solid #cc9b6d;
-        margin: 0.2em;
-        padding: 0.3em;
+        margin: 2px;
+        padding: 6px;
         border-radius: 50%;
         transition: background-color 0.4s;
         background-position: center;
         background-size: 1em 1em;
+        background-color: #f1ca89;
   
         &:hover {
           transition: background-color 0.4s;

@@ -1,6 +1,8 @@
+import React from "react";
 import styles from "../styles/pages/about.module.scss";
 import Image from "next/image";
 import { Layout } from "../components/Layout";
+import { useSelector } from "react-redux";
 
 const githubSvg = (
   <svg
@@ -31,6 +33,8 @@ const mailSvg = (
   </svg>
 );
 export default function About() {
+  const state = useSelector((state) => state.about);
+
   return (
     <Layout>
       <div className={styles.about}>
@@ -53,20 +57,8 @@ export default function About() {
           </ul>
         </div>
         <div className={styles.descriptiondiv}>
-          <h3>ABOUT ME</h3>
-          <p>
-            Schöne Grüße Ich bin ein hochmotivierter und meist selbstlernender
-            Front-End-Entwickler. Ich habe mein Studium als Türkischlehrer
-            abgeschlossen und arbeite immer noch als Lehrer. Aber mir wurde
-            klar, dass meine Leidenschaft Software war. Ich möchte ein sehr
-            guter und sich ständig weiterentwickelnder Softwareentwickler sein.
-            Ich versuche immer, solide und nützliche Informationen zu erhalten,
-            indem ich meine Leidenschaft für das Lernen weiterentwickle. Ich
-            glaube, Bildung ist fürs Leben. Ich habe selbst Englisch gelernt.
-            Ich habe die Software meistens selbst gelernt und lerne natürlich
-            weiter. Ich mache feste Schritte, um Deutsch zu lernen, was mein
-            spezifisches Ziel für 2021 ist.
-          </p>
+          <h3>{state.title}</h3>
+          <p>{state.desc}</p>
         </div>
       </div>
     </Layout>
