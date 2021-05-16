@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "yarn run build && next export",
     "fix": "prettier --write ./pages/*.js  ./styles/*.*css "
   },
   "dependencies": {
