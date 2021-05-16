@@ -1,0 +1,150 @@
+@media screen and (max-width: 768px) {
+  .content {
+    margin-top: 60px;
+    border: none;
+  }
+
+  .about {
+    width: auto;
+    // display: flex;
+    // flex-direction: column;
+    .imagediv {
+      width: auto;
+    }
+    .descriptiondiv {
+      width: auto;
+      padding: 0;
+    }
+  }
+  .blog {
+    .bloglist {
+      border-right: none;
+    }
+    .article {
+      padding: 0;
+      border: none;
+      .headerdiv {
+        padding-bottom: 0;
+      }
+    }
+  }
+  .header {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+
+    div {
+      position: relative;
+      font-size: 14px;
+    }
+  }
+  .navcol {
+    width: auto;
+    flex-grow: 0;
+
+    .tabs {
+      margin-top: -52px;
+      display: flex;
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .about {
+    display: flex;
+    flex-direction: column;
+    .imagediv {
+      display: flex;
+      border-right: none;
+      img {
+        width: 30%;
+        align-self: center;
+      }
+      div {
+        // margin: 30px 0 0 10px;
+        font-size: 12px;
+        margin-top: 5%;
+        ul {
+          font-size: 12px;
+        }
+      }
+    }
+    .descriptiondiv {
+      h3 {
+        font-size: 14px;
+      }
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+  .blog {
+    flex-direction: column;
+    .bloglist {
+      border-right: 1px solid #511281;
+    }
+    .article {
+      width: auto;
+      .headerdiv {
+        border-top: none;
+        .tools {
+          font-size: 12px;
+          .counts {
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+  .header {
+    div {
+      font-size: 12px;
+    }
+  }
+  .navcol {
+    .tabs {
+      margin-top: -49px;
+      font-size: 12px;
+      div:first-of-type {
+        margin-right: 0px;
+      }
+    }
+  }
+  .content {
+    margin-left: -5px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .about {
+    .imagediv {
+      padding-bottom: 0;
+      img {
+        width: 25%;
+        padding: 5px;
+      }
+      div {
+        margin: 0;
+      }
+    }
+  }
+  .blog {
+    .bloglist {
+      ol {
+        margin: 0;
+      }
+    }
+    .article {
+      font-size: 12px;
+      .headerdiv {
+        .tools {
+          font-size: 10px;
+
+          .counts {
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,11 +8,14 @@
     border-right: 1px solid #511281;
     width: 250px;
     flex-grow: 1;
-    padding:  0.5em;
+    padding: 0.5em;
     img {
       padding: 1em;
       border-radius: 50%;
+      width: 90%;
+      height: 50%;
     }
+    div{
     ul {
       list-style: none;
       padding: 0;
@@ -36,32 +39,20 @@
       }
     }
   }
+  }
   .descriptiondiv {
     border-left: none;
     width: 80%;
     flex-grow: 5;
     h3 {
-      margin:1em 1.5em;
+      margin: 1em 1.5em;
     }
     p {
-      margin:1em 1.5em;
+      margin: 1em 1.5em;
       line-height: 1.5em;
       text-align: revert;
-  font-size: 18px;
-
+      font-size: 18px;
     }
   }
 }
-
-@media screen and (max-width: 768px) {
-  .about{
-    width: auto;
-    .imagediv{
-    width: auto;
-
-    }
-  .descriptiondiv{
-    width: auto;
-    padding: 0;
-  }
-}}
+@import "../media_queires";

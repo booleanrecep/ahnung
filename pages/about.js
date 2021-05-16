@@ -39,22 +39,24 @@ export default function About() {
     <Layout>
       <div className={styles.about}>
         <div className={styles.imagediv}>
-          <Image src="/static/me.png" width={600} height={800} />
-          <h4>Recep Öztürk</h4>
-          <ul>
-            <li>
-              <a href="https://github.com/booleanrecep" target="_blank">
-                {githubSvg}
-                <code>github.com/booleanrecep</code>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:recep.fed@gmail.com">
-                {mailSvg}
-                <code>recep.fed@gmail.com</code>
-              </a>
-            </li>
-          </ul>
+          <img src="/static/me.png" />
+          <div>
+            <h4>Recep Öztürk</h4>
+            <ul>
+              <li>
+                <a href="https://github.com/booleanrecep" target="_blank">
+                  {githubSvg}
+                  <code>github.com/booleanrecep</code>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:recep.fed@gmail.com">
+                  {mailSvg}
+                  <code>recep.fed@gmail.com</code>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className={styles.descriptiondiv}>
           <h3>{state.title}</h3>

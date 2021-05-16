@@ -13,17 +13,11 @@ body {
 .container {
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
-  // width: fit-content;
 }
 .main {
-  // width: 100%;
-  // width: fit-content;
-
   display: flex;
   flex-direction: row;
   background-color: #c8c2bc;
-  // height: 80vh;
 }
 
 .content {
@@ -32,7 +26,6 @@ body {
   padding: 0.5em;
   border: 1px solid #21094e;
   border-top: none;
-  // height: fit-content;
 }
 .footer {
   background-color: #c8c2bc;
@@ -48,10 +41,4 @@ span,
 h5 {
   cursor: pointer;
 }
-
-@media screen and (max-width: 768px) {
-  .content {
-    margin-top: 60px;
-    border: none;
-  }
-}
+@import "media_queires";

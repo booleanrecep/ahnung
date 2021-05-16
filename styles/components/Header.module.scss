@@ -1,60 +1,42 @@
 .header {
-    border: 1px solid #21094e;
-  // position: fixed;
-    background-color: #f1ca89;
-    height: 3.5em;
+  border: 1px solid #21094e;
+  background-color: #f1ca89;
+  height: 3.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  div {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    // width: 100%;
-    div {
-      // margin: 1.2em;
-      display: flex;
-      flex-direction: row;
-      margin: 10px;
-      position: fixed;
-      // transform: rotate(0deg);
-      transition: transform 0.3s,margin 0.3s;
-  
-      a {
-        width: fit-content;
-        height: fit-content;
-        cursor: pointer;
-        border: 1px solid #cc9b6d;
-        margin: 2px;
-        padding: 6px;
-        border-radius: 50%;
-        transition: background-color 0.4s, transform 0.4s;;
+    margin: 10px;
+    position: fixed;
+    transition: transform 0.3s, margin 0.3s;
 
-        background-position: center;
-        background-size: 1em 1em;
-        background-color: #f1ca89;
-  
-        &:hover {
-          transition: background-color 0.4s;
-          background-color: #cc9b6d;
-        }
-        &:active {
-          text-decoration: underline dashed #cc9b6d;
-          text-underline-offset: 0.9em;
-          text-decoration-thickness: 0.06em;
-        }
+    a {
+      width: fit-content;
+      height: fit-content;
+      cursor: pointer;
+      border: 1px solid #cc9b6d;
+      margin: 2px;
+      padding: 6px;
+      border-radius: 50%;
+      transition: background-color 0.4s, transform 0.4s;
+
+      background-position: center;
+      background-size: 1em 1em;
+      background-color: #f1ca89;
+
+      &:hover {
+        transition: background-color 0.4s;
+        background-color: #cc9b6d;
+      }
+      &:active {
+        text-decoration: underline dashed #cc9b6d;
+        text-underline-offset: 0.9em;
+        text-decoration-thickness: 0.06em;
       }
     }
   }
-
-  
-@media screen and (max-width: 768px) {
-  .header {
-    position: fixed;
-    width: 100%;
-    z-index: 2;
-    
-    div {
-      // display: flex;
-      // margin-top: -55px;
-      position: relative;
-      font-size: 14px;
-    }
-  }
 }
+
+@import "../media_queires";

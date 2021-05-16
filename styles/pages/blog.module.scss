@@ -8,31 +8,18 @@
   .bloglist {
     flex-grow: 1;
     display: flex;
-    // width: 280px;
     padding-left: 5px;
 
     border: 1px solid #511281;
-    ol{
-      // display: flex;
-      // flex-direction: column;
-      // list-style-type: none;
+    ol {
       list-style-type: malayalam;
       display: inline-block;
-      // width: 180px;
       width: auto;
 
       white-space: nowrap;
       overflow: hidden !important;
       text-overflow: ellipsis;
       margin-right: 13px;
-    //   li{
-    //     display: inline-block;
-    // width: 180px;
-    // white-space: nowrap;
-    // overflow: hidden !important;
-    // text-overflow: ellipsis;
-    //   }
-      
     }
   }
   .article {
@@ -46,11 +33,9 @@
 
     .headerdiv {
       border: 1px solid #511281;
-      //   width: 80%;
       padding: 1em;
-      //   margin: 1em;
       border-bottom: none;
-      // padding: 7px;
+
       h3,
       h4 {
         margin: 5px;
@@ -62,32 +47,34 @@
         padding: 0;
         margin: 0;
         flex-wrap: wrap;
+        font-size: 16px;
+
         .counts {
-          //   text-decoration: underline;
-          font-size: 18px;
+          // font-size: 18px;
           height: 30px;
-          padding: 0.5em;
+          padding-left: 0.5em;
+          padding-top: 5px;
         }
-        .date{
-          font-size: 18px;
+        .date {
+          // font-size: 18px;
           margin-top: 12px;
         }
         .tags {
           margin: 8px;
+        align-self: center;
+
           span {
             margin-top: 2px;
             margin: 5px;
             padding: 0.3px 3px;
             border-radius: 5px;
             border: 1px solid #511281;
-            font-size: 18px;
-            // color;
+            // font-size: 18px;
             background-color: #4184e41a;
           }
         }
         .socials {
-          //   text-decoration: underline;
-          font-size: 18px;
+          // font-size: 18px;
           height: 30px;
           padding: 0.5em;
         }
@@ -98,26 +85,8 @@
       border-top: none;
       padding: 1em;
       padding-top: 0;
-      font-size: 18px;
-      
+      // font-size: 18px;
     }
   }
 }
-@media screen and (max-width: 768px) {
-  .blog{
-
-    .bloglist {
-    border-right: none;
-
-    }
-  .article{
-    padding: 0;
-    border:none;
-    .headerdiv{
-      padding-bottom: 0;
-      // padding: 0;
-    
-    }
-  }
-}
-}
+@import "../media_queires";

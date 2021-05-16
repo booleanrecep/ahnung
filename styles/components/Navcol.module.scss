@@ -1,6 +1,4 @@
 .navcol {
-  // position: fixed;
-
   display: flex;
   flex-direction: column;
   flex-grow: 2;
@@ -9,9 +7,6 @@
   height: 77.3vh;
   .tabs {
     font-size: 24px;
-    // margin: 0.2em 0;
-    // padding-left: 0.3em;
-    // width: 170px;
     width: auto;
     margin: 0.2em;
     position: fixed;
@@ -36,31 +31,7 @@
         transition: background-color 0.4s;
         background-color: #cc9b6d;
       }
-
-      // &:first-of-type {
-      //   background-color: #f1ca89;
-      // }
-      // &:nth-child(2) {
-      //   background-color: #f2dac3;
-      // }
-      // &:last-child {
-      //   background-color: #c8c2bc;
-      // }
     }
   }
 }
-
-@media screen and (max-width: 768px) {
-  .navcol {
-    width: auto;
-    flex-grow: 0;
-    
-    .tabs {
-      // display: flex;
-      // margin-top: -55px;
-      margin-top: -52px;
-      display: flex;
-      font-size: 18px;
-    }
-  }
-}
+@import "../media_queires";
