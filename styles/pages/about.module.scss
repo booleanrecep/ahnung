@@ -46,7 +46,22 @@
     p {
       margin:1em 1.5em;
       line-height: 1.5em;
-      text-align: justify;
+      text-align: revert;
+  font-size: 18px;
+
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .about{
+    width: auto;
+    .imagediv{
+    width: auto;
+
+    }
+  .descriptiondiv{
+    width: auto;
+    padding: 0;
+  }
+}}

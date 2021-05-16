@@ -13,7 +13,8 @@
       flex-direction: row;
       margin: 10px;
       position: fixed;
-      transition: flex-direction 2s;
+      // transform: rotate(0deg);
+      transition: transform 0.3s,margin 0.3s;
   
       a {
         width: fit-content;
@@ -23,7 +24,8 @@
         margin: 2px;
         padding: 6px;
         border-radius: 50%;
-        transition: background-color 0.4s;
+        transition: background-color 0.4s, transform 0.4s;;
+
         background-position: center;
         background-size: 1em 1em;
         background-color: #f1ca89;
@@ -40,3 +42,19 @@
       }
     }
   }
+
+  
+@media screen and (max-width: 768px) {
+  .header {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    
+    div {
+      // display: flex;
+      // margin-top: -55px;
+      position: relative;
+      font-size: 14px;
+    }
+  }
+}

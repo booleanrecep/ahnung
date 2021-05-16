@@ -29,7 +29,6 @@ body {
 .content {
   width: 90%;
   flex-grow: 8;
-  font-size: 22px;
   padding: 0.5em;
   border: 1px solid #21094e;
   border-top: none;
@@ -48,4 +47,11 @@ svg,
 span,
 h5 {
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    margin-top: 60px;
+    border: none;
+  }
 }

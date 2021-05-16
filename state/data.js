@@ -34,7 +34,7 @@ export const dummyDate = {
   },
   deutsch: {
     language: "de",
-    navcols: ["ÜBER MICH", "DIE ARTIKEL"],
+    navcols: ["ÜBER MICH", "ARTIKEL"],
     about: {
       title: "ÜBER MICH",
       desc: "Schöne Grüße Ich bin ein hochmotivierter und meist selbstlernender Front-End-Entwickler. Ich habe mein Studium als Türkischlehrer abgeschlossen und arbeite immer noch als Lehrer. Aber mir wurde klar, dass meine Leidenschaft Software war. Ich möchte ein sehr guter und sich ständig weiterentwickelnder Softwareentwickler sein. Ich versuche immer, solide und nützliche Informationen zu erhalten, indem ich meine Leidenschaft für das Lernen weiterentwickle. Ich glaube, Bildung ist fürs Leben. Ich habe selbst Englisch gelernt. Ich habe die Software meistens selbst gelernt und lerne natürlich weiter. Ich mache feste Schritte, um Deutsch zu lernen, was mein spezifisches Ziel für 2021 ist.",

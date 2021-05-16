@@ -8,7 +8,7 @@
   .bloglist {
     flex-grow: 1;
     display: flex;
-    width: 280px;
+    // width: 280px;
     padding-left: 5px;
 
     border: 1px solid #511281;
@@ -18,10 +18,13 @@
       // list-style-type: none;
       list-style-type: malayalam;
       display: inline-block;
-      width: 180px;
+      // width: 180px;
+      width: auto;
+
       white-space: nowrap;
       overflow: hidden !important;
       text-overflow: ellipsis;
+      margin-right: 13px;
     //   li{
     //     display: inline-block;
     // width: 180px;
@@ -47,6 +50,7 @@
       padding: 1em;
       //   margin: 1em;
       border-bottom: none;
+      // padding: 7px;
       h3,
       h4 {
         margin: 5px;
@@ -57,6 +61,7 @@
         justify-content: space-between;
         padding: 0;
         margin: 0;
+        flex-wrap: wrap;
         .counts {
           //   text-decoration: underline;
           font-size: 18px;
@@ -97,4 +102,22 @@
       
     }
   }
+}
+@media screen and (max-width: 768px) {
+  .blog{
+
+    .bloglist {
+    border-right: none;
+
+    }
+  .article{
+    padding: 0;
+    border:none;
+    .headerdiv{
+      padding-bottom: 0;
+      // padding: 0;
+    
+    }
+  }
+}
 }
