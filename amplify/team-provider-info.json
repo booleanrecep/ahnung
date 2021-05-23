@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-ahnung-dev-220947-authRole",
+            "UnauthRoleArn": "arn:aws:iam::091430097272:role/amplify-ahnung-dev-220947-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::091430097272:role/amplify-ahnung-dev-220947-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "amplify-ahnung-dev-220947-deployment",
+            "UnauthRoleName": "amplify-ahnung-dev-220947-unauthRole",
+            "StackName": "amplify-ahnung-dev-220947",
+            "StackId": "arn:aws:cloudformation:eu-central-1:091430097272:stack/amplify-ahnung-dev-220947/4aeddce0-b67a-11eb-827d-02c732095d3e",
+            "AmplifyAppId": "d3llvml6uepx34"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d3llvml6uepx34",
+                    "type": "manual"
+                }
+            }
+        }
+    }
+}
