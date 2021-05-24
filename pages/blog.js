@@ -2,6 +2,7 @@
 import { Layout } from "../components/Layout";
 import styles from "../styles/pages/blog.module.scss";
 import Image from "next/image";
+import {useRouter} from "next/router"
 const clapSvg = (
   <svg
     style={{ paddingBottom: "-10px" }}
@@ -76,7 +77,9 @@ const dummyDate = {
     ],
   },
 };
-export default function Blog() {
+export default function Blog({languages}) {
+  console.log(languages)
+  const router = useRouter()
   return (
     <>
       <Layout>
@@ -159,4 +162,17 @@ export default function Blog() {
       </Layout>
     </>
   );
+}
+
+
+export async function getStaticProps() {
+
+  const res = await fetch("http://localhost:3000/api/data");
+  const json = await res.json();
+  console.log(json)
+  return {
+    props: {
+      languages:json
+    },
+  };
 }

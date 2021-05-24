@@ -7,5 +7,5 @@ module.exports = {
           permanent: true,
         },
       ]
-    },
+    }
   }

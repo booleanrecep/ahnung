@@ -1,4 +1,5 @@
 import React from "react";
+// import { connectToDatabase } from "../db_util/dbConnect";
 import styles from "../styles/pages/about.module.scss";
 import Image from "next/image";
 import { Layout } from "../components/Layout";
@@ -33,6 +34,7 @@ const mailSvg = (
   </svg>
 );
 export default function About() {
+ 
   const state = useSelector((state) => state.about);
 
   return (

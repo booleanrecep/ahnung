@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
+    "mongodb": "^3.6.8",
     "next": "10.2.0",
+    "next-connect": "^0.10.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.4"
@@ -22,4 +24,5 @@
     "prettier": "2.3.0",
     "sass": "^1.32.12"
   }
+
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from '../styles/components/Header.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { showDeutsch, showTurkish, showEnglish } from '../state/reducers';
+import { showDeutsch, showTurkish, showEnglish,showDatas } from '../state/reducers';
 // const ss=window.pageYOffset
 import Link from 'next/link';
 
 export const Header = () => {
-  const state = useSelector(state => state.navcols);
+  const state = useSelector(state => state);
 
   const ref = React.createRef();
   const dispatch = useDispatch();
@@ -52,6 +52,7 @@ export const Header = () => {
         <a onClick={() => dispatch(showTurkish())}>TR</a>
         <a onClick={() => dispatch(showEnglish())}>EN</a>
         <a onClick={() => dispatch(showDeutsch())}>DE</a>
+        <a onClick={() => dispatch(showDatas())}>DEs</a>
       </div>
     </header>
   );
