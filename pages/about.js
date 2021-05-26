@@ -1,9 +1,7 @@
 import React from "react";
-// import { connectToDatabase } from "../db_util/dbConnect";
 import styles from "../styles/pages/about.module.scss";
 import Image from "next/image";
 import { Layout } from "../components/Layout";
-import { useSelector } from "react-redux";
 
 const githubSvg = (
   <svg
@@ -33,12 +31,29 @@ const mailSvg = (
     ></path>
   </svg>
 );
-export default function About() {
- 
-  const state = useSelector((state) => state.about);
+export default function About(props) {
+  const [data, setData] = React.useState(props.languages.tr);
+  const handleClick = (lang) => {
+    switch (lang) {
+      case "tr":
+        setData(props.languages.tr);
+        break;
+      case "en":
+        setData(props.languages.en);
+        break;
 
+      case "de":
+        setData(props.languages.de);
+        break;
+
+      default:
+        setData(props.languages.tr);
+        break;
+    }
+  };
+  console.log(data);
   return (
-    <Layout>
+    <Layout handleClick={handleClick}>
       <div className={styles.about}>
         <div className={styles.imagediv}>
           <img src="/static/me.png" alt="Bonn" />
@@ -61,10 +76,20 @@ export default function About() {
           </div>
         </div>
         <div className={styles.descriptiondiv}>
-          <h3>{state.title}</h3>
-          <p>{state.desc}</p>
+          <h3>{data.about.title}</h3>
+          <p>{data.about.desc}</p>
         </div>
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch("http://localhost:3000/api/data");
+  const json = await res.json();
+  return {
+    props: {
+      languages: json,
+    },
+  };
 }
