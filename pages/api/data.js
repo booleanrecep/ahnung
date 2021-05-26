@@ -2,7 +2,7 @@ import { connectToDatabase } from "../../db_util/dbConnect";
 
 export default async (req, res) => {
   const { db } = await connectToDatabase();
-  console.log(req.query)
+  console.log("req.query")
 
   const turkish = await db.collection("turkish").find({}).toArray();
   const deutsch = await db.collection("deutsch").find({}).toArray();

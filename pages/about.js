@@ -51,7 +51,7 @@ export default function About(props) {
         break;
     }
   };
-  console.log(data);
+  console.log("data-f");
   return (
     <Layout handleClick={handleClick}>
       <div className={styles.about}>
@@ -87,6 +87,8 @@ export default function About(props) {
 export async function getStaticProps() {
   const res = await fetch("http://localhost:3000/api/data");
   const json = await res.json();
+  console.log("data-g");
+
   return {
     props: {
       languages: json,
