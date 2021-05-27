@@ -1,7 +1,6 @@
 import { Header } from "./Header";
 import { Navcol } from "./Navcol";
 import Head from "next/head";
-import { getStaticProps } from "../pages/blog";
 
 export const Layout = (props) => {
   return (
@@ -13,9 +12,9 @@ export const Layout = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container">
-        <Header handleClick={props.handleClick}/>
+        <Header />
         <main className="main">
-          <Navcol />
+          <Navcol  />
           <div className="content">{props.children}</div>
         </main>
         <footer className="footer">Here comes the footer</footer>

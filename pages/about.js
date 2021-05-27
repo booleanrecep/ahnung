@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "../styles/pages/about.module.scss";
-import Image from "next/image";
-import { Layout } from "../components/Layout";
-
+import { UIContext } from "./_app";
 const githubSvg = (
   <svg
     height="20"
@@ -32,28 +30,8 @@ const mailSvg = (
   </svg>
 );
 export default function About(props) {
-  const [data, setData] = React.useState(props.languages.tr);
-  const handleClick = (lang) => {
-    switch (lang) {
-      case "tr":
-        setData(props.languages.tr);
-        break;
-      case "en":
-        setData(props.languages.en);
-        break;
-
-      case "de":
-        setData(props.languages.de);
-        break;
-
-      default:
-        setData(props.languages.tr);
-        break;
-    }
-  };
-  console.log("data-f");
   return (
-    <Layout handleClick={handleClick}>
+    <>
       <div className={styles.about}>
         <div className={styles.imagediv}>
           <img src="/static/me.png" alt="Bonn" />
@@ -76,22 +54,49 @@ export default function About(props) {
           </div>
         </div>
         <div className={styles.descriptiondiv}>
-          <h3>{data.about.title}</h3>
-          <p>{data.about.desc}</p>
+          <h3>{props.db_data.about.title}</h3>
+          <p>{props.db_data.about.desc}</p>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
+export async function getServerSideProps(ctx) {
+  switch (ctx.query.lang) {
+    case "tr":
+      const resTR = await fetch("http://localhost:3000/api/data?lang=tr");
+      const jsonTR = await resTR.json();
+      return {
+        props: {
+          db_data: jsonTR,
+        },
+      };
+    case "de":
+      const resDE = await fetch("http://localhost:3000/api/data?lang=de");
+      const jsonDE = await resDE.json();
+      return {
+        props: {
+          db_data: jsonDE,
+        },
+      };
+    case "en":
+      const resEN = await fetch("http://localhost:3000/api/data?lang=en");
+      const jsonEN = await resEN.json();
+      return {
+        props: {
+          db_data: jsonEN,
+        },
+      };
 
-export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/data");
-  const json = await res.json();
-  console.log("data-g");
+    default:
+      const res = await fetch("http://localhost:3000/api/data?lang=tr");
+      const json = await res.json();
+      return {
+        props: {
+          db_data: json,
+        },
+      };
+  }
 
-  return {
-    props: {
-      languages: json,
-    },
-  };
+  // };
 }

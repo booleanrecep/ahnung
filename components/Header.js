@@ -1,19 +1,10 @@
 import React from "react";
 import styles from "../styles/components/Header.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  showDeutsch,
-  showTurkish,
-  showEnglish,
-  showDatas,
-} from "../state/reducers";
-// const ss=window.pageYOffset
-import Link from "next/link";
-
+import Link from "next/link"
+import {useRouter} from "next/router"
 export const Header = (props) => {
-  const state = useSelector((state) => state);
+  const router=useRouter()
   const ref = React.createRef();
-  const dispatch = useDispatch();
   const objStyle1 = {
     transform: "rotate(90deg)",
     margin: "50px -30px 0 0",
@@ -42,23 +33,20 @@ export const Header = (props) => {
         chldStyles(ref.current.children, childStyle1))
       : (objStyles(ref.current, objStyle2),
         chldStyles(ref.current.children, childStyle2));
-  }, [ref, state]);
+  }, [ref]);
 
   React.useEffect(() => {
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);
     };
-  }, [ref, state]);
+  }, [ref]);
   return (
     <header className={`${styles.header}`}>
       <div id="lang" ref={ref}>
-        {/* <a onClick={() => dispatch(showTurkish())}>TR</a>
-        <a onClick={() => dispatch(showEnglish())}>EN</a>
-        <a onClick={() => dispatch(showDeutsch())}>DE</a> */}
-        <a onClick={() => props.handleClick("tr")}>TR</a>
-        <a onClick={() => props.handleClick("en")}>EN</a>
-        <a onClick={() => props.handleClick("de")}>DE</a>
+       <Link href={router.pathname+"?lang=tr"} >TR</Link>
+        <Link href={router.pathname+"?lang=en"} >EN</Link>
+        <Link href={router.pathname+"?lang=de"} onClick={props.handleClick}>DE</Link>
       </div>
     </header>
   );

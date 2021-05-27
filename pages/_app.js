@@ -1,12 +1,12 @@
+import React from "react";
 import "../styles/globals.scss";
-import store from "../state/store";
-import { Provider } from "react-redux";
+import { Layout } from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />;
-    </Provider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 
