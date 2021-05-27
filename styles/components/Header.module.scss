@@ -26,6 +26,8 @@
       background-position: center;
       background-size: 1em 1em;
       background-color: #f1ca89;
+      text-decoration: none;
+      color: inherit;
 
       &:hover {
         transition: background-color 0.4s;
