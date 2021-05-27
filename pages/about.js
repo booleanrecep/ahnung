@@ -29,7 +29,7 @@ const mailSvg = (
   </svg>
 );
 export default function About(props) {
-
+console.log(process.env)
   return (
     <>
       <div className={styles.about}>
