@@ -62,7 +62,6 @@ export default function About(props) {
   );
 }
 export async function getServerSideProps(ctx) {
-  console.log(process)
   switch (ctx.query.lang) {
     case "tr":
       const resTR = await fetch(process.env.server+"/api/data?lang=tr");
