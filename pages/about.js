@@ -29,6 +29,7 @@ const mailSvg = (
   </svg>
 );
 export default function About(props) {
+
   return (
     <>
       <div className={styles.about}>
