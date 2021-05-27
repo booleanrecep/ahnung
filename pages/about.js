@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../styles/pages/about.module.scss";
-import { UIContext } from "./_app";
 const githubSvg = (
   <svg
     height="20"

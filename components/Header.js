@@ -46,7 +46,7 @@ export const Header = (props) => {
       <div id="lang" ref={ref}>
        <Link href={router.pathname+"?lang=tr"} >TR</Link>
         <Link href={router.pathname+"?lang=en"} >EN</Link>
-        <Link href={router.pathname+"?lang=de"} onClick={props.handleClick}>DE</Link>
+        <Link href={router.pathname+"?lang=de"}>DE</Link>
       </div>
     </header>
   );
