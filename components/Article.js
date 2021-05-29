@@ -1,4 +1,4 @@
-import styles from "../styles/pages/blog.module.scss";
+import styles from "../styles/components/Article.module.scss";
 import Image from "next/image";
 const clapSvg = (
     <svg

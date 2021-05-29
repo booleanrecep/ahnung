@@ -1,3 +1,10 @@
+$langFontSize:16px;
+$tabsFontSize:16px;
+$toolsFontSize:12px;
+$articleFontSize:17px;
+$userFontSize:17px;
+$userLinksFontSize:13px;
+$descriptionFontSize:17px;
 @media screen and (max-width: 768px) {
   .content {
     margin-top: 60px;
@@ -6,8 +13,6 @@
 
   .about {
     width: auto;
-    // display: flex;
-    // flex-direction: column;
     .imagediv {
       width: auto;
     }
@@ -35,7 +40,7 @@
 
     div {
       position: relative;
-      font-size: 14px;
+      font-size: $langFontSize;
     }
   }
   .navcol {
@@ -45,7 +50,7 @@
     .tabs {
       margin-top: -52px;
       display: flex;
-      font-size: 18px;
+      font-size: $tabsFontSize;
     }
   }
 }
@@ -62,20 +67,22 @@
         align-self: center;
       }
       div {
-        // margin: 30px 0 0 10px;
-        font-size: 12px;
+        font-size: $userFontSize;
         margin-top: 5%;
+        h4{
+          font-size: $userFontSize;
+        }
         ul {
-          font-size: 12px;
+          font-size: $userLinksFontSize;
         }
       }
     }
     .descriptiondiv {
       h3 {
-        font-size: 14px;
+        font-size: $descriptionFontSize;
       }
       p {
-        font-size: 13px;
+        font-size: $descriptionFontSize;
       }
     }
   }
@@ -89,7 +96,7 @@
       .headerdiv {
         border-top: none;
         .tools {
-          font-size: 12px;
+          font-size: $toolsFontSize;
           .counts {
             padding-top: 0;
           }
@@ -99,13 +106,13 @@
   }
   .header {
     div {
-      font-size: 12px;
+      font-size: $langFontSize;
     }
   }
   .navcol {
     .tabs {
       margin-top: -49px;
-      font-size: 12px;
+      font-size: $tabsFontSize;
       div:first-of-type {
         margin-right: 0px;
       }
@@ -136,13 +143,13 @@
       }
     }
     .article {
-      font-size: 12px;
+      font-size: $articleFontSize;
       .headerdiv {
         .tools {
-          font-size: 10px;
+          font-size: $toolsFontSize;
 
-          .counts {
-          }
+          // .counts {
+          // }
         }
       }
     }
