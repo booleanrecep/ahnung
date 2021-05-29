@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "../styles/pages/blog.module.scss";
 import { Article } from "../components/Article";
+import { BlogList } from "../components/BlogList";
 
 export default function Blog(props) {
-  // const [data, setData] = React.useState(props.languages.tr);
   const [index, setIndex] = React.useState(0);
 
   const handleClickIndex = (id) => {
@@ -13,19 +13,8 @@ export default function Blog(props) {
   return (
     <>
       <div className={styles.blog}>
-        <div className={styles.bloglist}>
-          <ol>
-            <>
-              {props.db_data.articles.map(({ title, id }) => (
-                <li key={id} onClick={() => handleClickIndex(id)}>
-                  <h5>
-                    {title.length > 15 ? title.slice(0, 15) + "..." : title}
-                  </h5>
-                </li>
-              ))}
-            </>
-          </ol>
-        </div>
+        <BlogList handleClick={handleClickIndex} db_data={props.db_data} />
+
         <article className={styles.article}>
           <Article {...props.db_data.articles[index]} />
         </article>
@@ -37,7 +26,7 @@ export default function Blog(props) {
 export async function getServerSideProps(ctx) {
   switch (ctx.query.lang) {
     case "tr":
-      const resTR = await fetch(process.env.server+"/api/data?lang=tr");
+      const resTR = await fetch(process.env.server + "/api/data?lang=tr");
       const jsonTR = await resTR.json();
       return {
         props: {
@@ -45,7 +34,7 @@ export async function getServerSideProps(ctx) {
         },
       };
     case "de":
-      const resDE = await fetch(process.env.server+"/api/data?lang=de");
+      const resDE = await fetch(process.env.server + "/api/data?lang=de");
       const jsonDE = await resDE.json();
       return {
         props: {
@@ -53,7 +42,7 @@ export async function getServerSideProps(ctx) {
         },
       };
     case "en":
-      const resEN = await fetch(process.env.server+"/api/data?lang=en");
+      const resEN = await fetch(process.env.server + "/api/data?lang=en");
       const jsonEN = await resEN.json();
       return {
         props: {
@@ -62,7 +51,7 @@ export async function getServerSideProps(ctx) {
       };
 
     default:
-      const res = await fetch(process.env.server+"/api/data?lang=tr");
+      const res = await fetch(process.env.server + "/api/data?lang=tr");
       const json = await res.json();
       return {
         props: {

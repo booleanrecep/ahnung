@@ -1,10 +1,10 @@
-$langFontSize:16px;
-$tabsFontSize:16px;
-$toolsFontSize:12px;
-$articleFontSize:17px;
-$userFontSize:17px;
-$userLinksFontSize:13px;
-$descriptionFontSize:17px;
+$langFontSize: 16px;
+$tabsFontSize: 16px;
+$toolsFontSize: 12px;
+$articleFontSize: 17px;
+$userFontSize: 17px;
+$userLinksFontSize: 13px;
+$descriptionFontSize: 17px;
 @media screen and (max-width: 768px) {
   .content {
     margin-top: 60px;
@@ -22,9 +22,6 @@ $descriptionFontSize:17px;
     }
   }
   .blog {
-    .bloglist {
-      border-right: none;
-    }
     .article {
       padding: 0;
       border: none;
@@ -32,6 +29,9 @@ $descriptionFontSize:17px;
         padding-bottom: 0;
       }
     }
+  }
+  .bloglist {
+    border-right: none;
   }
   .header {
     position: fixed;
@@ -69,7 +69,7 @@ $descriptionFontSize:17px;
       div {
         font-size: $userFontSize;
         margin-top: 5%;
-        h4{
+        h4 {
           font-size: $userFontSize;
         }
         ul {
@@ -86,11 +86,13 @@ $descriptionFontSize:17px;
       }
     }
   }
+  .bloglist {
+    border-right: 1px solid #511281;
+    border-bottom: none;
+  }
   .blog {
     flex-direction: column;
-    .bloglist {
-      border-right: 1px solid #511281;
-    }
+
     .article {
       width: auto;
       .headerdiv {

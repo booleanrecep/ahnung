@@ -53,10 +53,10 @@ export const Navcol = () => {
     <div  className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
         <div>
-          <Link href={"/about?lang="+router.query.lang}>{nav_text.navbars[0]}</Link>
+          <Link href={"/about?lang="+`${router.query.lang===undefined?"tr":router.query.lang}`}>{nav_text.navbars[0]}</Link>
         </div>
         <div>
-          <Link href={"/blog?lang="+router.query.lang}>{nav_text.navbars[1]}</Link>
+          <Link href={"/blog?lang="+`${router.query.lang===undefined?"tr":router.query.lang}`}>{nav_text.navbars[1]}</Link>
         </div>
       </div>
     </div>

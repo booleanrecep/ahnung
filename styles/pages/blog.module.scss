@@ -5,23 +5,7 @@
 
   width: 100%;
 
-  .bloglist {
-    flex-grow: 1;
-    display: flex;
-    padding-left: 5px;
-
-    border: 1px solid #511281;
-    ol {
-      list-style-type: malayalam;
-      display: inline-block;
-      width: auto;
-
-      white-space: nowrap;
-      overflow: hidden !important;
-      text-overflow: ellipsis;
-      margin-right: 13px;
-    }
-  }
+  
   .article {
     flex-grow: 5;
     display: flex;

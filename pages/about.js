@@ -29,7 +29,6 @@ const mailSvg = (
   </svg>
 );
 export default function About(props) {
-
   return (
     <>
       <div className={styles.about}>
@@ -64,7 +63,7 @@ export default function About(props) {
 export async function getServerSideProps(ctx) {
   switch (ctx.query.lang) {
     case "tr":
-      const resTR = await fetch(process.env.server+"/api/data?lang=tr");
+      const resTR = await fetch(process.env.server + "/api/data?lang=tr");
       const jsonTR = await resTR.json();
       return {
         props: {
@@ -72,7 +71,7 @@ export async function getServerSideProps(ctx) {
         },
       };
     case "de":
-      const resDE = await fetch(process.env.server+"/api/data?lang=de");
+      const resDE = await fetch(process.env.server + "/api/data?lang=de");
       const jsonDE = await resDE.json();
       return {
         props: {
@@ -80,7 +79,7 @@ export async function getServerSideProps(ctx) {
         },
       };
     case "en":
-      const resEN = await fetch(process.env.server+"/api/data?lang=en");
+      const resEN = await fetch(process.env.server + "/api/data?lang=en");
       const jsonEN = await resEN.json();
       return {
         props: {
@@ -89,7 +88,7 @@ export async function getServerSideProps(ctx) {
       };
 
     default:
-      const res = await fetch(process.env.server+"/api/data?lang=tr");
+      const res = await fetch(process.env.server + "/api/data?lang=tr");
       const json = await res.json();
       return {
         props: {

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400&family=IBM+Plex+Mono:ital,wght@1,100&display=swap");
+$mainBgColor: #c8c2bc;
+$footerBgColor: #c8c2bc;
 html,
 body {
   padding: 0;
@@ -17,7 +19,7 @@ body {
 .main {
   display: flex;
   flex-direction: row;
-  background-color: #c8c2bc;
+  background-color: $mainBgColor;
 }
 
 .content {
@@ -28,7 +30,7 @@ body {
   border-top: none;
 }
 .footer {
-  background-color: #c8c2bc;
+  background-color: $footerBgColor;
   border: 2px solid red;
   height: 80px;
 
@@ -39,7 +41,8 @@ body {
 }
 svg,
 span,
-h5 {
+h5,
+h4 {
   cursor: pointer;
 }
 @import "media_queires";

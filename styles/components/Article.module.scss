@@ -1,4 +1,5 @@
-$toolFontSize:16px;
+$toolFontSize:14px;
+$tagsBgColor:#4184e41a;
 .headerdiv {
     border: 1px solid #511281;
     padding: 1em;
@@ -16,8 +17,6 @@ $toolFontSize:16px;
       margin: 0;
       flex-wrap: wrap;
       font-size: $toolFontSize;
-      ;
-
       .counts {
         height: 30px;
         padding-left: 0.5em;
@@ -36,7 +35,7 @@ $toolFontSize:16px;
           padding: 0.3px 3px;
           border-radius: 5px;
           border: 1px solid #511281;
-          background-color: #4184e41a;
+          background-color:$tagsBgColor;
         }
       }
       .socials {
@@ -51,3 +50,4 @@ $toolFontSize:16px;
     padding: 1em;
     padding-top: 0;
   }
+@import "../media_queires";
