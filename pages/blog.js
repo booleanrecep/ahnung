@@ -24,11 +24,11 @@ export default function Blog(props) {
 }
 
 export async function getServerSideProps(ctx) {
-console.log(process.env.HOST)
+// console.log(process.env)
 
   switch (ctx.query.lang) {
     case "tr":
-      const resTR = await fetch(process.env.HOST + "/api/data?lang=tr");
+      const resTR = await fetch(process.env.server + "/api/data?lang=tr");
       const jsonTR = await resTR.json();
       return {
         props: {
@@ -36,7 +36,7 @@ console.log(process.env.HOST)
         },
       };
     case "de":
-      const resDE = await fetch(process.env.HOST + "/api/data?lang=de");
+      const resDE = await fetch(process.env.server + "/api/data?lang=de");
       const jsonDE = await resDE.json();
       return {
         props: {
@@ -44,7 +44,7 @@ console.log(process.env.HOST)
         },
       };
     case "en":
-      const resEN = await fetch(process.env.HOST + "/api/data?lang=en");
+      const resEN = await fetch(process.env.server + "/api/data?lang=en");
       const jsonEN = await resEN.json();
       return {
         props: {
@@ -53,7 +53,7 @@ console.log(process.env.HOST)
       };
 
     default:
-      const res = await fetch(process.env.HOST + "/api/data?lang=tr");
+      const res = await fetch(process.env.server + "/api/data?lang=tr");
       const json = await res.json();
       return {
         props: {
