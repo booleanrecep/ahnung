@@ -1,6 +1,5 @@
 
 import {MongoClient} from "mongodb"
-console.log(process.env)
 
 const {MONGODB_URI,MONGODB_DB} = process.env
 if (!MONGODB_URI) {
