@@ -38,13 +38,13 @@ export default function About(props) {
             <h4>Recep Öztürk</h4>
             <ul>
               <li>
-                <a href="https://github.com/booleanrecep" target="_blank">
+                <a rel="noopener noreferrer" href="https://github.com/booleanrecep" target="_blank">
                   {githubSvg}
                   <code>github.com/booleanrecep</code>
                 </a>
               </li>
               <li>
-                <a href="mailto:recep.fed@gmail.com">
+                <a rel="noopener noreferrer" href="mailto:recep.fed@gmail.com">
                   {mailSvg}
                   <code>recep.fed@gmail.com</code>
                 </a>
