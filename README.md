@@ -2,8 +2,6 @@
 #####  TECH STACK
 > Framework 
 - Next.js
-> State Management
-- Redux
 > CSS Preprocessor
 - Scss
 > Linting Tool & Prettifying
@@ -15,4 +13,9 @@
 - Docker
 > Cloud Platform
 - AWS
+
+#### api
+- /api/data?lang=tr
+- /api/data?lang=de
+- /api/data?lang=en
 
