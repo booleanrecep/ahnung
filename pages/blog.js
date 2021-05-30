@@ -24,6 +24,8 @@ export default function Blog(props) {
 }
 
 export async function getServerSideProps(ctx) {
+console.log(process.env.HOST)
+
   switch (ctx.query.lang) {
     case "tr":
       const resTR = await fetch(process.env.HOST + "/api/data?lang=tr");
