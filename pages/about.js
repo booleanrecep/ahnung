@@ -1,4 +1,6 @@
 import React from "react";
+import {useRouter} from "next/router"
+
 import styles from "../styles/pages/about.module.scss";
 const githubSvg = (
   <svg
@@ -29,34 +31,55 @@ const mailSvg = (
   </svg>
 );
 export default function About(props) {
+  const router = useRouter()
+  const [min, setMin] = React.useState(1);
+  React.useEffect(()=>{
+    const id =setTimeout(()=>setMin(0),500)
+    return ()=>{
+      setMin(1)
+      clearTimeout(id)
+    }
+  },[router.query.lang])
+
   return (
     <>
-      <div className={styles.about}>
-        <div className={styles.imagediv}>
-          <img src="/static/me.png" alt="Bonn" />
-          <div>
-            <h4>Recep Öztürk</h4>
-            <ul>
-              <li>
-                <a rel="noopener noreferrer" href="https://github.com/booleanrecep" target="_blank">
-                  {githubSvg}
-                  <code>github.com/booleanrecep</code>
-                </a>
-              </li>
-              <li>
-                <a rel="noopener noreferrer" href="mailto:recep.fed@gmail.com">
-                  {mailSvg}
-                  <code>recep.fed@gmail.com</code>
-                </a>
-              </li>
-            </ul>
+      {min == 1 ? (
+        <div className="loader" />
+      ) : (
+        <div className={styles.about}>
+          <div className={styles.imagediv}>
+            <img src="/static/me.png" alt="Bonn" />
+            <div>
+              <h4>Recep Öztürk</h4>
+              <ul>
+                <li>
+                  <a
+                    rel="noopener noreferrer"
+                    href="https://github.com/booleanrecep"
+                    target="_blank"
+                  >
+                    {githubSvg}
+                    <code>github.com/booleanrecep</code>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    rel="noopener noreferrer"
+                    href="mailto:recep.fed@gmail.com"
+                  >
+                    {mailSvg}
+                    <code>recep.fed@gmail.com</code>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.descriptiondiv}>
+            <h3>{props.db_data.about.title}</h3>
+            <p>{props.db_data.about.desc}</p>
           </div>
         </div>
-        <div className={styles.descriptiondiv}>
-          <h3>{props.db_data.about.title}</h3>
-          <p>{props.db_data.about.desc}</p>
-        </div>
-      </div>
+      )}
     </>
   );
 }

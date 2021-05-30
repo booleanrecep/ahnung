@@ -1,4 +1,6 @@
 import React from "react";
+import {useRouter} from "next/router"
+
 import styles from "../styles/pages/blog.module.scss";
 import { Article } from "../components/Article";
 import { BlogList } from "../components/BlogList";
@@ -10,14 +12,28 @@ export default function Blog(props) {
     const indx = props.db_data.articles.findIndex((art) => art.id === id);
     setIndex(indx);
   };
+
+  const router = useRouter()
+  const [min, setMin] = React.useState(1);
+  React.useEffect(()=>{
+    const id =setTimeout(()=>setMin(0),500)
+    return ()=>{
+      setMin(1)
+      clearTimeout(id)
+    }
+  },[router.query.lang,index])
   return (
     <>
       <div className={styles.blog}>
         <BlogList handleClick={handleClickIndex} db_data={props.db_data} />
-
         <article className={styles.article}>
+        {min == 1 ? (
+        <div className="loader" />
+      ) : (
           <Article {...props.db_data.articles[index]} />
-        </article>
+          )}
+          </article>
+
       </div>
     </>
   );
