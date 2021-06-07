@@ -71,13 +71,13 @@ h4 {
   100% { transform: rotate(360deg); }
 }
 @keyframes turnForward {
-  0% { transform: rotate(45deg); }
-  100% { transform: rotate(225deg); }
+  0% { transform: rotate(45deg);left:0px }
+  100% { transform: rotate(225deg);left:80px }
 }
 
 @keyframes turnBackward {
-  0% { transform: rotate(225deg); }
-  100% { transform: rotate(45deg); }
+  0% { transform: rotate(225deg);left: 80px; }
+  100% { left:0px;transform: rotate(45deg) }
 }
 
 @import "media_queires";

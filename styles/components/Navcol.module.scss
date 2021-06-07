@@ -46,6 +46,7 @@ $tabFontSize: 24px;
       padding-left: 5px;
       padding-right: 5px;
       // padding-bottom: 5px;
+      transition:"opacity 2s";
 
       svg {
         fill: inherit;
@@ -67,7 +68,7 @@ $tabFontSize: 24px;
       transform: rotate(45deg);
       border-left: navajowhite;
       border-bottom: none;
-      
+      position: relative;
     }
   }
 }

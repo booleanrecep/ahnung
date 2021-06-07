@@ -30,12 +30,12 @@ const keyFrameBackward =  {
 export const Navcol = () => {
   const router = useRouter();
   const ref = React.createRef();
-  const [expand, setExpand] = React.useState({ display: "none", transform: null });
+  const [expand, setExpand] = React.useState({ display: "none",opacity:"0", transform: null });
   const handleStyleExpand = () => {
     console.log("expand");
     setExpand({
+      transform: expand.display === "none" ?keyFrameForward:keyFrameBackward,
       display: expand.display === "none" ? "flex" : "none",
-      transform: expand.display === "none" ?keyFrameForward:keyFrameBackward
     });
   };
   const changeText = () => {
@@ -65,16 +65,18 @@ export const Navcol = () => {
     }
   };
   const nav_text = React.useMemo(() => changeText(), [router.query.lang]);
-
+  
   const handlePosition = React.useCallback(() => {
     window.pageYOffset > 50 && window.innerWidth > 768
       ? (ref.current.style.top = "0px")
       : (ref.current.style.top = "55px");
   }, [ref]);
   React.useEffect(() => {
+   
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);
+     
     };
   }, [ref]);
   return (
