@@ -50,5 +50,10 @@ overflow:hidden;
     background-color: #c2d686;
     border: 1px solid #14330c;
     border-radius: 8px;
+    cursor: pointer;
+    transition: background-color  0.5s;
+    &:hover{
+            background-color: #97ad58;
+    }
   }
 }

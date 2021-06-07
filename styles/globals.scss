@@ -70,5 +70,15 @@ h4 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+@keyframes turnForward {
+  0% { transform: rotate(45deg); }
+  100% { transform: rotate(225deg); }
+}
+
+@keyframes turnBackward {
+  0% { transform: rotate(225deg); }
+  100% { transform: rotate(45deg); }
+}
+
 @import "media_queires";
 
