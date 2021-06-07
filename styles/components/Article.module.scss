@@ -1,53 +1,61 @@
-$toolFontSize:14px;
-$tagsBgColor:#4184e41a;
+$toolFontSize: 14px;
+$tagsBgColor: #4184e41a;
 .headerdiv {
-    border: 1px solid #511281;
-    padding: 1em;
-    border-bottom: none;
+  border: 1px solid #511281;
+  padding: 1em;
+  border-bottom: none;
 
-    h3,
-    h4 {
-      margin: 5px;
+  h3,
+  h4 {
+    margin: 5px;
+    letter-spacing: 0.3px;
+    word-spacing: 10px;
+    line-height: 1.5;
+  }
+  .tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    font-size: $toolFontSize;
+    .counts {
+      height: 30px;
+      padding-left: 0.5em;
+      padding-top: 5px;
     }
-    .tools {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 0;
-      margin: 0;
-      flex-wrap: wrap;
-      font-size: $toolFontSize;
-      .counts {
-        height: 30px;
-        padding-left: 0.5em;
-        padding-top: 5px;
-      }
-      .date {
-        margin-top: 12px;
-      }
-      .tags {
-        margin: 8px;
+    .date {
+      margin-top: 12px;
+    }
+    .tags {
+      margin: 8px;
       align-self: center;
 
-        span {
-          margin-top: 2px;
-          margin: 5px;
-          padding: 0.3px 3px;
-          border-radius: 5px;
-          border: 1px solid #511281;
-          background-color:$tagsBgColor;
-        }
-      }
-      .socials {
-        height: 30px;
-        padding: 0.5em;
+      span {
+        margin-top: 2px;
+        margin: 5px;
+        padding: 0.3px 3px;
+        border-radius: 5px;
+        border: 1px solid #511281;
+        background-color: $tagsBgColor;
       }
     }
+    .socials {
+      height: 30px;
+      padding: 0.5em;
+    }
   }
-  .text {
-    border: 1px solid #511281;
-    border-top: none;
-    padding: 1em;
-    padding-top: 0;
-  }
+}
+.text {
+  border: 1px solid #511281;
+  border-top: none;
+  padding: 1em;
+  padding-top: 0;
+  letter-spacing: 0.3px;
+  word-spacing: 10px;
+  line-height: 1.5;
+  text-indent: 50px;
+  font-style: italic
+}
 @import "../media_queires";

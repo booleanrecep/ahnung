@@ -1,5 +1,5 @@
-$contactFontSize:15px;
-$descriptionFontSize:18px;
+$contactFontSize: 15px;
+$descriptionFontSize: 18px;
 .about {
   width: fit-content;
   height: -webkit-fill-available;
@@ -17,30 +17,30 @@ $descriptionFontSize:18px;
       width: 90%;
       height: 50%;
     }
-    div{
-    ul {
-      list-style: none;
-      padding: 0;
-      font-size: $contactFontSize;
-      display: flex;
-      flex-direction: column;
+    div {
+      ul {
+        list-style: none;
+        padding: 0;
+        font-size: $contactFontSize;
+        display: flex;
+        flex-direction: column;
 
-      li {
-        text-decoration: underline;
-        text-underline-offset: 0.5em;
-        margin-bottom: 1.5em;
+        li {
+          text-decoration: underline;
+          text-underline-offset: 0.5em;
+          margin-bottom: 1.5em;
 
-        a {
-          display: flex;
-          flex-direction: row;
-          color: #000000;
-          svg {
-            margin-right: 0.5em;
+          a {
+            display: flex;
+            flex-direction: row;
+            color: #000000;
+            svg {
+              margin-right: 0.5em;
+            }
           }
         }
       }
     }
-  }
   }
   .descriptiondiv {
     border-left: none;
@@ -54,6 +54,11 @@ $descriptionFontSize:18px;
       line-height: 1.5em;
       text-align: revert;
       font-size: $descriptionFontSize;
+      letter-spacing: 0.3px;
+      word-spacing: 10px;
+      line-height: 1.5;
+      text-indent: 50px;
+      font-style: italic;
     }
   }
 }

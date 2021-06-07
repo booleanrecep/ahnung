@@ -1,0 +1,54 @@
+.articleForm {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    // width: 00;
+    outline: none;
+    border: 0.2px solid #e12c2c;
+    min-height: 50px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #d9c5a4;
+    text-transform: capitalize;
+overflow:hidden;
+    font-weight: 600;
+    word-spacing: 10px;
+    letter-spacing: 1px;
+   resize: none;
+   font-size: inherit;
+   font-family: inherit;
+    
+  }
+
+  .textarea {
+    outline: none;
+    border: 0.2px solid #e12c2c;
+    resize: vertical;
+    overflow-wrap: break-word;
+    padding: 10px;
+    background-color: #d9c5a4;
+    letter-spacing: 0.3px;
+    word-spacing: 10px;
+    line-height: 1.5;
+    text-indent: 50px;
+    font-style: italic;
+    font-size: inherit;
+    font-family: inherit;
+  }
+  .submit {
+    width: fit-content;
+    align-self: flex-end;
+    width: -moz-fit-content;
+    width: fit-content;
+    align-self: flex-end;
+    margin: 10px;
+    padding: 5px;
+    color: #425d0d;
+    font-size: inherit;
+    font-family: inherit;
+    background-color: #c2d686;
+    border: 1px solid #14330c;
+    border-radius: 8px;
+  }
+}
