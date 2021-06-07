@@ -28,9 +28,11 @@ const keyFrameBackward =  {
   animationFillMode: "backwards",
 };
 export const Navcol = () => {
+let WIH ;
+
   const router = useRouter();
   const ref = React.createRef();
-  const [expand, setExpand] = React.useState({ display: "none",opacity:"0", transform: null });
+  const [expand, setExpand] = React.useState({ display: "inherite",opacity:"0", transform:keyFrameBackward });
   const handleStyleExpand = () => {
     console.log("expand");
     setExpand({
@@ -67,6 +69,7 @@ export const Navcol = () => {
   const nav_text = React.useMemo(() => changeText(), [router.query.lang]);
   
   const handlePosition = React.useCallback(() => {
+    WIH = window.innerWidth
     window.pageYOffset > 50 && window.innerWidth > 768
       ? (ref.current.style.top = "0px")
       : (ref.current.style.top = "55px");
@@ -79,6 +82,7 @@ export const Navcol = () => {
      
     };
   }, [ref]);
+  console.log(ref)
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
@@ -107,6 +111,7 @@ export const Navcol = () => {
           className={styles.expand}
           style={expand.transform}
         ></span>
+        
 
         <div style={{ display: expand.display }} className={styles.admin}>
           <Link

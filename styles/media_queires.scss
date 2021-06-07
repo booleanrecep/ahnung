@@ -51,6 +51,13 @@ $descriptionFontSize: 17px;
       margin-top: -52px;
       display: flex;
       font-size: $tabsFontSize;
+      .admin{
+        display: none;
+      }
+      .expand{
+        display: block;
+
+      }
     }
   }
 }

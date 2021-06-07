@@ -47,11 +47,12 @@ $tabFontSize: 24px;
       padding-right: 5px;
       // padding-bottom: 5px;
       transition:"opacity 2s";
+      display: flex;
 
       svg {
         fill: inherit;
         fill: #768390;
-        margin-bottom: -5px;
+        margin-bottom: 0;
 
       }
       span {
@@ -69,6 +70,7 @@ $tabFontSize: 24px;
       border-left: navajowhite;
       border-bottom: none;
       position: relative;
+      display: none
     }
   }
 }
