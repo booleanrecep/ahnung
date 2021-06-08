@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400&family=IBM+Plex+Mono:ital,wght@1,100&display=swap");
+$mainBgColor: #c8c2bc;
+$footerBgColor: #c8c2bc;
 html,
 body {
   padding: 0;
@@ -8,6 +10,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-family: "IBM Plex Mono", monospace;
   font-family: "Frank Ruhl Libre", serif;
+  font-display: swap;
 }
 
 .container {
@@ -17,29 +20,65 @@ body {
 .main {
   display: flex;
   flex-direction: row;
-  background-color: #c8c2bc;
+  background-color: $mainBgColor;
 }
 
 .content {
   width: 90%;
   flex-grow: 8;
   padding: 0.5em;
+  min-height: 500px;
   border: 1px solid #21094e;
   border-top: none;
 }
 .footer {
-  background-color: #c8c2bc;
+  background-color: $footerBgColor;
   border: 2px solid red;
   height: 80px;
 
   width: -webkit-fill-available;
   padding: 0;
   margin: 0;
-  position:absolute;
+  position: absolute;
 }
 svg,
 span,
-h5 {
+h5,
+h4 {
   cursor: pointer;
 }
+
+.loader {
+  border: 5px solid #c8c2bc;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 30px;
+  height: 30px;
+  animation: spin 1.2s linear infinite;
+  /* animation: spin 2s linear infinite; */
+  margin: 20% auto;
+  border-bottom: 5px solid #3498db;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes turnForward {
+  0% { transform: rotate(45deg);left:0px }
+  100% { transform: rotate(225deg);left:80px }
+}
+
+@keyframes turnBackward {
+  0% { transform: rotate(225deg);left: 80px; }
+  100% { left:0px;transform: rotate(45deg) }
+}
+
 @import "media_queires";
+

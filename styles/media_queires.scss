@@ -1,3 +1,10 @@
+$langFontSize: 16px;
+$tabsFontSize: 16px;
+$toolsFontSize: 12px;
+$articleFontSize: 17px;
+$userFontSize: 17px;
+$userLinksFontSize: 13px;
+$descriptionFontSize: 17px;
 @media screen and (max-width: 768px) {
   .content {
     margin-top: 60px;
@@ -6,8 +13,6 @@
 
   .about {
     width: auto;
-    // display: flex;
-    // flex-direction: column;
     .imagediv {
       width: auto;
     }
@@ -17,9 +22,6 @@
     }
   }
   .blog {
-    .bloglist {
-      border-right: none;
-    }
     .article {
       padding: 0;
       border: none;
@@ -28,6 +30,9 @@
       }
     }
   }
+  .bloglist {
+    border-right: none;
+  }
   .header {
     position: fixed;
     width: 100%;
@@ -35,7 +40,7 @@
 
     div {
       position: relative;
-      font-size: 14px;
+      font-size: $langFontSize;
     }
   }
   .navcol {
@@ -45,7 +50,25 @@
     .tabs {
       margin-top: -52px;
       display: flex;
-      font-size: 18px;
+      font-size: $tabsFontSize;
+      .admin {
+        // display: none;
+        // margin-left: -10;
+        // width: 20px;
+        // height: 20px;
+        // padding-top: 0;
+        // padding-right: 2px;
+        // padding-left: 2px;
+        svg {
+          margin-bottom: -1px;
+        }
+      }
+      // .expand{
+      //   display: block;
+      //   width: 12px;
+      //   height: 12px;
+
+      // }
     }
   }
 }
@@ -62,34 +85,38 @@
         align-self: center;
       }
       div {
-        // margin: 30px 0 0 10px;
-        font-size: 12px;
+        font-size: $userFontSize;
         margin-top: 5%;
+        h4 {
+          font-size: $userFontSize;
+        }
         ul {
-          font-size: 12px;
+          font-size: $userLinksFontSize;
         }
       }
     }
     .descriptiondiv {
       h3 {
-        font-size: 14px;
+        font-size: $descriptionFontSize;
       }
       p {
-        font-size: 13px;
+        font-size: $descriptionFontSize;
       }
     }
   }
+  .bloglist {
+    border-right: 1px solid #511281;
+    border-bottom: none;
+  }
   .blog {
     flex-direction: column;
-    .bloglist {
-      border-right: 1px solid #511281;
-    }
+
     .article {
       width: auto;
       .headerdiv {
         border-top: none;
         .tools {
-          font-size: 12px;
+          font-size: $toolsFontSize;
           .counts {
             padding-top: 0;
           }
@@ -99,13 +126,13 @@
   }
   .header {
     div {
-      font-size: 12px;
+      font-size: $langFontSize;
     }
   }
   .navcol {
     .tabs {
       margin-top: -49px;
-      font-size: 12px;
+      font-size: $tabsFontSize;
       div:first-of-type {
         margin-right: 0px;
       }
@@ -136,15 +163,40 @@
       }
     }
     .article {
-      font-size: 12px;
+      font-size: $articleFontSize;
       .headerdiv {
         .tools {
-          font-size: 10px;
+          font-size: $toolsFontSize;
 
-          .counts {
-          }
+          // .counts {
+          // }
         }
       }
     }
   }
+  .navcol {
+    margin-left: -11px;
+    .tabs {
+      .admin {
+        display: none;
+        margin-left: -10px;
+        width: 20px;
+        height: 20px;
+        padding-top: 0;
+        padding-right: 2px;
+        padding-left: 2px;
+      }
+      .expand {
+        display: block;
+        width: 12px;
+        height: 12px;
+        // left: -10px;
+      }
+    }
+  }
+  // .header {
+  //   div {
+  //     display: none;
+  //   }
+  // }
 }

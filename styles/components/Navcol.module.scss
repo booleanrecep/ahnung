@@ -1,3 +1,6 @@
+$tabFontSize: 24px;
+
+
 .navcol {
   display: flex;
   flex-direction: column;
@@ -6,7 +9,7 @@
   padding: 0.5em;
   height: 77.3vh;
   .tabs {
-    font-size: 24px;
+    font-size: $tabFontSize;
     width: auto;
     margin: 0.2em;
     position: fixed;
@@ -22,6 +25,7 @@
       margin: 10px;
       padding: 3px 6px;
       width: auto;
+      height: fit-content;
 
       a {
         color: #000;
@@ -31,6 +35,44 @@
         transition: background-color 0.4s;
         background-color: #cc9b6d;
       }
+    }
+    .admin {
+      border-radius: 10px;
+      // padding: 5px;
+      width: fit-content;
+      color: #768390;
+      border: 2px solid #768390;
+      background-color: #211b12;
+      // padding-top: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      // padding-bottom: 5px;
+      transition:"opacity 2s";
+      display: flex;
+
+      svg {
+        fill: inherit;
+        fill: #768390;
+        height:25px;
+        width:25px;
+        margin-bottom: -5px;
+      }
+      span {
+        font-size: 16px;
+      }
+    }
+    .expand{
+      vertical-align: middle;
+      align-self: center;
+      font-size: 29px;
+      width: 15px;
+      height: 15px;
+      border: 4px solid red;
+      transform: rotate(45deg);
+      border-left: navajowhite;
+      border-bottom: none;
+      position: relative;
+      display: none
     }
   }
 }

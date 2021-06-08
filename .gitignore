@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+# lock files
 package-lock.json
 yarn.lock
 
@@ -16,7 +17,8 @@ yarn.lock
 
 # production
 /build
-
+package-lock.json
+yarn.lock
 # misc
 .DS_Store
 *.pem
@@ -34,3 +36,4 @@ yarn-error.log*
 
 # vercel
 .vercel
+

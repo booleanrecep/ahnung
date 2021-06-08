@@ -1,6 +1,9 @@
+$headerBgColor:#f1ca89;
+$langBgColor:#f1ca89;;
+$langHoverBgColor:#cc9b6d;
 .header {
   border: 1px solid #21094e;
-  background-color: #f1ca89;
+  background-color:$headerBgColor;
   height: 3.5em;
   display: flex;
   flex-direction: row;
@@ -11,6 +14,7 @@
     margin: 10px;
     position: fixed;
     transition: transform 0.3s, margin 0.3s;
+    z-index: 2;
 
     a {
       width: fit-content;
@@ -24,11 +28,13 @@
 
       background-position: center;
       background-size: 1em 1em;
-      background-color: #f1ca89;
+      background-color: $langBgColor;
+      text-decoration: none;
+      color: inherit;
 
       &:hover {
         transition: background-color 0.4s;
-        background-color: #cc9b6d;
+        background-color: $langHoverBgColor;
       }
       &:active {
         text-decoration: underline dashed #cc9b6d;

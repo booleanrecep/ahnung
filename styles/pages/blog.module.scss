@@ -4,24 +4,9 @@
   height: auto;
 
   width: 100%;
+  height: 100%;
 
-  .bloglist {
-    flex-grow: 1;
-    display: flex;
-    padding-left: 5px;
-
-    border: 1px solid #511281;
-    ol {
-      list-style-type: malayalam;
-      display: inline-block;
-      width: auto;
-
-      white-space: nowrap;
-      overflow: hidden !important;
-      text-overflow: ellipsis;
-      margin-right: 13px;
-    }
-  }
+  
   .article {
     flex-grow: 5;
     display: flex;
@@ -31,62 +16,7 @@
     width: 80%;
     padding: 1em;
 
-    .headerdiv {
-      border: 1px solid #511281;
-      padding: 1em;
-      border-bottom: none;
-
-      h3,
-      h4 {
-        margin: 5px;
-      }
-      .tools {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0;
-        margin: 0;
-        flex-wrap: wrap;
-        font-size: 16px;
-
-        .counts {
-          // font-size: 18px;
-          height: 30px;
-          padding-left: 0.5em;
-          padding-top: 5px;
-        }
-        .date {
-          // font-size: 18px;
-          margin-top: 12px;
-        }
-        .tags {
-          margin: 8px;
-        align-self: center;
-
-          span {
-            margin-top: 2px;
-            margin: 5px;
-            padding: 0.3px 3px;
-            border-radius: 5px;
-            border: 1px solid #511281;
-            // font-size: 18px;
-            background-color: #4184e41a;
-          }
-        }
-        .socials {
-          // font-size: 18px;
-          height: 30px;
-          padding: 0.5em;
-        }
-      }
-    }
-    .text {
-      border: 1px solid #511281;
-      border-top: none;
-      padding: 1em;
-      padding-top: 0;
-      // font-size: 18px;
-    }
+    
   }
 }
 @import "../media_queires";

@@ -1,9 +1,7 @@
 import React from "react";
-import styles from "../styles/pages/about.module.scss";
-import Image from "next/image";
-import { Layout } from "../components/Layout";
-import { useSelector } from "react-redux";
+import {useRouter} from "next/router"
 
+import styles from "../styles/pages/about.module.scss";
 const githubSvg = (
   <svg
     height="20"
@@ -32,37 +30,93 @@ const mailSvg = (
     ></path>
   </svg>
 );
-export default function About() {
-  const state = useSelector((state) => state.about);
+export default function About(props) {
+  const router = useRouter()
+  const [min, setMin] = React.useState(1);
+  React.useEffect(()=>{
+    const id =setTimeout(()=>setMin(0),500)
+    return ()=>{
+      setMin(1)
+      clearTimeout(id)
+    }
+  },[router.query.lang])
 
   return (
-    <Layout>
-      <div className={styles.about}>
-        <div className={styles.imagediv}>
-          <img src="/static/me.png" alt="Bonn" />
-          <div>
-            <h4>Recep Öztürk</h4>
-            <ul>
-              <li>
-                <a href="https://github.com/booleanrecep" target="_blank">
-                  {githubSvg}
-                  <code>github.com/booleanrecep</code>
-                </a>
-              </li>
-              <li>
-                <a href="mailto:recep.fed@gmail.com">
-                  {mailSvg}
-                  <code>recep.fed@gmail.com</code>
-                </a>
-              </li>
-            </ul>
+    <>
+      {min == 1 ? (
+        <div className="loader" />
+      ) : (
+        <div className={styles.about}>
+          <div className={styles.imagediv}>
+            <img src="/static/me.png" alt="Bonn" />
+            <div>
+              <h4>Recep Öztürk</h4>
+              <ul>
+                <li>
+                  <a
+                    rel="noopener noreferrer"
+                    href="https://github.com/booleanrecep"
+                    target="_blank"
+                  >
+                    {githubSvg}
+                    <code>github.com/booleanrecep</code>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    rel="noopener noreferrer"
+                    href="mailto:recep.fed@gmail.com"
+                  >
+                    {mailSvg}
+                    <code>recep.fed@gmail.com</code>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.descriptiondiv}>
+            <h3>{props.db_data.about.title}</h3>
+            <p>{props.db_data.about.desc}</p>
           </div>
         </div>
-        <div className={styles.descriptiondiv}>
-          <h3>{state.title}</h3>
-          <p>{state.desc}</p>
-        </div>
-      </div>
-    </Layout>
+      )}
+    </>
   );
+}
+export async function getServerSideProps(ctx) {
+  switch (ctx.query.lang) {
+    case "tr":
+      const resTR = await fetch(process.env.server + "/api/data?lang=tr");
+      const jsonTR = await resTR.json();
+      return {
+        props: {
+          db_data: jsonTR,
+        },
+      };
+    case "de":
+      const resDE = await fetch(process.env.server + "/api/data?lang=de");
+      const jsonDE = await resDE.json();
+      return {
+        props: {
+          db_data: jsonDE,
+        },
+      };
+    case "en":
+      const resEN = await fetch(process.env.server + "/api/data?lang=en");
+      const jsonEN = await resEN.json();
+      return {
+        props: {
+          db_data: jsonEN,
+        },
+      };
+
+    default:
+      const res = await fetch(process.env.server + "/api/data?lang=tr");
+      const json = await res.json();
+      return {
+        props: {
+          db_data: json,
+        },
+      };
+  }
 }

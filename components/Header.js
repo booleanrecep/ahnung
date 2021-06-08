@@ -1,28 +1,23 @@
-import React from 'react';
-import styles from '../styles/components/Header.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { showDeutsch, showTurkish, showEnglish } from '../state/reducers';
-// const ss=window.pageYOffset
-import Link from 'next/link';
-
-export const Header = () => {
-  const state = useSelector(state => state.navcols);
-
+import React from "react";
+import styles from "../styles/components/Header.module.scss";
+import Link from "next/link"
+import {useRouter} from "next/router"
+export const Header = (props) => {
+  const router=useRouter()
   const ref = React.createRef();
-  const dispatch = useDispatch();
   const objStyle1 = {
-    transform: 'rotate(90deg)',
-    margin: '50px -30px 0 0'
+    transform: "rotate(90deg)",
+    margin: "50px -30px 0 0",
   };
   const objStyle2 = {
-    transform: 'rotate(0deg)',
-    margin: '10px'
+    transform: "rotate(0deg)",
+    margin: "10px",
   };
   const childStyle1 = {
-    transform: 'rotate(-90deg)'
+    transform: "rotate(-90deg)",
   };
   const childStyle2 = {
-    transform: 'rotate(0deg)'
+    transform: "rotate(0deg)",
   };
   const objStyles = (obj, sty) => {
     Object.assign(obj.style, sty);
@@ -30,28 +25,29 @@ export const Header = () => {
   const chldStyles = (chldArr, sty) => {
     Array.prototype.slice
       .call(chldArr)
-      .map(chl => Object.assign(chl.style, sty));
+      .map((chl) => Object.assign(chl.style, sty));
   };
   const handlePosition = React.useCallback(() => {
+   
     window.pageYOffset > 50 && window.innerWidth > 768
       ? (objStyles(ref.current, objStyle1),
         chldStyles(ref.current.children, childStyle1))
       : (objStyles(ref.current, objStyle2),
         chldStyles(ref.current.children, childStyle2));
-  }, [ref, state]);
+  }, [ref]);
 
   React.useEffect(() => {
-    window.addEventListener('scroll', handlePosition);
+    window.addEventListener("scroll", handlePosition);
     return () => {
-      window.removeEventListener('scroll', handlePosition);
+      window.removeEventListener("scroll", handlePosition);
     };
-  }, [ref, state]);
+  }, [ref]);
   return (
-    <header className={`${styles.header}`}>
-      <div id="lang" ref={ref}>
-        <a onClick={() => dispatch(showTurkish())}>TR</a>
-        <a onClick={() => dispatch(showEnglish())}>EN</a>
-        <a onClick={() => dispatch(showDeutsch())}>DE</a>
+    <header className={`${styles.header}`} >
+      <div id="lang" ref={ref} style={{display:props.display}}>
+       <Link href={router.pathname+"?lang=tr"} >TR</Link>
+        <Link href={router.pathname+"?lang=en"} >EN</Link>
+        <Link href={router.pathname+"?lang=de"}>DE</Link>
       </div>
     </header>
   );

@@ -1,8 +1,11 @@
 import { Header } from "./Header";
 import { Navcol } from "./Navcol";
 import Head from "next/head";
+import React from "react";
 
-export const Layout = ({children}) => {
+export const Layout = (props) => {
+  const [style,setStyle]=React.useState({display:"flex"})
+  console.log(style)
   return (
     <>
     
@@ -12,10 +15,10 @@ export const Layout = ({children}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container">
-        <Header />
+        <Header display={style.display}/>
         <main className="main">
-          <Navcol />
-          <div className="content">{children}</div>
+          <Navcol handleDisplay={setStyle} />
+          <div className="content">{props.children}</div>
         </main>
         <footer className="footer">Here comes the footer</footer>
       </div>
