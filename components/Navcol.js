@@ -5,12 +5,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 const articleSvg = (
   <svg
-    ariaHidden="true"
+    // ariaHidden=true
     viewBox="0 0 16 16"
     // version="1.1"
     // dataViewComponent="true"
-    height="25"
-    width="25"
   >
     <title>Admin</title>
     <path
@@ -19,25 +17,30 @@ const articleSvg = (
     ></path>
   </svg>
 );
-const keyFrameForward =  {
-    animation: "turnForward 0.3s linear",
-    animationFillMode: "forwards",
+const keyFrameForward = {
+  animation: "turnForward 0.3s linear",
+  animationFillMode: "forwards",
 };
-const keyFrameBackward =  {
+const keyFrameBackward = {
   animation: "turnBackward 0.3s linear",
   animationFillMode: "backwards",
 };
-export const Navcol = () => {
-let WIH ;
+export const Navcol = (props) => {
 
   const router = useRouter();
   const ref = React.createRef();
-  const [expand, setExpand] = React.useState({ display: "inherite",opacity:"0", transform:keyFrameBackward });
+  const [expand, setExpand] = React.useState({
+    // display: "none",
+    // opacity: "0",
+    // transform: {}
+    toggle:true
+  });
   const handleStyleExpand = () => {
-    console.log("expand");
+    props.handleDisplay({display: expand.toggle ? "none" : "flex"})
     setExpand({
-      transform: expand.display === "none" ?keyFrameForward:keyFrameBackward,
-      display: expand.display === "none" ? "flex" : "none",
+      transform:expand.toggle ? keyFrameForward : keyFrameBackward,
+      display: expand.toggle ? "inherit" : "none",
+      toggle:!expand.toggle
     });
   };
   const changeText = () => {
@@ -67,22 +70,18 @@ let WIH ;
     }
   };
   const nav_text = React.useMemo(() => changeText(), [router.query.lang]);
-  
+
   const handlePosition = React.useCallback(() => {
-    WIH = window.innerWidth
     window.pageYOffset > 50 && window.innerWidth > 768
       ? (ref.current.style.top = "0px")
       : (ref.current.style.top = "55px");
   }, [ref]);
   React.useEffect(() => {
-   
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);
-     
     };
   }, [ref]);
-  console.log(ref)
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
@@ -111,7 +110,6 @@ let WIH ;
           className={styles.expand}
           style={expand.transform}
         ></span>
-        
 
         <div style={{ display: expand.display }} className={styles.admin}>
           <Link
