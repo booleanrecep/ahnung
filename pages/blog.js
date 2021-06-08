@@ -14,11 +14,11 @@ export default function Blog(props) {
   };
 
   const router = useRouter()
-  const [min, setMin] = React.useState(1);
+  const [load, setLoad] = React.useState(true);
   React.useEffect(()=>{
-    const id =setTimeout(()=>setMin(0),500)
+    const id =setTimeout(()=>setLoad(false),300)
     return ()=>{
-      setMin(1)
+      setLoad(true)
       clearTimeout(id)
     }
   },[router.query.lang,index])
@@ -27,7 +27,7 @@ export default function Blog(props) {
       <div className={styles.blog}>
         <BlogList handleClick={handleClickIndex} db_data={props.db_data} />
         <article className={styles.article}>
-        {min == 1 ? (
+        {load === true ? (
         <div className="loader" />
       ) : (
           <Article {...props.db_data.articles[index]} />

@@ -32,18 +32,18 @@ const mailSvg = (
 );
 export default function About(props) {
   const router = useRouter()
-  const [min, setMin] = React.useState(1);
+  const [load, setLoad] = React.useState(true);
   React.useEffect(()=>{
-    const id =setTimeout(()=>setMin(0),500)
+    const id =setTimeout(()=>setLoad(false),300)
     return ()=>{
-      setMin(1)
+      setLoad(true)
       clearTimeout(id)
     }
   },[router.query.lang])
 
   return (
     <>
-      {min == 1 ? (
+      {load ===true ? (
         <div className="loader" />
       ) : (
         <div className={styles.about}>

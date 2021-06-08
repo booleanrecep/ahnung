@@ -18,18 +18,18 @@ const Admin = () => {
     e.preventDefault();
     console.log(state);
   };
-  const [min, setMin] = React.useState(1);
-  React.useEffect(() => {
-    const id = setTimeout(() => setMin(0), 500);
-    return () => {
-      setMin(1);
-      clearTimeout(id);
-    };
-  }, [router.query.lang]);
+  const [load, setLoad] = React.useState(true);
+  React.useEffect(()=>{
+    const id =setTimeout(()=>setLoad(false),300)
+    return ()=>{
+      setLoad(true)
+      clearTimeout(id)
+    }
+  },[router.query.lang])
 
   return (
     <>
-      {min == 1 ? (
+      {load ===true ? (
         <div className="loader" />
       ) : (
         <form className={styles.articleForm}>

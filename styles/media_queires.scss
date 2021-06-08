@@ -25,9 +25,12 @@ $descriptionFontSize: 17px;
     .article {
       padding: 0;
       border: none;
+      border-left: none;
+
       .headerdiv {
         padding-bottom: 0;
       }
+     
     }
   }
   .bloglist {
