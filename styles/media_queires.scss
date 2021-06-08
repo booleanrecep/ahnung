@@ -178,19 +178,21 @@ $descriptionFontSize: 17px;
     margin-left: -11px;
     .tabs {
       .admin {
-        display: none;
+        // display: none;
         margin-left: -10px;
         width: 20px;
         height: 20px;
         padding-top: 0;
         padding-right: 2px;
         padding-left: 2px;
+      opacity: 0;
+
       }
       .expand {
         display: block;
         width: 12px;
         height: 12px;
-        // left: -10px;
+        left: -10px;
       }
     }
   }

@@ -26,21 +26,22 @@ const keyFrameBackward = {
   animationFillMode: "backwards",
 };
 export const Navcol = (props) => {
-
   const router = useRouter();
   const ref = React.createRef();
   const [expand, setExpand] = React.useState({
     // display: "none",
     // opacity: "0",
     // transform: {}
-    toggle:true
+    toggle: true,
   });
   const handleStyleExpand = () => {
-    props.handleDisplay({display: expand.toggle ? "none" : "flex"})
+    props.handleDisplay({ display: expand.toggle ? "none" : "flex" });
     setExpand({
-      transform:expand.toggle ? keyFrameForward : keyFrameBackward,
-      display: expand.toggle ? "inherit" : "none",
-      toggle:!expand.toggle
+      transform: expand.toggle ? keyFrameForward : keyFrameBackward,
+      opacity: expand.toggle ? "1" : "0",
+      marginTop:expand.toggle?"10px":"-30px",
+      toggle: !expand.toggle,
+      // display: expand.toggle ? "inherit" : "none",
     });
   };
   const changeText = () => {
@@ -111,7 +112,15 @@ export const Navcol = (props) => {
           style={expand.transform}
         ></span>
 
-        <div style={{ display: expand.display }} className={styles.admin}>
+        <div
+          style={{
+            transition:"opacity 1s,margin-top 0.3s",
+            opacity: expand.opacity, 
+            // display: expand.display, 
+            marginTop:expand.marginTop,
+          }}
+          className={styles.admin}
+        >
           <Link
             href={
               "/admin?lang=" +
