@@ -28,6 +28,7 @@ export const Header = (props) => {
       .map((chl) => Object.assign(chl.style, sty));
   };
   const handlePosition = React.useCallback(() => {
+   
     window.pageYOffset > 50 && window.innerWidth > 768
       ? (objStyles(ref.current, objStyle1),
         chldStyles(ref.current.children, childStyle1))
@@ -42,8 +43,8 @@ export const Header = (props) => {
     };
   }, [ref]);
   return (
-    <header className={`${styles.header}`}>
-      <div id="lang" ref={ref}>
+    <header className={`${styles.header}`} >
+      <div id="lang" ref={ref} style={{display:props.display}}>
        <Link href={router.pathname+"?lang=tr"} >TR</Link>
         <Link href={router.pathname+"?lang=en"} >EN</Link>
         <Link href={router.pathname+"?lang=de"}>DE</Link>

@@ -25,6 +25,7 @@ $tabFontSize: 24px;
       margin: 10px;
       padding: 3px 6px;
       width: auto;
+      height: fit-content;
 
       a {
         color: #000;
@@ -52,8 +53,9 @@ $tabFontSize: 24px;
       svg {
         fill: inherit;
         fill: #768390;
-        margin-bottom: 0;
-
+        height:25px;
+        width:25px;
+        margin-bottom: -5px;
       }
       span {
         font-size: 16px;

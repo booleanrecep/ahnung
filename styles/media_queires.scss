@@ -51,13 +51,24 @@ $descriptionFontSize: 17px;
       margin-top: -52px;
       display: flex;
       font-size: $tabsFontSize;
-      .admin{
-        display: none;
+      .admin {
+        // display: none;
+        // margin-left: -10;
+        // width: 20px;
+        // height: 20px;
+        // padding-top: 0;
+        // padding-right: 2px;
+        // padding-left: 2px;
+        svg {
+          margin-bottom: -1px;
+        }
       }
-      .expand{
-        display: block;
+      // .expand{
+      //   display: block;
+      //   width: 12px;
+      //   height: 12px;
 
-      }
+      // }
     }
   }
 }
@@ -163,4 +174,29 @@ $descriptionFontSize: 17px;
       }
     }
   }
+  .navcol {
+    margin-left: -11px;
+    .tabs {
+      .admin {
+        display: none;
+        margin-left: -10px;
+        width: 20px;
+        height: 20px;
+        padding-top: 0;
+        padding-right: 2px;
+        padding-left: 2px;
+      }
+      .expand {
+        display: block;
+        width: 12px;
+        height: 12px;
+        // left: -10px;
+      }
+    }
+  }
+  // .header {
+  //   div {
+  //     display: none;
+  //   }
+  // }
 }

@@ -56,7 +56,7 @@ export const Article =( {clapCount,date,id,readMin,shareLnkd,shareTwt,tags,text,
           <div className={styles.counts}>{readMin} min read | {clapSvg} {clapCount}</div>
           <div className={styles.date}>{date}</div>
           <div className={styles.tags}>
-            {tags.map(tag=><span><a>{tag}</a></span>)}
+            {tags.map(tag=><span key={tag}><a>{tag}</a></span>)}
 
           </div>
           <div className={styles.socials}>
