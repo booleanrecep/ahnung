@@ -5,7 +5,6 @@ import React from "react";
 
 export const Layout = (props) => {
   const [style,setStyle]=React.useState({display:"flex"})
-  console.log(style)
   return (
     <>
     

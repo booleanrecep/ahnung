@@ -40,7 +40,6 @@ export default function Blog(props) {
 }
 
 export async function getServerSideProps(ctx) {
-// console.log(process.env)
 
   switch (ctx.query.lang) {
     case "tr":
