@@ -1,14 +1,12 @@
 import React from "react";
-import {useRouter} from "next/router"
-
+import { useRouter } from "next/router";
 import styles from "../styles/pages/admin.module.scss";
-const Admin = () => {
-  const router = useRouter()
 
+const Admin = () => {
+  const router = useRouter();
   const [state, setState] = React.useState({ title: "", text: "" });
   const handleChange = (e) => {
     e.preventDefault();
-    console.log(state);
     setState((prevS) => ({
       ...prevS,
       [e.target.name]: e.target.value,
@@ -16,25 +14,36 @@ const Admin = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state);
+    const newData = fetch("/api/data?lang=" + router.query.lang, {
+      method: "POST",
+      // Adding body or contents to send
+      body: JSON.stringify(state),
+      // Adding headers to the request
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    return setState({ title: "", text: "" })
   };
   const [load, setLoad] = React.useState(true);
-  React.useEffect(()=>{
-    const id =setTimeout(()=>setLoad(false),300)
-    return ()=>{
-      setLoad(true)
-      clearTimeout(id)
-    }
-  },[router.query.lang])
-
+  React.useEffect(() => {
+    const id = setTimeout(() => setLoad(false), 300);
+    return () => {
+      setLoad(true);
+      clearTimeout(id);
+    };
+  }, [router.query.lang]);
+  // console.log(state);
+  // console.log(router.query);
   return (
     <>
-      {load ===true ? (
+      {load === true ? (
         <div className="loader" />
       ) : (
         <form className={styles.articleForm}>
           <textarea
             name="title"
+            value={state.title}
             onChange={handleChange}
             className={styles.title}
             type="text"
@@ -43,6 +52,7 @@ const Admin = () => {
           />
           <textarea
             name="text"
+            value={state.text}
             onChange={handleChange}
             rows="30"
             className={styles.textarea}
