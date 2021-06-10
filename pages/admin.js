@@ -23,7 +23,8 @@ const Admin = () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    return setState({ title: "", text: "" })
+    setState({ title: "", text: "" });
+    return router.push("/blog?lang=" + router.query.lang);
   };
   const [load, setLoad] = React.useState(true);
   React.useEffect(() => {

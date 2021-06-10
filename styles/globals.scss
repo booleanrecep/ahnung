@@ -62,23 +62,42 @@ h4 {
 
 /* Safari */
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 @keyframes turnForward {
-  0% { transform: rotate(45deg);left:0px }
-  100% { transform: rotate(225deg);left:80px }
+  0% {
+    transform: rotate(45deg);
+    left: 0px;
+  }
+  100% {
+    transform: rotate(225deg);
+    left: 80px;
+  }
 }
 
 @keyframes turnBackward {
-  0% { transform: rotate(225deg);left: 80px; }
-  100% { left:0px;transform: rotate(45deg) }
+  0% {
+    transform: rotate(225deg);
+    left: 80px;
+  }
+  100% {
+    left: 0px;
+    transform: rotate(45deg);
+  }
 }
 
 @import "media_queires";
-

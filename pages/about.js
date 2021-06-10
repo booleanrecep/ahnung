@@ -1,5 +1,5 @@
 import React from "react";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 
 import styles from "../styles/pages/about.module.scss";
 const githubSvg = (
@@ -31,19 +31,19 @@ const mailSvg = (
   </svg>
 );
 export default function About(props) {
-  const router = useRouter()
+  const router = useRouter();
   const [load, setLoad] = React.useState(true);
-  React.useEffect(()=>{
-    const id =setTimeout(()=>setLoad(false),300)
-    return ()=>{
-      setLoad(true)
-      clearTimeout(id)
-    }
-  },[router.query.lang])
+  React.useEffect(() => {
+    const id = setTimeout(() => setLoad(false), 300);
+    return () => {
+      setLoad(true);
+      clearTimeout(id);
+    };
+  }, [router.query.lang]);
 
   return (
     <>
-      {load ===true ? (
+      {load === true ? (
         <div className="loader" />
       ) : (
         <div className={styles.about}>
