@@ -54,7 +54,7 @@ export const Article =( {clapCount,date,id,readMin,shareLnkd,shareTwt,tags,text,
         <h3>{title}</h3>
         <div className={styles.tools}>
           <div className={styles.counts}>{readMin} min read | {clapSvg} {clapCount}</div>
-          <div className={styles.date}>{date}</div>
+          <div className={styles.date}>{date&&date.slice(0,10)}</div>
           <div className={styles.tags}>
             {tags.map(tag=><span key={tag}><a>{tag}</a></span>)}
 

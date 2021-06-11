@@ -9,18 +9,23 @@ export default function Blog(props) {
   const [index, setIndex] = React.useState(0);
   const handleClickIndex = (id) => {
     const indx = props.db_data.articles.findIndex((art) => art._id === id);
-    setIndex(indx);
+
+    return setTimeout(()=>setIndex(indx));
   };
 
   const router = useRouter();
   const [load, setLoad] = React.useState(true);
   React.useEffect(() => {
     const id = setTimeout(() => setLoad(false), 300);
+    router.replace("blog?lang="+router.query.lang+"&article="+props.db_data.articles[index].title)
+
     return () => {
       setLoad(true);
       clearTimeout(id);
+      clearTimeout(handleClickIndex())
     };
   }, [router.query.lang, index]);
+  console.log(router)
   return (
     <>
       <div className={styles.blog}>
