@@ -26,7 +26,7 @@ const articleShema =  Schema({
   },
   tags: {
     type: Array,
-    default:["*","*","*"]
+    default:["reactjs","nodejs","nextjs"]
   },
   clapCount: {
     type: Number,

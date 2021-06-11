@@ -4,7 +4,7 @@ import styles from "../styles/pages/admin.module.scss";
 
 const Admin = () => {
   const router = useRouter();
-  const [state, setState] = React.useState({ title: "", text: "" });
+  const [state, setState] = React.useState({ title: "", text: "",created:"none" });
   const handleChange = (e) => {
     e.preventDefault();
     setState((prevS) => ({
@@ -12,9 +12,11 @@ const Admin = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    const newData = fetch("/api/data?lang=" + router.query.lang, {
+    try {
+
+    const newData =await fetch("/api/data?lang=" + router.query.lang, {
       method: "POST",
       // Adding body or contents to send
       body: JSON.stringify(state),
@@ -23,7 +25,13 @@ const Admin = () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    return setState({ title: "", text: "" })
+    setState({ title: "", text: "",created:"block" });
+    const id = setTimeout(()=>setState({created:"none"}),300)     
+    clearTimeout(id) 
+      return router.push("/blog?lang=" + router.query.lang);
+    } catch (error) {
+      console.log(error)
+    }
   };
   const [load, setLoad] = React.useState(true);
   React.useEffect(() => {
@@ -31,6 +39,7 @@ const Admin = () => {
     return () => {
       setLoad(true);
       clearTimeout(id);
+
     };
   }, [router.query.lang]);
   // console.log(state);
@@ -40,7 +49,9 @@ const Admin = () => {
       {load === true ? (
         <div className="loader" />
       ) : (
+        <>
         <form className={styles.articleForm}>
+        <div style={{display:state.created}} className="article-created">&#10004;</div>
           <textarea
             name="title"
             value={state.title}
@@ -65,6 +76,7 @@ const Admin = () => {
             value="Submit"
           />
         </form>
+        </>
       )}
     </>
   );
