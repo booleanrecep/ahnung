@@ -60,6 +60,17 @@ h4 {
   border-bottom: 5px solid #3498db;
 }
 
+.article-created{
+  padding: 20% 0;
+  width: 70%;
+  height: 100%;
+  border: 2px solid red;
+  position: fixed;
+  text-align: center;
+  font-size: 62px;
+  color: green;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
   0% {
