@@ -61,14 +61,15 @@ h4 {
 }
 
 .article-created{
-  padding: 20% 0;
+  padding: 10% 0;
   width: 70%;
   height: 100%;
-  border: 2px solid red;
+  // border: 2px solid red;
   position: fixed;
   text-align: center;
-  font-size: 62px;
+  font-size: 28px;
   color: green;
+  transition: display 1s ease;
 }
 
 /* Safari */
