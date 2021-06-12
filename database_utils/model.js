@@ -1,6 +1,6 @@
-import { Schema, model, Types,models } from "mongoose";
+import { Schema, model, Types, models } from "mongoose";
 
-const articleShema =  Schema({
+const articleShema = Schema({
   id: {
     type: Types.ObjectId,
   },
@@ -10,7 +10,7 @@ const articleShema =  Schema({
   },
   img: {
     type: String,
-    default:"/static/bonn.jpg"
+    default: "/static/bonn.jpg",
   },
   title: {
     type: String,
@@ -22,11 +22,11 @@ const articleShema =  Schema({
   },
   readMin: {
     type: Number,
-    default:5
+    default: 5,
   },
   tags: {
     type: Array,
-    default:["reactjs","nodejs","nextjs"]
+    default: ["reactjs", "nodejs", "nextjs"],
   },
   clapCount: {
     type: Number,
@@ -40,4 +40,4 @@ const articleShema =  Schema({
   },
 });
 
-export const Article = models.Article ||  model("Article", articleShema);
+export const Article = models.Article || model("Article", articleShema);

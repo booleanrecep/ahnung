@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-
 import styles from "../styles/pages/about.module.scss";
+
 const githubSvg = (
   <svg
     height="20"

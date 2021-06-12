@@ -1,6 +1,5 @@
 import { ObjectId } from "bson";
 import { connectToDatabase } from "../../database_utils/connect";
-// import { Article } from "../../database_utils/model";
 
 export default async (req, res) => {
   const { db } = await connectToDatabase();
@@ -8,13 +7,12 @@ export default async (req, res) => {
   const turkish = await db.collection("turkish").find({}).toArray();
   const deutsch = await db.collection("deutsch").find({}).toArray();
   const english = await db.collection("english").find({}).toArray();
+
   const tr = Object.assign({}, ...turkish);
   const de = Object.assign({}, ...deutsch);
   const en = Object.assign({}, ...english);
 
   if (req.method === "GET") {
-    // console.log(req.url);
-    // console.log(db.collection("turkish").find({}).toArray());
     switch (req.query.lang) {
       case "tr":
         res.json({ ...tr });
@@ -32,15 +30,11 @@ export default async (req, res) => {
         break;
     }
   } else if (req.method === "POST") {
-    // console.log(req.url);
-    // console.log(req.body);
-
     const model = await import("../../database_utils/model");
     const article = new model.Article({
       title: req.body.title,
       text: req.body.text,
     });
-    // console.log(article);
     switch (req.query.lang) {
       case "tr":
         const articleCreatedTr = await db

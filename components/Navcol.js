@@ -1,8 +1,8 @@
 import React from "react";
-
-import styles from "../styles/components/Navcol.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import styles from "../styles/components/Navcol.module.scss";
+
 const articleSvg = (
   <svg
     // ariaHidden=true
@@ -29,9 +29,6 @@ export const Navcol = (props) => {
   const router = useRouter();
   const ref = React.createRef();
   const [expand, setExpand] = React.useState({
-    // display: "none",
-    // opacity: "0",
-    // transform: {}
     toggle: true,
   });
   const handleStyleExpand = () => {
@@ -39,9 +36,8 @@ export const Navcol = (props) => {
     setExpand({
       transform: expand.toggle ? keyFrameForward : keyFrameBackward,
       opacity: expand.toggle ? "1" : "0",
-      marginTop:expand.toggle?"10px":"-30px",
+      marginTop: expand.toggle ? "10px" : "-30px",
       toggle: !expand.toggle,
-      // display: expand.toggle ? "inherit" : "none",
     });
   };
   const changeText = () => {
@@ -114,10 +110,9 @@ export const Navcol = (props) => {
 
         <div
           style={{
-            transition:"opacity 1s,margin-top 0.3s",
-            opacity: expand.opacity, 
-            // display: expand.display, 
-            marginTop:expand.marginTop,
+            transition: "opacity 1s,margin-top 0.3s",
+            opacity: expand.opacity,
+            marginTop: expand.marginTop,
           }}
           className={styles.admin}
         >

@@ -1,31 +1,38 @@
 import React from "react";
 import { useRouter } from "next/router";
-
 import styles from "../styles/pages/blog.module.scss";
 import { Article } from "../components/Article";
 import { BlogList } from "../components/BlogList";
 
 export default function Blog(props) {
+  const router = useRouter();
   const [index, setIndex] = React.useState(0);
+  const [load, setLoad] = React.useState(true);
+
   const handleClickIndex = (id) => {
     const indx = props.db_data.articles.findIndex((art) => art._id === id);
 
-    return setTimeout(()=>setIndex(indx));
+    return setTimeout(() => setIndex(indx));
+  };
+  const changeQueryString = () => {
+    const articleName = props.db_data.articles[index].title
+      .toLowerCase()
+      .replaceAll(" ", "-");
+    const queryStr = "blog?lang=" + router.query.lang + "&article=";
+    router.replace(queryStr, queryStr + articleName, { shallow: true });
   };
 
-  const router = useRouter();
-  const [load, setLoad] = React.useState(true);
   React.useEffect(() => {
+    changeQueryString();
+
     const id = setTimeout(() => setLoad(false), 300);
-    router.replace("blog?lang="+router.query.lang+"&article="+props.db_data.articles[index].title)
 
     return () => {
       setLoad(true);
       clearTimeout(id);
-      clearTimeout(handleClickIndex())
+      clearTimeout(handleClickIndex());
     };
   }, [router.query.lang, index]);
-  console.log(router)
   return (
     <>
       <div className={styles.blog}>

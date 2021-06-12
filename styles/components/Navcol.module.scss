@@ -1,6 +1,5 @@
 $tabFontSize: 24px;
 
-
 .navcol {
   display: flex;
   flex-direction: column;
@@ -38,17 +37,13 @@ $tabFontSize: 24px;
     }
     .admin {
       border-radius: 10px;
-      // padding: 5px;
       width: fit-content;
       color: #768390;
       border: 2px solid #768390;
       background-color: #211b12;
-      // padding-top: 5px;
       padding-left: 5px;
       padding-right: 5px;
-      // padding-bottom: 5px;
       opacity: 1;
-      // transition:"opacity 2s";
       display: flex;
 
       svg {
