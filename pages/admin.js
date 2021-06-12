@@ -1,8 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/pages/admin.module.scss";
+import os from "os";
 
-const Admin = () => {
+const Admin = (props) => {
+  const { IP } = props;
   const router = useRouter();
   const [state, setState] = React.useState({
     title: "",
@@ -36,10 +38,10 @@ const Admin = () => {
         mode: "cors",
         credentials: "omit",
       });
-      setState((prevS) => ({ ...prevS, created: "block" }));
+      setState((prevS) => ({ ...prevS, created: "flex" }));
       const id = setTimeout(
         () => setState({ title: "", text: "", created: "none" }),
-        100
+        200
       );
 
       return (() => (
@@ -64,7 +66,15 @@ const Admin = () => {
       ) : (
         <>
           <div style={{ display: state.created }} className="article-created">
-            &#10004; {state.title} created
+            <span>&#10004;</span>
+            <b>{state.title}</b>
+            <i>created</i>
+            <span>
+              <small>Your IP: </small>
+              <strong>
+                <small>{IP}</small>
+              </strong>
+            </span>
           </div>
           <form className={styles.articleForm}>
             <textarea
@@ -97,3 +107,14 @@ const Admin = () => {
   );
 };
 export default Admin;
+
+export async function getServerSideProps() {
+  const ip = Object.values(os.networkInterfaces())
+    .flat()
+    .find((i) => i.family == "IPv4" && !i.internal).address;
+  return {
+    props: {
+      IP: ip,
+    },
+  };
+}

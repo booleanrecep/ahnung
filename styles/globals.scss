@@ -6,7 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-family: "IBM Plex Mono", monospace;
   font-family: "Frank Ruhl Libre", serif;
@@ -60,14 +60,28 @@ h4 {
 }
 
 .article-created {
-  padding: 10% 0;
-  width: 70%;
-  height: 100%;
+  margin-top: 40px;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 35%;
+  border-radius: 50%;
+  margin-left: 20%;
   position: fixed;
-  text-align: center;
-  font-size: 28px;
-  color: green;
+  background: #b7c5a3;
   transition: display 1s ease;
+  border: 2px solid #bdacac;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  overflow-wrap: anywhere;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  span:first-of-type {
+    color: green;
+    margin-top: -22px;
+    font-size: 50px;
+  }
 }
 
 /* Safari */
