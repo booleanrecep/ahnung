@@ -55,7 +55,12 @@ $descriptionFontSize: 17px;
       font-size: $tabsFontSize;
       .admin {
         svg {
-          margin-bottom: -1px;
+          // margin-left: -1px;
+          height: 21px;
+          width: 80px;
+          .text {
+            // transform: translate(-3px,1px)
+          }
         }
       }
     }
@@ -165,12 +170,19 @@ $descriptionFontSize: 17px;
     .tabs {
       .admin {
         margin-left: -10px;
-        width: 20px;
-        height: 20px;
+
         padding-top: 0;
         padding-right: 2px;
         padding-left: 2px;
         opacity: 0;
+        svg {
+          // width: 70px;
+          // height: 22px;
+          .text {
+            font-size: 12px;
+            transform: translate(0px, 1px);
+          }
+        }
       }
       .expand {
         display: block;
@@ -180,4 +192,11 @@ $descriptionFontSize: 17px;
       }
     }
   }
+  // .content{
+  .admin_page {
+    div {
+      width: 80%;
+    }
+  }
+  // }
 }

@@ -36,10 +36,10 @@ $tabFontSize: 24px;
       }
     }
     .admin {
-      border-radius: 10px;
-      width: fit-content;
+      border-radius: 3px;
+      // width: fit-content;
       color: #768390;
-      border: 2px solid #768390;
+      border: 1.5px solid #768390;
       background-color: #211b12;
       padding-left: 5px;
       padding-right: 5px;
@@ -49,15 +49,21 @@ $tabFontSize: 24px;
       svg {
         fill: inherit;
         fill: #768390;
-        height:25px;
-        width:25px;
+        height: 30px;
+        width: 125px;
         margin-bottom: -2px;
+        display: flex;
+        justify-content: flex-start;
+        .text {
+          font-size: 13px;
+          transform: translate(-3px, 1px);
+        }
       }
       span {
         font-size: 16px;
       }
     }
-    .expand{
+    .expand {
       z-index: 5;
       vertical-align: middle;
       align-self: center;
@@ -69,7 +75,7 @@ $tabFontSize: 24px;
       border-left: navajowhite;
       border-bottom: none;
       position: relative;
-      display: none
+      display: none;
     }
   }
 }

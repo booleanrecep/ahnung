@@ -1,0 +1,17 @@
+.new_article {
+  display: -moz-box;
+  // padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0.2px solid #1a801a;
+  margin: 10px;
+  padding-left: 5px;
+  svg {
+    margin-left: 35px;
+    filter: invert(0.1);
+    fill: green;
+  }
+}

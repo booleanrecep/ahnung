@@ -1,58 +1,30 @@
-.articleForm {
+.admin_page {
+  width: 100%;
+  width: 100%;
+  column-gap: 16px;
+  column-count: 1;
+  columns: 4;
   display: flex;
-  flex-direction: column;
 
-  .title {
-    outline: none;
-    border: 0.2px solid #e12c2c;
-    min-height: 50px;
-    padding: 10px;
-    margin-bottom: 5px;
-    background-color: #d9c5a4;
-    text-transform: capitalize;
-    overflow:hidden;
-    font-weight: 600;
-    word-spacing: 10px;
-    letter-spacing: 1px;
-   resize: none;
-   font-size: inherit;
-   font-family: inherit;
-    
-  }
+  flex-wrap: wrap;
+  row-gap: 10px;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 35px;
 
-  .textarea {
-    outline: none;
-    border: 0.2px solid #e12c2c;
-    resize: vertical;
-    overflow-wrap: break-word;
+  & > div {
+    width: 30%;
+    min-width: 280px;
+    min-height: 80px;
+    height: fit-content;
+    border: 0.6px solid #21094e;
     padding: 10px;
-    background-color: #d9c5a4;
-    letter-spacing: 0.3px;
-    word-spacing: 10px;
-    line-height: 1.5;
-    text-indent: 50px;
-    font-style: italic;
-    font-size: inherit;
-    font-family: inherit;
-  }
-  .submit {
-    width: fit-content;
-    align-self: flex-end;
-    width: -moz-fit-content;
-    width: fit-content;
-    align-self: flex-end;
-    margin: 10px;
-    padding: 5px;
-    color: #425d0d;
-    font-size: inherit;
-    font-family: inherit;
-    background-color: #c2d686;
-    border: 1px solid #14330c;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color  0.5s;
-    &:hover{
-            background-color: #97ad58;
-    }
+    font-size: 24px;
   }
 }
+
+@import "../media_queires";

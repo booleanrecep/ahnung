@@ -5,11 +5,10 @@ import styles from "../styles/components/Navcol.module.scss";
 
 const articleSvg = (
   <svg
-    // ariaHidden=true
-    viewBox="0 0 16 16"
-    // version="1.1"
-    // dataViewComponent="true"
+    viewBox="-20 0 15 16"
   >
+        
+    <text className={styles.text} x="-42" y="10" fill="#768390">ADMIN</text>
     <title>Admin</title>
     <path
       fillRule="evenodd"

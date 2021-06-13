@@ -109,14 +109,14 @@ h4 {
   }
   100% {
     transform: rotate(225deg);
-    left: 80px;
+    left: 100px;
   }
 }
 
 @keyframes turnBackward {
   0% {
     transform: rotate(225deg);
-    left: 80px;
+    left: 100px;
   }
   100% {
     left: 0px;
