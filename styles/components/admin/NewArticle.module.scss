@@ -9,9 +9,13 @@
   border: 0.2px solid #1a801a;
   margin: 10px;
   padding-left: 5px;
-  svg {
-    margin-left: 35px;
-    filter: invert(0.1);
-    fill: green;
+  span {
+    height: 55px;
+    svg {
+      margin-left: 35px;
+      margin-top: 2px;
+      filter: invert(0.1);
+      fill: green;
+    }
   }
 }

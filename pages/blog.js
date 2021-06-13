@@ -36,7 +36,10 @@ export default function Blog(props) {
   return (
     <>
       <div className={styles.blog}>
-        <BlogList handleClick={handleClickIndex} db_data={props.db_data} />
+        <BlogList
+          handleClick={handleClickIndex}
+          list={props.db_data.articles}
+        />
         <article className={styles.article}>
           {load === true ? (
             <div className="loader" />

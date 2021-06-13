@@ -1,131 +1,86 @@
 import React from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/pages/admin.module.scss";
-import os from "os";
 import { Articles } from "../components/admin/Articles";
 import { AddArticle } from "../components/admin/AddArticle";
 import { NewArticle } from "../components/admin/NewArticle";
 
 const Admin = (props) => {
-  // const { IP } = props;
-  // const router = useRouter();
-  // const [state, setState] = React.useState({
-  //   title: "",
-  //   text: "",
-  //   created: "none",
-  // });
-  // const handleChange = (e) => {
-  //   e.preventDefault();
-  //   setState((prevS) => ({
-  //     ...prevS,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const newData = await fetch("/api/data?lang=" + router.query.lang, {
-  //       headers: {
-  //         accept: "*/*",
-  //         "accept-language": "en-US,en;q=0.9",
-  //         "content-type": "application/json; charset=UTF-8",
-  //         "sec-fetch-dest": "empty",
-  //         "sec-fetch-mode": "cors",
-  //         "sec-fetch-site": "same-origin",
-  //         "sec-gpc": "1",
-  //       },
-  //       referrer: "http://localhost:3000/admin?lang=en",
-  //       referrerPolicy: "strict-origin-when-cross-origin",
-  //       body: JSON.stringify(state),
-  //       method: "POST",
-  //       mode: "cors",
-  //       credentials: "omit",
-  //     });
-  //     setState((prevS) => ({ ...prevS, created: "flex" }));
-  //     const id = setTimeout(
-  //       () => setState({ title: "", text: "", created: "none" }),
-  //       200
-  //     );
+  const router = useRouter();
+  const queryStr = "/admin?lang=" + router.query.lang;
 
-  //     return (() => (
-  //       clearTimeout(id), router.push("/blog?lang=" + router.query.lang)
-  //     ))();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // const [load, setLoad] = React.useState(true);
-  // React.useEffect(() => {
-  //   const id = setTimeout(() => setLoad(false), 300);
-  //   return () => {
-  //     setLoad(true);
-  //     clearTimeout(id);
-  //   };
-  // }, [router.query.lang]);
+  const [newarticle, setNewarticle] = React.useState(false);
+  const handleClick = () => {
+    router.replace(queryStr, queryStr + "&new-article", { shallow: true });
+    setNewarticle(true);
+  };
+
+  const [load, setLoad] = React.useState(true);
+  React.useEffect(() => {
+    router.asPath === queryStr + "&new-article"
+      ? setNewarticle(true)
+      : setNewarticle(false);
+    const id = setTimeout(() => setLoad(false), 300);
+    return () => {
+      setLoad(true);
+      clearTimeout(id);
+    };
+  }, [router.query.lang, router.asPath]);
   return (
     <>
-      {/* {load === true ? (
+      {newarticle ? (
+        <AddArticle />
+      ) : load === true ? (
         <div className="loader" />
       ) : (
-        <>
-          <div style={{ display: state.created }} className="article-created">
-            <span>&#10004;</span>
-            <b>{state.title}</b>
-            <i>created</i>
-            <span>
-              <small>Your IP: </small>
-              <strong>
-                <small>{IP}</small>
-              </strong>
-            </span>
+        <div className={styles.admin_page}>
+          <div>
+            <NewArticle handleClick={handleClick} />
           </div>
-          <form className={styles.articleForm}>
-            <textarea
-              name="title"
-              value={state.title}
-              onChange={handleChange}
-              className={styles.title}
-              type="text"
-              maxLength="70"
-              placeholder="Title..."
-            />
-            <textarea
-              name="text"
-              value={state.text}
-              onChange={handleChange}
-              rows="15"
-              className={styles.textarea}
-              placeholder="Text..."
-            />
-            <input
-              className={styles.submit}
-              type="button"
-              onClick={handleSubmit}
-              value="Submit"
-            />
-          </form>
-        </>
-      )} */}
-      <div className={styles.admin_page}>
-        <div>
-          <NewArticle />
+          <div>
+            <Articles articles={props.db_data.articles} />
+          </div>
         </div>
-        <div>
-          <Articles />
-        </div>
-      </div>
+      )}
     </>
   );
 };
 export default Admin;
 
-export async function getServerSideProps() {
-  const ip = Object.values(os.networkInterfaces())
-    .flat()
-    .find((i) => i.family == "IPv4" && !i.internal).address;
-  return {
-    props: {
-      IP: ip,
-    },
-  };
+export async function getServerSideProps(ctx) {
+  switch (ctx.query.lang) {
+    case "tr":
+      const resTR = await fetch(process.env.server + "/api/data?lang=tr");
+      const jsonTR = await resTR.json();
+      return {
+        props: {
+          db_data: jsonTR,
+        },
+      };
+    case "de":
+      const resDE = await fetch(process.env.server + "/api/data?lang=de");
+      const jsonDE = await resDE.json();
+      return {
+        props: {
+          db_data: jsonDE,
+        },
+      };
+    case "en":
+      const resEN = await fetch(process.env.server + "/api/data?lang=en");
+      const jsonEN = await resEN.json();
+      return {
+        props: {
+          db_data: jsonEN,
+        },
+      };
+
+    default:
+      const res = await fetch(process.env.server + "/api/data?lang=tr");
+      const json = await res.json();
+      return {
+        props: {
+          db_data: json,
+        },
+      };
+  }
 }

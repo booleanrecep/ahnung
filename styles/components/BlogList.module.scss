@@ -20,6 +20,7 @@
       align-content: flex-start;
       align-items: center;
       column-gap: 23px;
+      justify-content: space-between;
       // border: 2px solid red;
       h4 {
         margin: 10px 0;
@@ -42,6 +43,7 @@
           border-radius: 5px;
           fill: #789dc1;
           color: #789dc1;
+          cursor: pointer;
         }
         div:first-of-type {
           background: #26a641;
