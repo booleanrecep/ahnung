@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/components/BlogList.module.scss";
@@ -19,25 +20,38 @@ const garbageSvg = (
   </svg>
 );
 export const BlogList = (props) => {
-  const router=useRouter()
-  const articleHref =(title)=>"/blog?lang="+router.query.lang+"&article="+title.toLowerCase().replaceAll(" ", "-")
+  const router = useRouter();
+
   return (
     <div className={styles.bloglist}>
       <ol>
-        {props.list.map(({ title, _id }) => (
-            <li key={_id}   onClick={ props.showFunc ? undefined:()=>props.handleArticleIndex(_id)}>
-              <Link href={articleHref(title)}> 
+        {props.list.map(({ title = "title", _id }) => (
+          <li
+            key={_id}
+            onClick={
+              props.showFunc ? undefined : () => props.handleArticleIndex(_id)
+            }
+          >
+            <Link
+              href={{
+                pathname: "/blog",
+                query: {
+                  lang: router.query.lang,
+                  article: title.replace(/\s|!/g, "-").toLowerCase(),
+                },
+              }}
+              replace
+              shallow
+            >
               <h4>{title.length > 15 ? title.slice(0, 15) + "..." : title}</h4>
-              </Link>
-              {props.showFunc ? (
-                <div
-                  className={styles.functions}
-                >
-                  <div onClick={()=>props.handleEdit(_id)}>{editSvg}</div>
-                  <div onClick={()=>props.handleDelete(_id)}>{garbageSvg}</div>
-                </div>
-              ) : null}
-            </li>
+            </Link>
+            {props.showFunc ? (
+              <div className={styles.functions}>
+                <div onClick={() => props.handleEdit(_id)}>{editSvg}</div>
+                <div onClick={() => props.handleDelete(_id)}>{garbageSvg}</div>
+              </div>
+            ) : null}
+          </li>
         ))}
       </ol>
     </div>

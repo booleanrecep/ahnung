@@ -3,13 +3,13 @@ import { useRouter } from "next/router";
 import styles from "../../styles/components/admin/AddArticle.module.scss";
 
 export const AddArticle =(props)=>{
-  console.log(props)
   const { IP } = props;
   const router = useRouter();
   const [state, setState] = React.useState({
     title: "",
     text: "",
     created: "none",
+    stoids:[]
   });
   const handleChange = (e) => {
     e.preventDefault();
@@ -18,8 +18,8 @@ export const AddArticle =(props)=>{
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    // e.preventDefault();
     try {
       const newData = await fetch("/api/data?lang=" + router.query.lang, {
         headers: {
@@ -38,15 +38,17 @@ export const AddArticle =(props)=>{
         mode: "cors",
         credentials: "omit",
       });
-      setState((prevS) => ({ ...prevS, created: "flex" }));
-      const id = setTimeout(
-        () => setState({ title: "", text: "", created: "none" }),
-        200
+      console.log(newData.statusText)
+      const id1 = setTimeout(
+      () => setState({ title: "", text: "", created: "none" }),
+        1900
       );
+      const id2 = setTimeout(
+        () =>router.push("/blog?lang=" + router.query.lang),
+          2000
+        );
+        setState((prevS) => ({ ...prevS, created: "flex",stoids:[id1,id2] }));
 
-      return (() => (
-        clearTimeout(id), router.push("/blog?lang=" + router.query.lang)
-      ))();
     } catch (error) {
       console.log(error);
     }
@@ -57,6 +59,7 @@ export const AddArticle =(props)=>{
     return () => {
       setLoad(true);
       clearTimeout(id);
+      state.stoids.map((id)=>clearTimeout(id))
     };
   }, [router.query.lang]);
   return (

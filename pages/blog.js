@@ -9,7 +9,6 @@ export default function Blog(props) {
     const indx = props.db_data.articles.findIndex((art) => art._id === id);
     setIndex(indx);
   };
-  console.log(index);
   return (
     <>
       <div className={styles.blog}>
