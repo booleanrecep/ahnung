@@ -1,51 +1,24 @@
 import React from "react";
-import { useRouter } from "next/router";
 import styles from "../styles/pages/blog.module.scss";
 import { Article } from "../components/Article";
 import { BlogList } from "../components/BlogList";
 
 export default function Blog(props) {
-  const router = useRouter();
   const [index, setIndex] = React.useState(0);
-  const [load, setLoad] = React.useState(true);
-
-  const handleClickIndex = (id) => {
+  const handleIndex = (id) => {
     const indx = props.db_data.articles.findIndex((art) => art._id === id);
-
-    return setTimeout(() => setIndex(indx));
+    setIndex(indx);
   };
-  const changeQueryString = () => {
-    const articleName = props.db_data.articles[index].title
-      .toLowerCase()
-      .replaceAll(" ", "-");
-    const queryStr = "blog?lang=" + router.query.lang + "&article=";
-    router.replace(queryStr, queryStr + articleName, { shallow: true });
-  };
-
-  React.useEffect(() => {
-    changeQueryString();
-
-    const id = setTimeout(() => setLoad(false), 300);
-
-    return () => {
-      setLoad(true);
-      clearTimeout(id);
-      clearTimeout(handleClickIndex());
-    };
-  }, [router.query.lang, index]);
+  console.log(index);
   return (
     <>
       <div className={styles.blog}>
         <BlogList
-          handleClick={handleClickIndex}
+          handleArticleIndex={handleIndex}
           list={props.db_data.articles}
         />
         <article className={styles.article}>
-          {load === true ? (
-            <div className="loader" />
-          ) : (
-            <Article {...props.db_data.articles[index]} />
-          )}
+          <Article {...props.db_data.articles[index]} />
         </article>
       </div>
     </>

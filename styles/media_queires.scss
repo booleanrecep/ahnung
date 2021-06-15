@@ -55,12 +55,8 @@ $descriptionFontSize: 17px;
       font-size: $tabsFontSize;
       .admin {
         svg {
-          // margin-left: -1px;
           height: 21px;
           width: 80px;
-          .text {
-            // transform: translate(-3px,1px)
-          }
         }
       }
     }
@@ -175,9 +171,8 @@ $descriptionFontSize: 17px;
         padding-right: 2px;
         padding-left: 2px;
         opacity: 0;
+        display: none;
         svg {
-          // width: 70px;
-          // height: 22px;
           .text {
             font-size: 12px;
             transform: translate(0px, 1px);
@@ -192,11 +187,4 @@ $descriptionFontSize: 17px;
       }
     }
   }
-  // .content{
-  .admin_page {
-    div {
-      // width: 80%;
-    }
-  }
-  // }
 }

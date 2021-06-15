@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "../styles/components/Article.module.scss";
 import Image from "next/image";
 
@@ -46,43 +47,65 @@ const linkedinSvg = (
   </svg>
 );
 
-export const Article = ({
-  clapCount,
-  date,
-  id,
-  readMin,
-  shareLnkd,
-  shareTwt,
-  tags,
-  text,
-  title,
-  img,
-}) => {
+export const Article = (props) => {
+ 
+  const [state, setState] = React.useState(props);
+  const [load, setLoad] = React.useState(true);
+ 
+  React.useEffect(() => {
+    setState(props)
+    const id = setTimeout(() => setLoad(false), 300);
+    return () => {
+      clearTimeout(id);
+      setLoad(true);
+    };
+  }, [props.title]);
+
   return (
     <>
-      <div className={styles.headerdiv}>
-        <Image src="/static/bonn.jpg" width={1000} height={250} />
-        <h3>{title}</h3>
-        <div className={styles.tools}>
-          <div className={styles.counts}>
-            {readMin} min read | {clapSvg} {clapCount}
-          </div>
-          <div className={styles.date}>{date && date.slice(0, 10)}</div>
-          <div className={styles.tags}>
-            {tags.map((tag) => (
-              <span key={tag}>
-                <a>{tag}</a>
-              </span>
-            ))}
-          </div>
-          <div className={styles.socials}>
-            {twitterSvg} {linkedinSvg}
-          </div>
-        </div>
-      </div>
-      <div className={styles.text}>
-        <p>{text}</p>
-      </div>
+      {load === true ? (
+        <div className="loader" />
+      ) : (
+        (({
+          clapCount,
+          date,
+          id,
+          readMin,
+          shareLnkd,
+          shareTwt,
+          tags,
+          text,
+          title,
+          img,
+        }) => (
+          <>
+            <div className={styles.headerdiv}>
+              <Image src="/static/bonn.jpg" width={1000} height={250} />
+              <h3>{title}</h3>
+              <div className={styles.tools}>
+                <div className={styles.counts}>
+                  {readMin} min read | {clapSvg} {clapCount}
+                </div>
+                <div className={styles.date}>{date && date.slice(0, 10)}</div>
+                <div className={styles.tags}>
+                  {tags &&
+                    tags.map((tag) => (
+                      <span key={tag}>
+                        <a>{tag}</a>
+                      </span>
+                    ))}
+                </div>
+                <div className={styles.socials}>
+                  {twitterSvg} {linkedinSvg}
+                </div>
+              </div>
+            </div>
+            <div className={styles.text}>
+              <p>{text}</p>
+            </div>
+          </>
+        ))(state)
+      )}
     </>
   );
 };

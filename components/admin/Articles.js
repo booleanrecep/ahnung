@@ -7,7 +7,12 @@ export const Articles = (props) => {
       <details className={styles.details}>
         <summary>Articles</summary>
         <div className={styles.list}>
-          <BlogList showFunc={true} list={props.articles} />
+          <BlogList
+            handleEdit={props.handleEdit}
+            handleDelete={props.handleDelete}
+            showFunc={true}
+            list={props.articles}
+          />
         </div>
       </details>
     </div>

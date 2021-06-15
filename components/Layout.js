@@ -1,7 +1,7 @@
+import React from "react";
+import Head from "next/head";
 import { Header } from "./Header";
 import { Navcol } from "./Navcol";
-import Head from "next/head";
-import React from "react";
 
 export const Layout = (props) => {
   const [style, setStyle] = React.useState({ display: "flex" });

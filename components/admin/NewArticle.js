@@ -10,7 +10,7 @@ export const NewArticle = (props) => {
   return (
     <div className={styles.new_article}>
       New Article
-        <span onClick={props.handleClick}>
+        <span onClick={props.handleNew}>
 
         {addSvg}
         </span>

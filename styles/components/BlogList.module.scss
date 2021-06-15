@@ -16,29 +16,22 @@
     li {
       display: flex;
       flex-direction: row;
-      // flex-wrap: wrap;
       align-content: flex-start;
       align-items: center;
       column-gap: 23px;
       justify-content: space-between;
-      // border: 2px solid red;
       h4 {
         margin: 10px 0;
-        // text-decoration: underline;
         padding-bottom: 5px;
         border-bottom-style: solid;
         border-bottom-width: 1.1px;
       }
       .functions {
-        // border:2px solid red;
         display: flex;
         column-gap: 10px;
-        // display: none;
 
         div {
-          // margin-right: 5px;
           width: fit-content;
-          border: 0.5px solid red;
           padding: 2px 5px;
           border-radius: 5px;
           fill: #789dc1;

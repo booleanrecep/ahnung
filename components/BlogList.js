@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "../styles/components/BlogList.module.scss";
 const editSvg = (
   <svg viewBox="0 -2 16 16" height="16" width="16">
@@ -17,23 +19,25 @@ const garbageSvg = (
   </svg>
 );
 export const BlogList = (props) => {
+  const router=useRouter()
+  const articleHref =(title)=>"/blog?lang="+router.query.lang+"&article="+title.toLowerCase().replaceAll(" ", "-")
   return (
     <div className={styles.bloglist}>
       <ol>
         {props.list.map(({ title, _id }) => (
-          <>
-            <li key={_id}   onClick={ props.showFunc ? undefined:()=>props.handleClick(_id)}>
+            <li key={_id}   onClick={ props.showFunc ? undefined:()=>props.handleArticleIndex(_id)}>
+              <Link href={articleHref(title)}> 
               <h4>{title.length > 15 ? title.slice(0, 15) + "..." : title}</h4>
+              </Link>
               {props.showFunc ? (
                 <div
                   className={styles.functions}
                 >
-                  <div>{editSvg}</div>
-                  <div>{garbageSvg}</div>
+                  <div onClick={()=>props.handleEdit(_id)}>{editSvg}</div>
+                  <div onClick={()=>props.handleDelete(_id)}>{garbageSvg}</div>
                 </div>
               ) : null}
             </li>
-          </>
         ))}
       </ol>
     </div>
