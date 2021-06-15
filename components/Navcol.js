@@ -36,6 +36,7 @@ export const Navcol = (props) => {
       transform: expand.toggle ? keyFrameForward : keyFrameBackward,
       opacity: expand.toggle ? "1" : "0",
       marginTop: expand.toggle ? "10px" : "-30px",
+      display:expand.toggle ?"block":"none",
       toggle: !expand.toggle,
     });
   };
@@ -73,11 +74,13 @@ export const Navcol = (props) => {
       : (ref.current.style.top = "55px");
   }, [ref]);
   React.useEffect(() => {
+
     window.addEventListener("scroll", handlePosition);
     return () => {
+
       window.removeEventListener("scroll", handlePosition);
     };
-  }, [ref]);
+  }, [ref,router.query.lang]);
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
@@ -112,6 +115,7 @@ export const Navcol = (props) => {
             transition: "opacity 1s,margin-top 0.3s",
             opacity: expand.opacity,
             marginTop: expand.marginTop,
+            display:expand.display
           }}
           className={styles.admin}
         >

@@ -1,9 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/components/admin/AddArticle.module.scss";
-import os from "os";
 
 export const AddArticle =(props)=>{
+  console.log(props)
   const { IP } = props;
   const router = useRouter();
   const [state, setState] = React.useState({
@@ -105,15 +105,4 @@ export const AddArticle =(props)=>{
       )}
     </>
   );
-};
-
-export async function getServerSideProps() {
-    const ip = Object.values(os.networkInterfaces())
-      .flat()
-      .find((i) => i.family == "IPv4" && !i.internal).address;
-    return {
-      props: {
-        IP: ip,
-      },
-    };
-  }
+}

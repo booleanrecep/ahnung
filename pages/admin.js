@@ -1,5 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
+import os from "os";
+
 import styles from "../styles/pages/admin.module.scss";
 import { Articles } from "../components/admin/Articles";
 import { AddArticle } from "../components/admin/AddArticle";
@@ -8,18 +10,43 @@ import { NewArticle } from "../components/admin/NewArticle";
 const Admin = (props) => {
   const router = useRouter();
   const queryStr = "/admin?lang=" + router.query.lang;
-
-  const [newarticle, setNewarticle] = React.useState(false);
-  const handleClick = () => {
-    router.replace(queryStr, queryStr + "&new-article", { shallow: true });
-    setNewarticle(true);
-  };
-
+  const [shownew, setShownew] = React.useState(false);
   const [load, setLoad] = React.useState(true);
+  const [articlesList, setArticleList] = React.useState(props.db_data.articles);
+  const handleNewArticle = () => {
+    router.replace(queryStr, queryStr + "&new-article", { shallow: true });
+    setShownew(true);
+  };
+  const handleDelete = async (id) => {
+    try {
+      const deleteID = await fetch(
+        "/api/data?lang=" + router.query.lang + "&articleID=" + id,
+        {
+          method: "DELETE",
+          "content-type": "application/json; charset=UTF-8",
+        }
+      );
+      const filteredList = await props.db_data.articles.filter(
+        ({ _id }) => _id !== id
+      );
+      setArticleList(filteredList);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleEdit = (id) => {
+    try {
+      const deleteID = fetch("1");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   React.useEffect(() => {
+    setArticleList(props.db_data.articles);
+
     router.asPath === queryStr + "&new-article"
-      ? setNewarticle(true)
-      : setNewarticle(false);
+      ? setShownew(true)
+      : setShownew(false);
     const id = setTimeout(() => setLoad(false), 300);
     return () => {
       setLoad(true);
@@ -28,17 +55,21 @@ const Admin = (props) => {
   }, [router.query.lang, router.asPath]);
   return (
     <>
-      {newarticle ? (
-        <AddArticle />
+      {shownew ? (
+        <AddArticle IP={props.IP} />
       ) : load === true ? (
         <div className="loader" />
       ) : (
         <div className={styles.admin_page}>
           <div>
-            <NewArticle handleClick={handleClick} />
+            <NewArticle handleNew={handleNewArticle} />
           </div>
           <div>
-            <Articles articles={props.db_data.articles} />
+            <Articles
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+              articles={articlesList}
+            />
           </div>
         </div>
       )}
@@ -48,6 +79,9 @@ const Admin = (props) => {
 export default Admin;
 
 export async function getServerSideProps(ctx) {
+  const ip = Object.values(os.networkInterfaces())
+    .flat()
+    .find((i) => i.family == "IPv4" && !i.internal).address;
   switch (ctx.query.lang) {
     case "tr":
       const resTR = await fetch(process.env.server + "/api/data?lang=tr");
@@ -55,6 +89,7 @@ export async function getServerSideProps(ctx) {
       return {
         props: {
           db_data: jsonTR,
+          IP: ip,
         },
       };
     case "de":
@@ -63,6 +98,7 @@ export async function getServerSideProps(ctx) {
       return {
         props: {
           db_data: jsonDE,
+          IP: ip,
         },
       };
     case "en":
@@ -71,6 +107,7 @@ export async function getServerSideProps(ctx) {
       return {
         props: {
           db_data: jsonEN,
+          IP: ip,
         },
       };
 
@@ -80,6 +117,7 @@ export async function getServerSideProps(ctx) {
       return {
         props: {
           db_data: json,
+          IP: ip,
         },
       };
   }
