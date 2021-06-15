@@ -39,7 +39,7 @@ export default async (req, res) => {
         const articleCreatedTr = await db
           .collection("turkish")
           .updateOne(
-            { _id: ObjectId("60c76e1e6d6db58f0d3bddc6") },
+            { _id: ObjectId("60aa916471f1dfc4522acebf") },
             { $push: { articles: article } }
           );
         return res.status(200).send(articleCreatedTr);
