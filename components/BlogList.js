@@ -21,11 +21,11 @@ const garbageSvg = (
 );
 export const BlogList = (props) => {
   const router = useRouter();
-
+ 
   return (
     <div className={styles.bloglist}>
       <ol>
-        {props.list.map(({ title = "title", _id }) => (
+        {props.articles&&props.articles.map(({ title, _id,deletable }) => (
           <li
             key={_id}
             onClick={
@@ -48,7 +48,7 @@ export const BlogList = (props) => {
             {props.showFunc ? (
               <div className={styles.functions}>
                 <div onClick={() => props.handleEdit(_id)}>{editSvg}</div>
-                <div onClick={() => props.handleDelete(_id)}>{garbageSvg}</div>
+                <div onClick={deletable?()=>props.handleDelete(_id):()=>null}>{garbageSvg}</div>
               </div>
             ) : null}
           </li>
@@ -56,4 +56,4 @@ export const BlogList = (props) => {
       </ol>
     </div>
   );
-};
+}
