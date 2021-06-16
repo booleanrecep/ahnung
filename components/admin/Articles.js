@@ -1,3 +1,4 @@
+import React from "react";
 import { BlogList } from "../BlogList";
 import styles from "../../styles/components/admin/Articles.module.scss";
 
@@ -11,7 +12,7 @@ export const Articles = (props) => {
             handleEdit={props.handleEdit}
             handleDelete={props.handleDelete}
             showFunc={true}
-            list={props.articles}
+            articles={props.articles}
           />
         </div>
       </details>

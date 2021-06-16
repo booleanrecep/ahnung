@@ -13,4 +13,7 @@ module.exports = {
       server: process.env.NODE_ENV === 'production' ? `https://ahnung.vercel.app` : `http://localhost:3000`
 
   },
+  eslint:{
+    ignoreDuringBuilds:true
+  }
 };

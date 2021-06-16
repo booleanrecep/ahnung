@@ -14,7 +14,7 @@ export default function Blog(props) {
       <div className={styles.blog}>
         <BlogList
           handleArticleIndex={handleIndex}
-          list={props.db_data.articles}
+          articles={props.db_data.articles}
         />
         <article className={styles.article}>
           <Article {...props.db_data.articles[index]} />

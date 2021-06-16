@@ -19,16 +19,17 @@ const Admin = (props) => {
   };
   const handleDelete = async (id) => {
     try {
-      const deleteID = await fetch(
+      const deleteArt =await fetch(
         "/api/data?lang=" + router.query.lang + "&articleID=" + id,
         {
           method: "DELETE",
           "content-type": "application/json; charset=UTF-8",
         }
       );
-      const filteredList = await props.db_data.articles.filter(
+      const filteredList =await articlesList.filter(
         ({ _id }) => _id !== id
       );
+      console.log(deleteArt)
       setArticleList(filteredList);
     } catch (error) {
       console.log(error);
@@ -42,8 +43,6 @@ const Admin = (props) => {
     }
   };
   React.useEffect(() => {
-    setArticleList(props.db_data.articles);
-
     router.asPath === queryStr + "&new-article"
       ? setShownew(true)
       : setShownew(false);
