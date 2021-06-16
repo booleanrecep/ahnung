@@ -10,6 +10,7 @@
     "fix": "prettier --write ./pages/*.js  ./styles/**"
   },
   "dependencies": {
+    "eslint-config-next": "^11.0.0",
     "mongodb": "^3.6.8",
     "mongoose": "^5.12.13",
     "next": "^11.0.0",
