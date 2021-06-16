@@ -1,6 +1,6 @@
+import React from "react";
 import { BlogList } from "../BlogList";
 import styles from "../../styles/components/admin/Articles.module.scss";
-import React from "react";
 
 export const Articles = (props) => {
   return (

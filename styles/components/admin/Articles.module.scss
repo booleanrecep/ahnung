@@ -1,7 +1,7 @@
 .details {
   width: 100%;
   .list {
-    animation: show-gentle 1s linear;
+    animation: show-gentle 0.4s cubic-bezier(0, 0, 0.28, 0.94);
     div {
       border: none;
       font-size: initial;
@@ -17,8 +17,10 @@
 @keyframes show-gentle {
   0% {
     opacity: 0;
+    transform: translateY(-10px)
   }
   100% {
     opacity: 1;
+    transform: translateY(0px)
   }
 }

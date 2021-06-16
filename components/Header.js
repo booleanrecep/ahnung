@@ -21,7 +21,7 @@ export const Header = (props) => {
     transform: "rotate(0deg)",
   };
   const objStyles = (obj, sty) => {
-    Object.assign(obj.style, sty);
+    Object.assign(obj, sty);
   };
   const chldStyles = (chldArr, sty) => {
     Array.prototype.slice
@@ -30,9 +30,9 @@ export const Header = (props) => {
   };
   const handlePosition = React.useCallback(() => {
     window.pageYOffset > 50 && window.innerWidth > 768
-      ? (objStyles(ref.current, objStyleBegin),
+      ? (objStyles(ref.current.style, objStyleBegin),
         chldStyles(ref.current.children, childStyleBegin))
-      : (objStyles(ref.current, objStyleEnd),
+      : (objStyles(ref.current.style, objStyleEnd),
         chldStyles(ref.current.children, childStyleEnd));
   }, [ref,router.asPath]);
 
