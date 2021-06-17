@@ -36,7 +36,7 @@ export const Navcol = (props) => {
       transform: expand.toggle ? keyFrameForward : keyFrameBackward,
       opacity: expand.toggle ? "1" : "0",
       marginTop: expand.toggle ? "10px" : "-30px",
-      display:expand.toggle ?"block":"none",
+      pointerEvt:expand.toggle ?"inherit":"none",
       toggle: !expand.toggle,
     });
   };
@@ -115,7 +115,7 @@ export const Navcol = (props) => {
             transition: "opacity 1s,margin-top 0.3s",
             opacity: expand.opacity,
             marginTop: expand.marginTop,
-            display:expand.display
+            pointerEvents:expand.pointerEvt
           }}
           className={styles.admin}
         >

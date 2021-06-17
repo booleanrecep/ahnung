@@ -11,6 +11,7 @@ export const AddArticle =(props)=>{
     created: "none",
     stoids:[]
   });
+  const ref = React.useRef()
   const handleChange = (e) => {
     e.preventDefault();
     setState((prevS) => ({
@@ -18,8 +19,19 @@ export const AddArticle =(props)=>{
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = async () => {
-    // e.preventDefault();
+  const handleOnInvalid = (e) => {
+    console.log(e)
+    console.log(e.target)
+    console.log(e.target.style)
+    e.target.setCustomValidity("Ooo! Something is wrong!")
+    // console.log(e)
+  }
+  // const handleOninput = (e) => {
+  //   console.log(e.target)
+  //   console.log(e.target.style)
+  // }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const newData = await fetch("/api/data?lang=" + router.query.lang, {
         headers: {
@@ -79,28 +91,41 @@ export const AddArticle =(props)=>{
               </strong>
             </span>
           </div>
-          <form className={styles.articleForm}>
+          <form className={styles.articleForm} method="post" onSubmit={handleSubmit}>
             <textarea
               name="title"
+              placeholder="Title..."
               value={state.title}
-              onChange={handleChange}
               className={styles.title}
               type="text"
               maxLength="70"
-              placeholder="Title..."
+              minLength="5"
+              spellCheck="false"
+              required
+              // pattern="[/^(\w+\s?)*\s*$/]"
+              onChange={handleChange}
+              onInvalid={handleOnInvalid}
+              // onInput={handleOninput}
+
             />
             <textarea
               name="text"
+              type="text"
               value={state.text}
-              onChange={handleChange}
               rows="15"
+              minLength="50"
               className={styles.textarea}
               placeholder="Text..."
+              spellCheck="false"
+              required
+              onChange={handleChange}
+              onInvalid={handleOnInvalid}
+
             />
             <input
               className={styles.submit}
-              type="button"
-              onClick={handleSubmit}
+              type="submit"
+              // onClick={handleSubmit}
               value="Submit"
             />
           </form>

@@ -4,7 +4,6 @@
 
   .title {
     outline: none;
-    border: 0.2px solid #e12c2c;
     min-height: 50px;
     padding: 10px;
     margin-bottom: 5px;
@@ -17,6 +16,14 @@
     resize: none;
     font-size: inherit;
     font-family: inherit;
+    &:valid{
+      border: 1.5px solid #3fca5d;
+    }
+    &:invalid{
+      border: 1.5px solid #e12c2c;
+      // background-image: linear-gradient(to left, #d9c5a4, #c1d39e);
+    }
+    
   }
 
   .textarea {
@@ -33,6 +40,12 @@
     font-style: italic;
     font-size: inherit;
     font-family: inherit;
+    &:valid{
+      border: 1.5px solid #3fca5d;
+    }
+    &:invalid{
+      border: 1.5px solid #e12c2c;
+    }
   }
   .submit {
     width: fit-content;

@@ -37,7 +37,8 @@ const Admin = (props) => {
   };
   const handleEdit = (id) => {
     try {
-      const deleteID = fetch("1");
+      const deleteID = "wait";
+      console.log(deleteID,"will be implemented")
     } catch (error) {
       console.log(error);
     }
