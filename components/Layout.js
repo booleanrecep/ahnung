@@ -19,7 +19,7 @@ export const Layout = (props) => {
         >
           <img
             src="/static/gear-2.png"
-            title="The Site"
+            title="The site"
             style={{
               animation: "spin 7s linear infinite",
               position: "fixed",

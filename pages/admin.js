@@ -44,6 +44,7 @@ const Admin = (props) => {
     }
   };
   React.useEffect(() => {
+    setArticleList(props.db_data.articles)
     router.asPath === queryStr + "&new-article"
       ? setShownew(true)
       : setShownew(false);
