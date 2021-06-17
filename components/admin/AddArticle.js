@@ -99,7 +99,7 @@ export const AddArticle =(props)=>{
               className={styles.title}
               type="text"
               maxLength="70"
-              minLength="5"
+              // minLength="5"
               spellCheck="false"
               required
               // pattern="[/^(\w+\s?)*\s*$/]"
@@ -113,7 +113,7 @@ export const AddArticle =(props)=>{
               type="text"
               value={state.text}
               rows="15"
-              minLength="50"
+              // minLength="50"
               className={styles.textarea}
               placeholder="Text..."
               spellCheck="false"

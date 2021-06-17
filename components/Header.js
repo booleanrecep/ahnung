@@ -34,7 +34,7 @@ export const Header = (props) => {
         chldStyles(ref.current.children, childStyleBegin))
       : (objStyles(ref.current.style, objStyleEnd),
         chldStyles(ref.current.children, childStyleEnd));
-  }, [ref,router.asPath]);
+  }, [ref.current,router.asPath]);
 
   React.useEffect(() => {
     window.addEventListener("scroll", handlePosition);

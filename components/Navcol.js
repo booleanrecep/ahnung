@@ -36,8 +36,10 @@ export const Navcol = (props) => {
       transform: expand.toggle ? keyFrameForward : keyFrameBackward,
       opacity: expand.toggle ? "1" : "0",
       marginTop: expand.toggle ? "10px" : "-30px",
-      pointerEvt:expand.toggle ?"inherit":"none",
+      pointerEvents:expand.toggle ?"inherit":"none",
+      width:expand.toggle?"inherit":"0px",
       toggle: !expand.toggle,
+      
     });
   };
   const changeText = () => {
@@ -115,7 +117,8 @@ export const Navcol = (props) => {
             transition: "opacity 1s,margin-top 0.3s",
             opacity: expand.opacity,
             marginTop: expand.marginTop,
-            pointerEvents:expand.pointerEvt
+            pointerEvents:expand.pointerEvents,
+            width:expand.width
           }}
           className={styles.admin}
         >
