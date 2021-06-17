@@ -61,6 +61,9 @@ $descriptionFontSize: 17px;
       }
     }
   }
+  .container>div:first-of-type{
+    margin-top: 55px;
+  }
 }
 
 @media screen and (max-width: 550px) {
