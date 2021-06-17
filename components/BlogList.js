@@ -21,41 +21,55 @@ const garbageSvg = (
 );
 export const BlogList = (props) => {
   const router = useRouter();
- 
+
   return (
     <div className={styles.bloglist}>
       <ol>
-        {props.articles&&props.articles.map(({ title, _id,deletable }) => (
-          <li
-            key={_id}
-            onClick={
-              props.showFunc ? undefined : () => props.handleArticleIndex(_id)
-            }
-          >
-            <Link
-              href={{
-                pathname: "/blog",
-                query: {
-                  lang: router.query.lang,
-                  article: title.replace(/\s|!/g, "-").toLowerCase(),
-                },
-              }}
-              replace
-              shallow
+        {props.articles &&
+          props.articles.map(({ title, _id, deletable }) => (
+            <li
+              key={_id}
+              onClick={
+                props.showFunc ? undefined : () => props.handleArticleIndex(_id)
+              }
             >
-              <h4>{title.length > 15 ? title.slice(0, 15) + "..." : title}</h4>
-            </Link>
-            {props.showFunc ? (
-              <div className={styles.functions} 
-              style={ deletable?{filter: "saturate(1) blur(0px)"}:{filter:"saturate(0) blur(1.5px)"}}
+              <Link
+                href={{
+                  pathname: "/blog",
+                  query: {
+                    lang: router.query.lang,
+                    article: title.replace(/\s|!/g, "-").toLowerCase(),
+                  },
+                }}
+                replace
+                shallow
               >
-                <div onClick={() => props.handleEdit(_id)}>{editSvg}</div>
-                <div onClick={deletable?()=>props.handleDelete(_id):()=>null}>{garbageSvg}</div>
-              </div>
-            ) : null}
-          </li>
-        ))}
+                <h4>
+                  {title.length > 15 ? title.slice(0, 15) + "..." : title}
+                </h4>
+              </Link>
+              {props.showFunc ? (
+                <div
+                  className={styles.functions}
+                  style={
+                    deletable
+                      ? { filter: "saturate(1) blur(0px)" }
+                      : { filter: "saturate(0) blur(1.5px)" }
+                  }
+                >
+                  <div onClick={() => props.handleEdit(_id)}>{editSvg}</div>
+                  <div
+                    onClick={
+                      deletable ? () => props.handleDelete(_id) : () => null
+                    }
+                  >
+                    {garbageSvg}
+                  </div>
+                </div>
+              ) : null}
+            </li>
+          ))}
       </ol>
     </div>
   );
-}
+};

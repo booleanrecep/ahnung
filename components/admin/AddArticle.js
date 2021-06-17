@@ -9,7 +9,8 @@ export const AddArticle =(props)=>{
     title: "",
     text: "",
     created: "none",
-    stoids:[]
+    stoids:[],
+    stopSubmit:false
   });
   const ref = React.useRef()
   const handleChange = (e) => {
@@ -19,13 +20,13 @@ export const AddArticle =(props)=>{
       [e.target.name]: e.target.value,
     }));
   };
-  const handleOnInvalid = (e) => {
-    console.log(e)
-    console.log(e.target)
-    console.log(e.target.style)
-    e.target.setCustomValidity("Ooo! Something is wrong!")
-    // console.log(e)
-  }
+  // const handleOnInvalid = (e) => {
+  //   console.log(e)
+  //   console.log(e.target)
+  //   console.log(e.target.style)
+  //   e.target.setCustomValidity("Ooo! Something is wrong!")
+  //   return false
+  // }
   // const handleOninput = (e) => {
   //   console.log(e.target)
   //   console.log(e.target.style)
@@ -59,7 +60,7 @@ export const AddArticle =(props)=>{
         () =>router.push("/blog?lang=" + router.query.lang),
           2000
         );
-        setState((prevS) => ({ ...prevS, created: "flex",stoids:[id1,id2] }));
+        setState((prevS) => ({ ...prevS, created: "flex",stoids:[id1,id2],stopSubmit:true }));
 
     } catch (error) {
       console.log(error);
@@ -74,6 +75,7 @@ export const AddArticle =(props)=>{
       state.stoids.map((id)=>clearTimeout(id))
     };
   }, [router.query.lang]);
+  console.log(state)
   return (
     <>
       {load === true ? (
@@ -104,7 +106,7 @@ export const AddArticle =(props)=>{
               required
               // pattern="[/^(\w+\s?)*\s*$/]"
               onChange={handleChange}
-              onInvalid={handleOnInvalid}
+              // onInvalid={handleOnInvalid}
               // onInput={handleOninput}
 
             />
@@ -119,7 +121,7 @@ export const AddArticle =(props)=>{
               spellCheck="false"
               required
               onChange={handleChange}
-              onInvalid={handleOnInvalid}
+              // onInvalid={handleOnInvalid}
 
             />
             <input
@@ -127,6 +129,12 @@ export const AddArticle =(props)=>{
               type="submit"
               // onClick={handleSubmit}
               value="Submit"
+              disabled={state.stopSubmit}
+              style={{
+                backgroundColor:state.stopSubmit?"#c73636":"c2d686",
+                color:state.stopSubmit?"#e6c6b3":"#425d0d"
+              }}
+              
             />
           </form>
         </>

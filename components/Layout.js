@@ -19,6 +19,7 @@ export const Layout = (props) => {
         >
           <img
             src="/static/gear-2.png"
+            title="The Site"
             style={{
               animation: "spin 7s linear infinite",
               position: "fixed",
@@ -30,6 +31,7 @@ export const Layout = (props) => {
           />
           <img
             src="/static/gear-2.png"
+            title="construction"
             style={{
               animation: "spin 7s linear infinite",
               position: "fixed",
@@ -41,6 +43,7 @@ export const Layout = (props) => {
           />
           <img
             src="/static/gear-2.png"
+            title="is under"
             style={{
               animation: "spin 7s reverse  linear infinite",
               position: "fixed",

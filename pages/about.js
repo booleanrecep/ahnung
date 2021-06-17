@@ -1,3 +1,4 @@
+import {useRouter} from "next/router";
 import React from "react";
 import styles from "../styles/pages/about.module.scss";
 
@@ -30,11 +31,13 @@ const mailSvg = (
   </svg>
 );
 export default function About(props) {
+  const router = useRouter()
   const [state, setState] = React.useState(props.db_data.about);
   const [load, setLoad] = React.useState(true);
   React.useEffect(() => {
     setState(props.db_data.about);
     const id = setTimeout(() => setLoad(false), 300);
+    router.query.lang===undefined?router.push("/about?lang="+"tr"):null
     return () => {
       clearTimeout(id);
       setLoad(true);
