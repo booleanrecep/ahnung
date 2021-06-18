@@ -10,7 +10,8 @@ export const AddArticle =(props)=>{
     text: "",
     created: "none",
     stoids:[],
-    stopSubmit:false
+    stopSubmit:false,
+    shakeIt:false
   });
   const ref = React.useRef()
   const handleChange = (e) => {
@@ -31,8 +32,14 @@ export const AddArticle =(props)=>{
   //   console.log(e.target)
   //   console.log(e.target.style)
   // }
+  // const handleSubmitButton =(e) =>{
+  //   e.preventDefault()
+  //   setState(preS=>({...preS,stopSubmit:true}))
+
+  // }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setState(preS=>({...preS,stopSubmit:true,shakeIt:false}))
     try {
       const newData = await fetch("/api/data?lang=" + router.query.lang, {
         headers: {
@@ -60,7 +67,7 @@ export const AddArticle =(props)=>{
         () =>router.push("/blog?lang=" + router.query.lang),
           2000
         );
-        setState((prevS) => ({ ...prevS, created: "flex",stoids:[id1,id2],stopSubmit:true }));
+        setState((prevS) => ({ ...prevS, created: "flex",stoids:[id1,id2] }));
 
     } catch (error) {
       console.log(error);
@@ -73,6 +80,7 @@ export const AddArticle =(props)=>{
       setLoad(true);
       clearTimeout(id);
       state.stoids.map((id)=>clearTimeout(id))
+      setState(preS=>({...preS,shakeIt:false}))
     };
   }, [router.query.lang]);
   console.log(state)
@@ -130,9 +138,15 @@ export const AddArticle =(props)=>{
               // onClick={handleSubmit}
               value="Submit"
               disabled={state.stopSubmit}
+              onClick={()=>setState(preS=>({...preS,shakeIt:true}))}
+              onMouseOut={()=>setState(preS=>({...preS,shakeIt:false}))}
+              onMouseUp={()=>setState(preS=>({...preS,shakeIt:false}))}
               style={{
                 backgroundColor:state.stopSubmit?"#c73636":"c2d686",
-                color:state.stopSubmit?"#e6c6b3":"#425d0d"
+                color:state.stopSubmit?"#e6c6b3":"#425d0d",
+                filter:state.stopSubmit?"contrast(0.5)":"none",
+                position:"relative",
+                animation:state.shakeIt?"sars 80ms linear 2":"none"
               }}
               
             />
