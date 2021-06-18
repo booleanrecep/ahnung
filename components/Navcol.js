@@ -2,13 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/components/Navcol.module.scss";
+import { NavLink } from "./NavLink";
 
 const articleSvg = (
-  <svg
-    viewBox="-20 0 15 16"
-  >
-        
-    <text className={styles.text} x="-42" y="10" fill="#768390">ADMIN</text>
+  <svg viewBox="-20 0 15 16">
+    <text className={styles.text} x="-42" y="10" fill="#768390">
+      ADMIN
+    </text>
     <title>Admin</title>
     <path
       fillRule="evenodd"
@@ -24,6 +24,7 @@ const keyFrameBackward = {
   animation: "turnBackward 0.3s linear",
   animationFillMode: "backwards",
 };
+
 export const Navcol = (props) => {
   const router = useRouter();
   const ref = React.createRef();
@@ -36,10 +37,9 @@ export const Navcol = (props) => {
       transform: expand.toggle ? keyFrameForward : keyFrameBackward,
       opacity: expand.toggle ? "1" : "0",
       marginTop: expand.toggle ? "10px" : "-30px",
-      pointerEvents:expand.toggle ?"inherit":"none",
-      width:expand.toggle?"inherit":"0px",
+      pointerEvents: expand.toggle ? "inherit" : "none",
+      width: expand.toggle ? "inherit" : "0px",
       toggle: !expand.toggle,
-      
     });
   };
   const changeText = () => {
@@ -76,36 +76,15 @@ export const Navcol = (props) => {
       : (ref.current.style.top = "55px");
   }, [ref]);
   React.useEffect(() => {
-
     window.addEventListener("scroll", handlePosition);
     return () => {
-
       window.removeEventListener("scroll", handlePosition);
     };
-  }, [ref,router.query.lang]);
+  }, [ref, router.query.lang]);
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
-        <div>
-          <Link
-            href={
-              "/about?lang=" +
-              `${router.query.lang === undefined ? "tr" : router.query.lang}`
-            }
-          >
-            {nav_text.navbars[0]}
-          </Link>
-        </div>
-        <div>
-          <Link
-            href={
-              "/blog?lang=" +
-              `${router.query.lang === undefined ? "tr" : router.query.lang}`
-            }
-          >
-            {nav_text.navbars[1]}
-          </Link>
-        </div>
+        <NavLink lang={router.query.lang} navbars={nav_text.navbars} />
         <span
           onClick={handleStyleExpand}
           className={styles.expand}
@@ -117,8 +96,8 @@ export const Navcol = (props) => {
             transition: "opacity 1s,margin-top 0.3s",
             opacity: expand.opacity,
             marginTop: expand.marginTop,
-            pointerEvents:expand.pointerEvents,
-            width:expand.width
+            pointerEvents: expand.pointerEvents,
+            width: expand.width,
           }}
           className={styles.admin}
         >
