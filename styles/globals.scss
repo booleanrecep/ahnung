@@ -124,4 +124,21 @@ h4 {
   }
 }
 
+@keyframes sars {
+  0% {
+    left: -10px;
+  }
+  100% {
+    left: 10px;
+  }
+}
+@-webkit-keyframes sars {
+  0% {
+    left: -10px;
+  }
+  100% {
+    left: 10px;
+  }
+}
+
 @import "media_queires";
