@@ -1,25 +1,23 @@
 import { ObjectId } from "bson";
 import { connectToDatabase } from "../../database_utils/connect";
-
 export default async (req, res) => {
   const { db } = await connectToDatabase();
 
   if (req.method === "GET") {
-    const turkish = await db.collection("turkish").find({}).toArray();
-    const deutsch = await db.collection("deutsch").find({}).toArray();
-    const english = await db.collection("english").find({}).toArray();
-
-    const tr = Object.assign({}, ...turkish);
-    const de = Object.assign({}, ...deutsch);
-    const en = Object.assign({}, ...english);
     switch (req.query.lang) {
       case "tr":
+        const turkish = await db.collection("turkish").find({}).toArray();
+        const tr = Object.assign({}, ...turkish);
         res.json({ ...tr });
         break;
       case "en":
+        const english = await db.collection("english").find({}).toArray();
+        const en = Object.assign({}, ...english);
         res.json({ ...en });
         break;
       case "de":
+        const deutsch = await db.collection("deutsch").find({}).toArray();
+        const de = Object.assign({}, ...deutsch);
         res.json({ ...de });
         break;
       default:
@@ -40,33 +38,51 @@ export default async (req, res) => {
           .collection("turkish")
           .updateOne(
             { _id: ObjectId("60cda66c4e223001f9e1566e") },
-            { $push: { articles: article } }
-          );
-        return res.status(200).send(articleCreatedTr);
+            { $push: { articles: article } },
+            (err, data) => {
+              if (err) {
+                return res.status(500).json({ error: err });
+              }
 
+              res.json(data);
+            }
+          );
+        break;
       case "en":
         const articleCreatedEn = await db
           .collection("english")
           .updateOne(
             { _id: ObjectId("60aa929f71f1dfc4522acec1") },
-            { $push: { articles: article } }
+            { $push: { articles: article } },
+            (err, data) => {
+              if (err) {
+                return res.status(500).json({ error: err });
+              }
+
+              res.json(data);
+            }
           );
-        return res.status(200).send(articleCreatedEn);
+        break;
 
       case "de":
         const articleCreatedDe = await db
           .collection("deutsch")
           .updateOne(
             { _id: ObjectId("60aa927d71f1dfc4522acec0") },
-            { $push: { articles: article } }
-          );
-        return res.status(200).send(articleCreatedDe);
+            { $push: { articles: article } },
+            (err, data) => {
+              if (err) {
+                return res.status(500).json({ error: err });
+              }
 
+              res.json(data);
+            }
+          );
+        break;
       default:
         break;
     }
   } else if (req.method === "DELETE") {
-    console.log(req.query);
     switch (req.query.lang) {
       case "tr":
         const articleDeletedTr = await db
@@ -76,9 +92,7 @@ export default async (req, res) => {
             { $pull: { articles: { _id: ObjectId(req.query.articleID) } } },
             (err, data) => {
               if (err) {
-                return res
-                  .status(500)
-                  .json({ error: "error in deleting address" });
+                return res.status(500).json({ error: err });
               }
 
               res.json(data);
@@ -93,9 +107,7 @@ export default async (req, res) => {
             { $pull: { articles: { _id: ObjectId(req.query.articleID) } } },
             (err, data) => {
               if (err) {
-                return res
-                  .status(500)
-                  .json({ error: "error in deleting address" });
+                return res.status(500).json({ error: err });
               }
 
               res.json(data);
@@ -110,9 +122,7 @@ export default async (req, res) => {
             { $pull: { articles: { _id: ObjectId(req.query.articleID) } } },
             (err, data) => {
               if (err) {
-                return res
-                  .status(500)
-                  .json({ error: "error in deleting address" });
+                return res.status(500).json({ error: err });
               }
 
               res.json(data);
@@ -126,7 +136,6 @@ export default async (req, res) => {
   } else if (req.method === "PUT") {
     switch (req.query.lang) {
       case "tr":
-        console.log(req.body);
         const articleUpdatedTr = await db
           .collection("turkish")
           .findOneAndUpdate(
@@ -142,9 +151,7 @@ export default async (req, res) => {
             },
             (err, data) => {
               if (err) {
-                return res
-                  .status(500)
-                  .json({ error: "error in deleting address" });
+                return res.status(500).json({ error: err });
               }
 
               res.json(data);
@@ -152,8 +159,6 @@ export default async (req, res) => {
           );
         break;
       case "en":
-        console.log(req.body);
-
         const articleUpdatedEn = await db.collection("english").updateOne(
           {
             _id: ObjectId("60aa929f71f1dfc4522acec1"),
@@ -167,9 +172,7 @@ export default async (req, res) => {
           },
           (err, data) => {
             if (err) {
-              return res
-                .status(500)
-                .json({ error: "error in deleting address" });
+              return res.status(500).json({ error: err });
             }
 
             res.json(data);
@@ -177,8 +180,6 @@ export default async (req, res) => {
         );
         break;
       case "de":
-        console.log(req);
-
         const articleUpdatedDe = await db.collection("deutsch").updateOne(
           {
             _id: ObjectId("60aa927d71f1dfc4522acec0"),
@@ -192,9 +193,7 @@ export default async (req, res) => {
           },
           (err, data) => {
             if (err) {
-              return res
-                .status(500)
-                .json({ error: "error in deleting address" });
+              return res.status(500).json({ error: err });
             }
 
             res.json(data);
