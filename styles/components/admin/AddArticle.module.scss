@@ -23,6 +23,9 @@
       border: 1.5px solid #e12c2c;
       // background-image: linear-gradient(to left, #d9c5a4, #c1d39e);
     }
+    &::-webkit-scrollbar{
+      display: none;
+    }
     
   }
 

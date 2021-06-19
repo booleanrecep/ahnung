@@ -57,7 +57,7 @@ export const BlogList = (props) => {
                       : { filter: "saturate(0) blur(1.5px)" }
                   }
                 >
-                  <div onClick={() => props.handleEdit(_id)}>{editSvg}</div>
+                  <div onClick={ deletable ? () => props.handleEdit(_id) : () => null}>{editSvg}</div>
                   <div
                     onClick={
                       deletable ? () => props.handleDelete(_id) : () => null

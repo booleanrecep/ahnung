@@ -39,7 +39,7 @@ export default async (req, res) => {
         const articleCreatedTr = await db
           .collection("turkish")
           .updateOne(
-            { _id: ObjectId("60c76e1e6d6db58f0d3bddc6") },
+            { _id: ObjectId("60cda66c4e223001f9e1566e") },
             { $push: { articles: article } }
           );
         return res.status(200).send(articleCreatedTr);
@@ -72,7 +72,7 @@ export default async (req, res) => {
         const articleDeletedTr = await db
           .collection("turkish")
           .updateOne(
-            { _id: ObjectId("60c76e1e6d6db58f0d3bddc6") },
+            { _id: ObjectId("60cda66c4e223001f9e1566e") },
             { $pull: { articles: { _id: ObjectId(req.query.articleID) } } },
             (err, data) => {
               if (err) {
@@ -84,7 +84,7 @@ export default async (req, res) => {
               res.json(data);
             }
           );
-          break
+        break;
       case "en":
         const articleDeletedEn = await db
           .collection("english")
@@ -101,7 +101,7 @@ export default async (req, res) => {
               res.json(data);
             }
           );
-          break
+        break;
       case "de":
         const articleDeletedDe = await db
           .collection("deutsch")
@@ -118,7 +118,89 @@ export default async (req, res) => {
               res.json(data);
             }
           );
-          break
+        break;
+
+      default:
+        break;
+    }
+  } else if (req.method === "PUT") {
+    switch (req.query.lang) {
+      case "tr":
+        console.log(req.body);
+        const articleUpdatedTr = await db
+          .collection("turkish")
+          .findOneAndUpdate(
+            {
+              _id: ObjectId("60cda66c4e223001f9e1566e"),
+              "articles._id": ObjectId(req.body._id),
+            },
+            {
+              $set: {
+                "articles.$.title": req.body.title,
+                "articles.$.text": req.body.text,
+              },
+            },
+            (err, data) => {
+              if (err) {
+                return res
+                  .status(500)
+                  .json({ error: "error in deleting address" });
+              }
+
+              res.json(data);
+            }
+          );
+        break;
+      case "en":
+        console.log(req.body);
+
+        const articleUpdatedEn = await db.collection("english").updateOne(
+          {
+            _id: ObjectId("60aa929f71f1dfc4522acec1"),
+            "articles._id": ObjectId(req.body._id),
+          },
+          {
+            $set: {
+              "articles.$.title": req.body.title,
+              "articles.$.text": req.body.text,
+            },
+          },
+          (err, data) => {
+            if (err) {
+              return res
+                .status(500)
+                .json({ error: "error in deleting address" });
+            }
+
+            res.json(data);
+          }
+        );
+        break;
+      case "de":
+        console.log(req);
+
+        const articleUpdatedDe = await db.collection("deutsch").updateOne(
+          {
+            _id: ObjectId("60aa927d71f1dfc4522acec0"),
+            "articles._id": ObjectId(req.body._id),
+          },
+          {
+            $set: {
+              "articles.$.title": req.body.title,
+              "articles.$.text": req.body.text,
+            },
+          },
+          (err, data) => {
+            if (err) {
+              return res
+                .status(500)
+                .json({ error: "error in deleting address" });
+            }
+
+            res.json(data);
+          }
+        );
+        break;
 
       default:
         break;
