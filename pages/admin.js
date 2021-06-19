@@ -13,6 +13,8 @@ const Admin = (props) => {
   const [shownew, setShownew] = React.useState(false);
   const [load, setLoad] = React.useState(true);
   const [articlesList, setArticleList] = React.useState(props.db_data.articles);
+  const [editState, setEditState] = React.useState({article:null,isEdit:false});
+
   const handleNewArticle = () => {
     router.replace(queryStr, queryStr + "&new-article", { shallow: true });
     setShownew(true);
@@ -35,29 +37,30 @@ const Admin = (props) => {
       console.log(error);
     }
   };
-  const handleEdit = (id) => {
-    try {
-      const deleteID = "wait";
-      console.log(deleteID,"will be implemented")
-    } catch (error) {
-      console.log(error);
-    }
+  const handleEdit =async (id) => {
+    const editArt =   articlesList.find(
+          ({ _id }) => _id === id
+        );       
+
+        setEditState({article:editArt,isEdit:true})
+        setShownew(true)
+    
   };
   React.useEffect(() => {
-    setArticleList(props.db_data.articles)
-    router.asPath === queryStr + "&new-article"
-      ? setShownew(true)
-      : setShownew(false);
+    // setArticleList(props.db_data.articles)
+    // router.asPath === queryStr + "&new-article"
+    //   ? setShownew(true)
+    //   : setShownew(false);
     const id = setTimeout(() => setLoad(false), 300);
     return () => {
       setLoad(true);
       clearTimeout(id);
     };
-  }, [router.query.lang, router.asPath]);
+  }, [router.query.lang]);
   return (
     <>
       {shownew ? (
-        <AddArticle IP={props.IP} />
+        <AddArticle articleToEdit={editState} IP={props.IP} />
       ) : load === true ? (
         <div className="loader" />
       ) : (
