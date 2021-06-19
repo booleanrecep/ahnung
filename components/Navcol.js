@@ -30,6 +30,7 @@ export const Navcol = (props) => {
   const ref = React.createRef();
   const [expand, setExpand] = React.useState({
     toggle: true,
+    refer:null
   });
   const handleStyleExpand = () => {
     props.handleDisplay({ display: expand.toggle ? "none" : "flex" });
@@ -72,15 +73,16 @@ export const Navcol = (props) => {
 
   const handlePosition = React.useCallback(() => {
     window.pageYOffset > 50 && window.innerWidth > 768
-      ? (ref.current.style.top = "0px")
-      : (ref.current.style.top = "55px");
-  }, [ref]);
+      ? (expand.refer.style.top = "0px")
+      : (expand.refer.style.top = "55px");
+  }, [expand.refer]);
   React.useEffect(() => {
+    setExpand(preS=>({...preS,refer:ref.current}))
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);
     };
-  }, [ref, router.query.lang,router.asPath]);
+  }, [expand.refer,router.query.lang,router.asPath]);
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
