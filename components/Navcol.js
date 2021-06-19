@@ -80,7 +80,7 @@ export const Navcol = (props) => {
     return () => {
       window.removeEventListener("scroll", handlePosition);
     };
-  }, [ref, router.query.lang]);
+  }, [ref, router.query.lang,router.asPath]);
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
