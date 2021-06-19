@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 export const Header = (props) => {
   const router = useRouter();
   const ref = React.createRef();
+  const [state,setState]=React.useState(null)
   const objStyleBegin = {
     transform: "rotate(90deg)",
     margin: "50px -30px 0 0",
@@ -30,18 +31,20 @@ export const Header = (props) => {
   };
   const handlePosition = React.useCallback(() => {
     window.pageYOffset > 50 && window.innerWidth > 768
-      ? (objStyles(ref.current.style, objStyleBegin),
-        chldStyles(ref.current.children, childStyleBegin))
-      : (objStyles(ref.current.style, objStyleEnd),
-        chldStyles(ref.current.children, childStyleEnd));
-  }, [ref.current,router.asPath]);
+      ? (objStyles(state.style, objStyleBegin),
+        chldStyles(state.children, childStyleBegin))
+      : (objStyles(state.style, objStyleEnd),
+        chldStyles(state.children, childStyleEnd));
+  }, [state]);
 
   React.useEffect(() => {
+    setState(ref.current)
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);
     };
   }, [ref]);
+  console.log(state)
   return (
     <header className={`${styles.header}`}>
       <div id="lang" ref={ref} style={{ display: props.display }}>
