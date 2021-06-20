@@ -1,4 +1,4 @@
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import React from "react";
 import styles from "../styles/pages/about.module.scss";
 
@@ -30,59 +30,55 @@ const mailSvg = (
     ></path>
   </svg>
 );
-export default function About(props) {
-  const router = useRouter()
-  const [state, setState] = React.useState(props.db_data.about);
-  const [load, setLoad] = React.useState(true);
+export default function About({ db_data }) {
+  const router = useRouter();
+  const [state, setState] = React.useState({ load: true });
   React.useEffect(() => {
-    setState(props.db_data.about);
-    const id = setTimeout(() => setLoad(false), 300);
-    router.query.lang===undefined?router.push("/about?lang="+"tr"):null
+    const id = setTimeout(() => setState({ load: false }), 300);
+    router.query.lang === undefined ? router.push("/about?lang=" + "tr") : null;
     return () => {
       clearTimeout(id);
-      setLoad(true);
+      setState({ load: true });
     };
-  }, [props.db_data.about.title]);
+  }, [db_data.about.title]);
   return (
     <>
-      {load === true ? (
+      {state.load === true ? (
         <div className="loader" />
       ) : (
-        (({ title, desc }) => (
-          <div className={styles.about}>
-            <div className={styles.imagediv}>
-              <img src="/static/me.png" alt="Bonn" />
-              <div>
-                <h4>Recep Öztürk</h4>
-                <ul>
-                  <li>
-                    <a
-                      rel="noopener noreferrer"
-                      href="https://github.com/booleanrecep"
-                      target="_blank"
-                    >
-                      {githubSvg}
-                      <code>github.com/booleanrecep</code>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      rel="noopener noreferrer"
-                      href="mailto:recep.fed@gmail.com"
-                    >
-                      {mailSvg}
-                      <code>recep.fed@gmail.com</code>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className={styles.descriptiondiv}>
-              <h3>{title}</h3>
-              <p>{desc}</p>
+        <div className={styles.about}>
+          <div className={styles.imagediv}>
+            <img src="/static/me.png" alt="Bonn" />
+            <div>
+              <h4>Recep Öztürk</h4>
+              <ul>
+                <li>
+                  <a
+                    rel="noopener noreferrer"
+                    href="https://github.com/booleanrecep"
+                    target="_blank"
+                  >
+                    {githubSvg}
+                    <code>github.com/booleanrecep</code>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    rel="noopener noreferrer"
+                    href="mailto:recep.fed@gmail.com"
+                  >
+                    {mailSvg}
+                    <code>recep.fed@gmail.com</code>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
-        ))(state)
+          <div className={styles.descriptiondiv}>
+            <h3>{db_data.about.title}</h3>
+            <p>{db_data.about.desc}</p>
+          </div>
+        </div>
       )}
     </>
   );

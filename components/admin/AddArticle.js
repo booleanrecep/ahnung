@@ -2,19 +2,18 @@ import React from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/components/admin/AddArticle.module.scss";
 
-export const AddArticle = (props) => {
-  const { IP } = props;
+export const AddArticle = ({IP,articleToEdit}) => {
   const router = useRouter();
   const [state, setState] = React.useState({
-    title: props.articleToEdit.isEdit ? props.articleToEdit.article.title : "",
-    text: props.articleToEdit.isEdit ? props.articleToEdit.article.text : "",
-    id: props.articleToEdit.isEdit ? props.articleToEdit.article._id : null,
+    title: articleToEdit.isEdit ? articleToEdit.article.title : "",
+    text: articleToEdit.isEdit ? articleToEdit.article.text : "",
+    id: articleToEdit.isEdit ? articleToEdit.article._id : null,
     created: "none",
     stoids: [],
     stopSubmit: false,
     shakeIt: false,
+    load:true
   });
-  const ref = React.useRef();
   const handleChange = (e) => {
     e.preventDefault();
     setState((prevS) => ({
@@ -27,7 +26,7 @@ export const AddArticle = (props) => {
     e.preventDefault();
     setState((preS) => ({ ...preS, stopSubmit: true, shakeIt: false }));
 
-    switch (props.articleToEdit.isEdit) {
+    switch (articleToEdit.isEdit) {
       case true:
         try {
           const updateArt = await fetch("/api/data?lang=" + router.query.lang, {
@@ -104,30 +103,28 @@ export const AddArticle = (props) => {
         break;
     }
   };
-  const [load, setLoad] = React.useState(true);
   React.useEffect(() => {
-    props.articleToEdit.isEdit
-      ? router.replace(
-          "/admin?lang=" +
-            router.query.lang +
-            "&edit=" +
-            props.articleToEdit.article.title
-              .replace(/\s|!/g, "-")
-              .toLowerCase()
-        )
-      : router.push("/admin?lang=" + router.query.lang + "&new-article");
+    // articleToEdit.isEdit
+    //   ? router.replace(
+    //       "/admin?lang=" +
+    //         router.query.lang +
+    //         "&edit=" +
+    //         articleToEdit.article.title
+    //           .replace(/\s|!/g, "-")
+    //           .toLowerCase()
+    //     )
+    //   : router.push("/admin?lang=" + router.query.lang + "&new-article");
 
-    const id = setTimeout(() => setLoad(false), 300);
+    const id = setTimeout(() => setState((preS) => ({ ...preS, load: false })), 300);
     return () => {
-      setLoad(true);
+      setState((preS) => ({ ...preS, load: true, shakeIt: false  }))
       clearTimeout(id);
       state.stoids.map((id) => clearTimeout(id));
-      setState((preS) => ({ ...preS, shakeIt: false }));
     };
   }, [router.query.lang]);
   return (
     <>
-      {load === true ? (
+      {state.load === true ? (
         <div className="loader" />
       ) : (
         <>

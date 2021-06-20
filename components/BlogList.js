@@ -19,19 +19,23 @@ const garbageSvg = (
     ></path>
   </svg>
 );
-export const BlogList = (props) => {
+export const BlogList = ({
+  handleArticleIndex,
+  articles,
+  showFunc,
+  handleEdit,
+  handleDelete,
+}) => {
   const router = useRouter();
 
   return (
     <div className={styles.bloglist}>
       <ol>
-        {props.articles &&
-          props.articles.map(({ title, _id, deletable }) => (
+        {
+          articles.map(({ title, _id, deletable }) => (
             <li
               key={_id}
-              onClick={
-                props.showFunc ? undefined : () => props.handleArticleIndex(_id)
-              }
+              onClick={showFunc ? undefined : () => handleArticleIndex(_id)}
             >
               <Link
                 href={{
@@ -48,7 +52,7 @@ export const BlogList = (props) => {
                   {title.length > 15 ? title.slice(0, 15) + "..." : title}
                 </h4>
               </Link>
-              {props.showFunc ? (
+              {showFunc ? (
                 <div
                   className={styles.functions}
                   style={
@@ -57,11 +61,11 @@ export const BlogList = (props) => {
                       : { filter: "saturate(0) blur(1.5px)" }
                   }
                 >
-                  <div onClick={ deletable ? () => props.handleEdit(_id) : () => null}>{editSvg}</div>
+                  <div onClick={deletable ? () => handleEdit(_id) : () => null}>
+                    {editSvg}
+                  </div>
                   <div
-                    onClick={
-                      deletable ? () => props.handleDelete(_id) : () => null
-                    }
+                    onClick={deletable ? () => handleDelete(_id) : () => null}
                   >
                     {garbageSvg}
                   </div>

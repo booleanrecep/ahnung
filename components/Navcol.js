@@ -25,7 +25,7 @@ const keyFrameBackward = {
   animationFillMode: "backwards",
 };
 
-export const Navcol = (props) => {
+export const Navcol = ({handleDisplay}) => {
   const router = useRouter();
   const ref = React.createRef();
   const [expand, setExpand] = React.useState({
@@ -33,7 +33,7 @@ export const Navcol = (props) => {
     refer:null
   });
   const handleStyleExpand = () => {
-    props.handleDisplay({ display: expand.toggle ? "none" : "flex" });
+    handleDisplay({ display: expand.toggle ? "none" : "flex" });
     setExpand({
       transform: expand.toggle ? keyFrameForward : keyFrameBackward,
       opacity: expand.toggle ? "1" : "0",

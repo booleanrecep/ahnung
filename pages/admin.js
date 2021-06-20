@@ -7,61 +7,75 @@ import { Articles } from "../components/admin/Articles";
 import { AddArticle } from "../components/admin/AddArticle";
 import { NewArticle } from "../components/admin/NewArticle";
 
-const Admin = (props) => {
+const Admin = ({ IP, db_data }) => {
   const router = useRouter();
-  const queryStr = "/admin?lang=" + router.query.lang;
-  const [shownew, setShownew] = React.useState(false);
-  const [load, setLoad] = React.useState(true);
-  const [articlesList, setArticleList] = React.useState(props.db_data.articles);
-  const [editState, setEditState] = React.useState({article:null,isEdit:false});
-
+  const [state, setState] = React.useState({
+    shownew: false,
+    load: true,
+    articlesList: db_data.articles,
+    editState: {
+      article: null,
+      isEdit: false,
+    },
+  });
   const handleNewArticle = () => {
-    router.replace(queryStr, queryStr + "&new-article", { shallow: true });
-    setShownew(true);
+    // router.replace(queryStr, queryStr + "&new-article", { shallow: true });
+    setState((prevS) => ({
+      ...prevS,
+      shownew: true,
+    }));
   };
   const handleDelete = async (id) => {
     try {
-      const deleteArt =await fetch(
+      const deleteArt = await fetch(
         "/api/data?lang=" + router.query.lang + "&articleID=" + id,
         {
           method: "DELETE",
           "content-type": "application/json; charset=UTF-8",
         }
       );
-      const filteredList =await articlesList.filter(
+      const filteredList = await state.articlesList.filter(
         ({ _id }) => _id !== id
       );
-      console.log(deleteArt)
-      setArticleList(filteredList);
+      setState((prevS) => ({
+        ...prevS,
+        articlesList: filteredList,
+      }));
     } catch (error) {
       console.log(error);
     }
   };
-  const handleEdit =async (id) => {
-    const editArt =   articlesList.find(
-          ({ _id }) => _id === id
-        );       
-
-        setEditState({article:editArt,isEdit:true})
-        setShownew(true)
-    
+  const handleEdit = async (id) => {
+    const editArt = state.articlesList.find(({ _id }) => _id === id);
+    setState((prevS) => ({
+      ...prevS,
+      shownew: true,
+      editState: { article: editArt, isEdit: true },
+    }));
   };
   React.useEffect(() => {
-    // setArticleList(props.db_data.articles)
-    // router.asPath === queryStr + "&new-article"
-    //   ? setShownew(true)
-    //   : setShownew(false);
-    const id = setTimeout(() => setLoad(false), 300);
+    const id = setTimeout(
+      () =>
+        setState((prevS) => ({
+          ...prevS,
+          load: false,
+          articlesList: db_data.articles,
+        })),
+      300
+    );
     return () => {
-      setLoad(true);
+      setState((prevS) => ({
+        ...prevS,
+        load: true,
+      }));
       clearTimeout(id);
     };
   }, [router.query.lang]);
   return (
     <>
-      {shownew ? (
-        <AddArticle articleToEdit={editState} IP={props.IP} />
-      ) : load === true ? (
+      {state.shownew ? (
+        <AddArticle articleToEdit={state.editState} IP={IP} />
+      ) : state.load === true ? (
         <div className="loader" />
       ) : (
         <div className={styles.admin_page}>
@@ -72,7 +86,7 @@ const Admin = (props) => {
             <Articles
               handleEdit={handleEdit}
               handleDelete={handleDelete}
-              articles={articlesList}
+              articles={state.articlesList}
             />
           </div>
         </div>
