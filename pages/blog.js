@@ -4,31 +4,25 @@ import styles from "../styles/pages/blog.module.scss";
 import { Article } from "../components/Article";
 import { BlogList } from "../components/BlogList";
 
-export default function Blog(props) {
+export default function Blog({ db_data }) {
   const router = useRouter();
   const [index, setIndex] = React.useState(0);
   const handleIndex = (id) => {
-    const indx = props.db_data.articles.findIndex((art) => art._id === id);
+    const indx = db_data.articles.findIndex((art) => art._id === id);
     setIndex(indx);
   };
   React.useEffect(() => {
-    router.replace(
-      "/blog?lang=" + router.query.lang,
-      "/blog?lang=" +
-        router.query.lang +
-        "&article=" +
-        props.db_data.articles[index].title.replace(/\s|!/g, "-").toLowerCase()
-    );
-  }, [index, router.query.lang]);
+    return () => setIndex(0);
+  }, [router.query.lang]);
   return (
     <>
       <div className={styles.blog}>
         <BlogList
           handleArticleIndex={handleIndex}
-          articles={props.db_data.articles}
+          articles={db_data.articles}
         />
         <article className={styles.article}>
-          <Article {...props.db_data.articles[index]} />
+          <Article {...db_data.articles[index]} />
         </article>
       </div>
     </>

@@ -47,64 +47,62 @@ const linkedinSvg = (
   </svg>
 );
 
-export const Article = (props) => {
- 
-  const [state, setState] = React.useState(props);
-  const [load, setLoad] = React.useState(true);
- 
+export const Article = ({
+  clapCount,
+  date,
+  id,
+  readMin,
+  shareLnkd,
+  shareTwt,
+  tags,
+  text,
+  title,
+  img,
+}) => {
+  const [state, setState] = React.useState({ load: true });
+
   React.useEffect(() => {
-    setState(props)
-    const id = setTimeout(() => setLoad(false), 300);
+    const id = setTimeout(
+      () => setState((prevS) => ({ ...prevS, load: false })),
+      300
+    );
     return () => {
+      setState((prevS) => ({ ...prevS, load: true }));
       clearTimeout(id);
-      setLoad(true);
     };
-  }, [props.title]);
+  }, [title]);
 
   return (
     <>
-      {load === true ? (
+      {state.load === true ? (
         <div className="loader" />
       ) : (
-        (({
-          clapCount,
-          date,
-          id,
-          readMin,
-          shareLnkd,
-          shareTwt,
-          tags,
-          text,
-          title,
-          img,
-        }) => (
-          <>
-            <div className={styles.headerdiv}>
-              <Image src="/static/bonn.jpg" width={1000} height={250} />
-              <h3>{title}</h3>
-              <div className={styles.tools}>
-                <div className={styles.counts}>
-                  {readMin} min read | {clapSvg} {clapCount}
-                </div>
-                <div className={styles.date}>{date && date.slice(0, 10)}</div>
-                <div className={styles.tags}>
-                  {tags &&
-                    tags.map((tag) => (
-                      <span key={tag}>
-                        <a>{tag}</a>
-                      </span>
-                    ))}
-                </div>
-                <div className={styles.socials}>
-                  {twitterSvg} {linkedinSvg}
-                </div>
+        <>
+          <div className={styles.headerdiv}>
+            <Image src="/static/bonn.jpg" width={1000} height={250} />
+            <h3>{title}</h3>
+            <div className={styles.tools}>
+              <div className={styles.counts}>
+                {readMin} min read | {clapSvg} {clapCount}
+              </div>
+              <div className={styles.date}>{date && date.slice(0, 10)}</div>
+              <div className={styles.tags}>
+                {tags &&
+                  tags.map((tag) => (
+                    <span key={tag}>
+                      <a>{tag}</a>
+                    </span>
+                  ))}
+              </div>
+              <div className={styles.socials}>
+                {twitterSvg} {linkedinSvg}
               </div>
             </div>
-            <div className={styles.text}>
-              <p>{text}</p>
-            </div>
-          </>
-        ))(state)
+          </div>
+          <div className={styles.text}>
+            <p>{text}</p>
+          </div>
+        </>
       )}
     </>
   );

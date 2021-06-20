@@ -16,17 +16,16 @@
     resize: none;
     font-size: inherit;
     font-family: inherit;
-    &:valid{
+    &:valid {
       border: 1.5px solid #3fca5d;
     }
-    &:invalid{
+    &:invalid {
       border: 1.5px solid #e12c2c;
       // background-image: linear-gradient(to left, #d9c5a4, #c1d39e);
     }
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
     }
-    
   }
 
   .textarea {
@@ -43,10 +42,10 @@
     font-style: italic;
     font-size: inherit;
     font-family: inherit;
-    &:valid{
+    &:valid {
       border: 1.5px solid #3fca5d;
     }
-    &:invalid{
+    &:invalid {
       border: 1.5px solid #e12c2c;
     }
   }
@@ -71,4 +70,3 @@
     }
   }
 }
-

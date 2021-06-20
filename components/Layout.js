@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { Header } from "./Header";
 import { Navcol } from "./Navcol";
-export const Layout = (props) => {
+export const Layout = ({children}) => {
   const size = 30;
   const [style, setStyle] = React.useState({ display: "flex" });
   return (
@@ -57,7 +57,7 @@ export const Layout = (props) => {
         <Header display={style.display} />
         <main className="main">
           <Navcol handleDisplay={setStyle} />
-          <div className="content">{props.children}</div>
+          <div className="content">{children}</div>
         </main>
         <footer className="footer">Here comes the footer</footer>
       </div>
