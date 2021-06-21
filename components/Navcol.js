@@ -25,12 +25,12 @@ const keyFrameBackward = {
   animationFillMode: "backwards",
 };
 
-export const Navcol = ({handleDisplay}) => {
+export const Navcol = ({ handleDisplay }) => {
   const router = useRouter();
   const ref = React.createRef();
   const [expand, setExpand] = React.useState({
     toggle: true,
-    refer:null
+    refer: null,
   });
   const handleStyleExpand = () => {
     handleDisplay({ display: expand.toggle ? "none" : "flex" });
@@ -77,12 +77,12 @@ export const Navcol = ({handleDisplay}) => {
       : (expand.refer.style.top = "55px");
   }, [expand.refer]);
   React.useEffect(() => {
-    setExpand(preS=>({...preS,refer:ref.current}))
+    setExpand((preS) => ({ ...preS, refer: ref.current }));
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);
     };
-  }, [expand.refer,router.query.lang,router.asPath]);
+  }, [expand.refer, router.query.lang, router.asPath]);
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
@@ -104,10 +104,15 @@ export const Navcol = ({handleDisplay}) => {
           className={styles.admin}
         >
           <Link
-            href={
-              "/admin?lang=" +
-              `${router.query.lang === undefined ? "tr" : router.query.lang}`
-            }
+            href={{
+              pathname: "/admin",
+              query: {
+                lang:
+                  router.query.lang === undefined ? "tr" : router.query.lang,
+              },
+            }}
+            // replace
+            // shallow
           >
             {articleSvg}
           </Link>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/components/admin/AddArticle.module.scss";
-
+import  {capitalize,countMinute} from "../../helpers/index"
 export const AddArticle = ({IP,articleToEdit}) => {
   const router = useRouter();
   const [state, setState] = React.useState({
@@ -21,7 +21,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
       [e.target.name]: e.target.value,
     }));
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setState((preS) => ({ ...preS, stopSubmit: true, shakeIt: false }));
@@ -37,7 +37,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
               "sec-gpc": "1",
             },
             body: JSON.stringify({
-              title: state.title,
+              title: capitalize(state.title),
               text: state.text,
               _id: state.id,
             }),
@@ -75,7 +75,11 @@ export const AddArticle = ({IP,articleToEdit}) => {
               "sec-gpc": "1",
             },
             referrerPolicy: "strict-origin-when-cross-origin",
-            body: JSON.stringify(state),
+            body: JSON.stringify({
+              title: capitalize(state.title),
+              text: state.text,
+              readMin:countMinute(state.text)
+            }),
             method: "POST",
             mode: "cors",
             credentials: "omit",

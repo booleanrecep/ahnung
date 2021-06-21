@@ -142,4 +142,12 @@ h4 {
   }
 }
 
+@keyframes color-pop {
+  0% {
+    filter: invert(0.8);
+  }
+  100% {
+    filter: invert(0);
+  }
+}
 @import "media_queires";

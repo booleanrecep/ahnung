@@ -24,6 +24,13 @@ $tagsBgColor: #4184e41a;
       height: 30px;
       padding-left: 0.5em;
       padding-top: 5px;
+      margin-right: 10px;
+      sup {
+        color: #0a402c;
+        font-size: 13.5px;
+        position: absolute;
+        margin: -2px 0 0 2px;
+      }
     }
     .date {
       margin-top: 12px;
