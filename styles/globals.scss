@@ -182,6 +182,7 @@ h4 {
   100% {
     filter: invert(0.5);
     filter: drop-shadow(5px 2px 2px green);
+    -webkit-backdrop-filter:drop-shadow(5px 2px 2px green);
     transform: scale(1.5);
   }
 }
