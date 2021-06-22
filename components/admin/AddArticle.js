@@ -77,7 +77,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
 
   const popCreatedArticle =document.querySelector(".article-created") || {}
 
-  state.created?
+  !state.created?
    popCreatedArticle.className="article-created-tick"
    :popCreatedArticle.className="article-created"
   React.useEffect(() => {

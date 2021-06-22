@@ -100,8 +100,8 @@ h4 {
   // display: none;
   display: initial;
   color: #49af46;
-  margin-left: 35px;
-  animation: created-pop 0.9s ease-in-out infinite;
+  float: right;
+  animation: created-pop 0.6s ease-in-out infinite;
 }
 .article-created {
   display: none;
