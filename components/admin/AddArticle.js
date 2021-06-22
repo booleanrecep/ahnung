@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/components/admin/AddArticle.module.scss";
-import  {capitalize,countMinute} from "../../helpers/index"
+import  {apiCallAdd,apiCallEdit} from "../../helpers/index"
 export const AddArticle = ({IP,articleToEdit}) => {
   const router = useRouter();
   const [state, setState] = React.useState({
@@ -29,22 +29,8 @@ export const AddArticle = ({IP,articleToEdit}) => {
     switch (articleToEdit.isEdit) {
       case true:
         try {
-          const updateArt = await fetch("/api/data?lang=" + router.query.lang, {
-            headers: {
-              accept: "*/*",
-              "content-type": "application/json; charset=UTF-8",
-              "sec-fetch-site": "same-origin",
-              "sec-gpc": "1",
-            },
-            body: JSON.stringify({
-              title: capitalize(state.title),
-              text: state.text,
-              _id: state.id,
-            }),
-            method: "PUT",
-            credentials: "omit",
-          });
-
+          apiCallEdit(router.query.lang,state)
+         
           const id1 = setTimeout(
             () => setState({ title: "", text: "", created: "none" }),
             1900
@@ -65,26 +51,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
 
       case false:
         try {
-          const newData = await fetch("/api/data?lang=" + router.query.lang, {
-            headers: {
-              accept: "*/*",
-              "content-type": "application/json; charset=UTF-8",
-              "sec-fetch-dest": "empty",
-              "sec-fetch-mode": "cors",
-              "sec-fetch-site": "same-origin",
-              "sec-gpc": "1",
-            },
-            referrerPolicy: "strict-origin-when-cross-origin",
-            body: JSON.stringify({
-              title: capitalize(state.title),
-              text: state.text,
-              readMin:countMinute(state.text)
-            }),
-            method: "POST",
-            mode: "cors",
-            credentials: "omit",
-          });
-          console.log(newData.statusText);
+          apiCallAdd(router.query.lang,state)
 
           const id1 = setTimeout(
             () => setState({ title: "", text: "", created: "none" }),
@@ -108,17 +75,6 @@ export const AddArticle = ({IP,articleToEdit}) => {
     }
   };
   React.useEffect(() => {
-    // articleToEdit.isEdit
-    //   ? router.replace(
-    //       "/admin?lang=" +
-    //         router.query.lang +
-    //         "&edit=" +
-    //         articleToEdit.article.title
-    //           .replace(/\s|!/g, "-")
-    //           .toLowerCase()
-    //     )
-    //   : router.push("/admin?lang=" + router.query.lang + "&new-article");
-
     const id = setTimeout(() => setState((preS) => ({ ...preS, load: false })), 300);
     return () => {
       setState((preS) => ({ ...preS, load: true, shakeIt: false  }))

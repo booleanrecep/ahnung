@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/components/Navcol.module.scss";
-import { NavLink } from "./NavLink";
+import { NavLink } from "./index";
 
 const articleSvg = (
   <svg viewBox="-20 0 15 16">
