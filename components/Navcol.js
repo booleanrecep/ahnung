@@ -25,7 +25,7 @@ const keyFrameBackward = {
   animationFillMode: "backwards",
 };
 
-export const Navcol =React.memo(({ handleDisplay }) => {
+export const Navcol = React.memo(({ handleDisplay }) => {
   const router = useRouter();
   const ref = React.createRef();
   const [expand, setExpand] = React.useState({
@@ -48,24 +48,27 @@ export const Navcol =React.memo(({ handleDisplay }) => {
       case "tr":
         return {
           lang: "tr",
-          navbars: ["HAKKIMDA", "BLOG"],
+          navbars: ["HAKKIMDA", ["BLOG", <b className="article-created">✔</b>]],
         };
       case "en":
         return {
           lang: "en",
-          navbars: ["ABOUT", "BLOG"],
+          navbars: ["ABOUT", ["BLOG", <b className="article-created">✔</b>]],
         };
 
       case "de":
         return {
           lang: "de",
-          navbars: ["ÜBER MICH", "BLOG"],
+          navbars: [
+            "ÜBER MICH",
+            ["BLOG", <b className="article-created">✔</b>],
+          ],
         };
 
       default:
         return {
           lang: "tr",
-          navbars: ["HAKKIMDA", "BLOG"],
+          navbars: ["HAKKIMDA", ["BLOG", <b className="article-created">✔</b>]],
         };
     }
   };

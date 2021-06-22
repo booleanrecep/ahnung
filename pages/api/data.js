@@ -31,7 +31,7 @@ export default async (req, res) => {
     const article = new model.Article({
       title: req.body.title,
       text: req.body.text,
-      readMin:req.body.readMin
+      readMin: req.body.readMin,
     });
     switch (req.query.lang) {
       case "tr":

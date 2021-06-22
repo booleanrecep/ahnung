@@ -8,7 +8,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
     title: articleToEdit.isEdit ? articleToEdit.article.title : "",
     text: articleToEdit.isEdit ? articleToEdit.article.text : "",
     id: articleToEdit.isEdit ? articleToEdit.article._id : null,
-    created: "none",
+    created: false,
     stoids: [],
     stopSubmit: false,
     shakeIt: false,
@@ -32,7 +32,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
           apiCallEdit(router.query.lang,state)
          
           const id1 = setTimeout(
-            () => setState({ title: "", text: "", created: "none" }),
+            () => setState({ title: "", text: "", created: false }),
             1900
           );
           const id2 = setTimeout(
@@ -41,7 +41,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
           );
           setState((prevS) => ({
             ...prevS,
-            created: "flex",
+            created: true,
             stoids: [id1, id2],
           }));
         } catch (error) {
@@ -54,7 +54,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
           apiCallAdd(router.query.lang,state)
 
           const id1 = setTimeout(
-            () => setState({ title: "", text: "", created: "none" }),
+            () => setState({ title: "", text: "", created: false }),
             1900
           );
           const id2 = setTimeout(
@@ -63,7 +63,7 @@ export const AddArticle = ({IP,articleToEdit}) => {
           );
           setState((prevS) => ({
             ...prevS,
-            created: "flex",
+            created: true,
             stoids: [id1, id2],
           }));
         } catch (error) {
@@ -74,9 +74,16 @@ export const AddArticle = ({IP,articleToEdit}) => {
         break;
     }
   };
+
+  const popCreatedArticle =document.querySelector(".article-created") || {}
+
+  state.created?
+   popCreatedArticle.className="article-created-tick"
+   :popCreatedArticle.className="article-created"
   React.useEffect(() => {
     const id = setTimeout(() => setState((preS) => ({ ...preS, load: false })), 300);
     return () => {
+      popCreatedArticle.className="article-created"
       setState((preS) => ({ ...preS, load: true, shakeIt: false  }))
       clearTimeout(id);
       state.stoids.map((id) => clearTimeout(id));
@@ -87,18 +94,6 @@ export const AddArticle = ({IP,articleToEdit}) => {
       {state.load === true ? (
         <div className="loader" />
       ) : (
-        <>
-          <div style={{ display: state.created }} className="article-created">
-            <span>&#10004;</span>
-            <b>{state.title}</b>
-            <i>created</i>
-            <span>
-              <small>Your IP: </small>
-              <strong>
-                <small>{IP}</small>
-              </strong>
-            </span>
-          </div>
           <form
             className={styles.articleForm}
             method="post"
@@ -147,7 +142,6 @@ export const AddArticle = ({IP,articleToEdit}) => {
               }}
             />
           </form>
-        </>
       )}
     </>
   );

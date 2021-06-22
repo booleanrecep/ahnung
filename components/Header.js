@@ -26,10 +26,10 @@ const chldStyles = (chldArr, sty) => {
     .map((chl) => Object.assign(chl.style, sty));
 };
 
-export const Header = ({display}) => {
+export const Header = ({ display }) => {
   const router = useRouter();
   const ref = React.createRef();
-  const [state,setState]=React.useState(null)
+  const [state, setState] = React.useState(null);
   const handlePosition = React.useCallback(() => {
     window.pageYOffset > 50 && window.innerWidth > 768
       ? (objStyles(state.style, objStyleBegin),
@@ -39,7 +39,7 @@ export const Header = ({display}) => {
   }, [state]);
 
   React.useEffect(() => {
-    setState(ref.current)
+    setState(ref.current);
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);

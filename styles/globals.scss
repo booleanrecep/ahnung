@@ -61,7 +61,7 @@ h4 {
   border-bottom: 5px solid #3498db;
 }
 
-.article-created {
+.article-created-circle {
   margin-top: 40px;
   min-width: 200px;
   min-height: 200px;
@@ -95,6 +95,18 @@ h4 {
   width: auto;
   min-width: 96vw;
 }
+
+.article-created-tick {
+  // display: none;
+  display: initial;
+  color: #49af46;
+  margin-left: 35px;
+  animation: created-pop 0.9s ease-in-out infinite;
+}
+.article-created {
+  display: none;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
   0% {
@@ -155,9 +167,22 @@ h4 {
 @keyframes color-pop {
   0% {
     filter: invert(0.8);
+    transform: scale(0.8);
   }
   100% {
     filter: invert(0);
+    transform: scale(1.5);
+  }
+}
+@keyframes created-pop {
+  0% {
+    filter: invert(0.1);
+    transform: scale(0.8);
+  }
+  100% {
+    filter: invert(0.5);
+    filter: drop-shadow(5px 2px 2px green);
+    transform: scale(1.5);
   }
 }
 @import "media_queires";

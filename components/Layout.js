@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import {Header,Navcol,WIPGear} from "./index"
-export const Layout = React.memo(({children}) => {
+import { Header, Navcol, WIPGear } from "./index";
+export const Layout = React.memo(({ children }) => {
   const [style, setStyle] = React.useState({ display: "flex" });
   return (
     <>
@@ -11,7 +11,7 @@ export const Layout = React.memo(({children}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container">
-      <WIPGear/>
+        <WIPGear />
         <Header display={style.display} />
         <main className="main">
           <Navcol handleDisplay={setStyle} />

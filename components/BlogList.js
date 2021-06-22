@@ -31,48 +31,43 @@ export const BlogList = ({
   return (
     <div className={styles.bloglist}>
       <ol>
-        {
-          articles.map(({ title, _id, deletable }) => (
-            <li
-              key={_id}
-              onClick={showFunc ? undefined : () => handleArticleIndex(_id)}
+        {articles.map(({ title, _id, deletable }) => (
+          <li
+            key={_id}
+            onClick={showFunc ? undefined : () => handleArticleIndex(_id)}
+          >
+            <Link
+              href={{
+                pathname: "/blog",
+                query: {
+                  lang: router.query.lang,
+                  article: title.replace(/\s|!/g, "-").toLowerCase(),
+                },
+              }}
+              replace
+              shallow
             >
-              <Link
-                href={{
-                  pathname: "/blog",
-                  query: {
-                    lang: router.query.lang,
-                    article: title.replace(/\s|!/g, "-").toLowerCase(),
-                  },
-                }}
-                replace
-                shallow
+              <h4>{title.length > 15 ? title.slice(0, 15) + "..." : title}</h4>
+            </Link>
+            {showFunc ? (
+              <div
+                className={styles.functions}
+                style={
+                  deletable
+                    ? { filter: "saturate(1) blur(0px)" }
+                    : { filter: "saturate(0) blur(1.5px)" }
+                }
               >
-                <h4>
-                  {title.length > 15 ? title.slice(0, 15) + "..." : title}
-                </h4>
-              </Link>
-              {showFunc ? (
-                <div
-                  className={styles.functions}
-                  style={
-                    deletable
-                      ? { filter: "saturate(1) blur(0px)" }
-                      : { filter: "saturate(0) blur(1.5px)" }
-                  }
-                >
-                  <div onClick={deletable ? () => handleEdit(_id) : () => null}>
-                    {editSvg}
-                  </div>
-                  <div
-                    onClick={deletable ? () => handleDelete(_id) : () => null}
-                  >
-                    {garbageSvg}
-                  </div>
+                <div onClick={deletable ? () => handleEdit(_id) : () => null}>
+                  {editSvg}
                 </div>
-              ) : null}
-            </li>
-          ))}
+                <div onClick={deletable ? () => handleDelete(_id) : () => null}>
+                  {garbageSvg}
+                </div>
+              </div>
+            ) : null}
+          </li>
+        ))}
       </ol>
     </div>
   );
