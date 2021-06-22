@@ -30,6 +30,7 @@ body {
   min-height: 500px;
   border: 1px solid #21094e;
   border-top: none;
+  transition: all 0.3s ease-out;
 }
 .footer {
   background-color: $footerBgColor;
@@ -85,6 +86,15 @@ h4 {
   }
 }
 
+.full-screen {
+  position: absolute;
+  background: inherit;
+  z-index: 5;
+  margin-top: -57px;
+  font-size: 18px;
+  width: auto;
+  min-width: 96vw;
+}
 /* Safari */
 @-webkit-keyframes spin {
   0% {
