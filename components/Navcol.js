@@ -25,7 +25,7 @@ const keyFrameBackward = {
   animationFillMode: "backwards",
 };
 
-export const Navcol = ({ handleDisplay }) => {
+export const Navcol =React.memo(({ handleDisplay }) => {
   const router = useRouter();
   const ref = React.createRef();
   const [expand, setExpand] = React.useState({
@@ -120,4 +120,4 @@ export const Navcol = ({ handleDisplay }) => {
       </div>
     </div>
   );
-};
+});

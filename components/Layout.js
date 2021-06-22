@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { Header } from "./Header";
 import { Navcol } from "./Navcol";
-export const Layout = ({children}) => {
+export const Layout = React.memo(({children}) => {
   const size = 30;
   const [style, setStyle] = React.useState({ display: "flex" });
   return (
@@ -63,4 +63,4 @@ export const Layout = ({children}) => {
       </div>
     </>
   );
-};
+});
