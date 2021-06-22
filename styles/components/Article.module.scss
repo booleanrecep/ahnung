@@ -4,7 +4,11 @@ $tagsBgColor: #4184e41a;
   border: 1px solid #511281;
   padding: 1em;
   border-bottom: none;
-
+  .fullscreen {
+    float: right;
+    margin-top: -8px;
+    margin-bottom: 8px;
+  }
   h3,
   h4 {
     margin: 5px;
