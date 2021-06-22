@@ -1,8 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/pages/blog.module.scss";
-import { Article } from "../components/Article";
-import { BlogList } from "../components/BlogList";
+import { Article, BlogList } from "../components/index";
 
 export default function Blog({ db_data }) {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-
+import  {apiCallClap} from "../helpers/index"
 import styles from "../styles/components/Article.module.scss";
 import Image from "next/image";
 
@@ -57,20 +57,7 @@ export const Article = ({
   });
   const handleClap = async () => {
     try {
-      const updateClap = await fetch("/api/clap?lang=" + router.query.lang, {
-        headers: {
-          accept: "*/*",
-          "content-type": "application/json; charset=UTF-8",
-          "sec-fetch-site": "same-origin",
-          "sec-gpc": "1",
-        },
-        body: JSON.stringify({
-          clapCount: state.clapC + 1,
-          _id: state.id,
-        }),
-        method: "PUT",
-        credentials: "omit",
-      });
+      apiCallClap(router.query.lang,state)
 
       setState((prevS) => ({ ...prevS, clapC: prevS.clapC + 1, toggle: true }));
     } catch (error) {

@@ -3,9 +3,7 @@ import { useRouter } from "next/router";
 import os from "os";
 
 import styles from "../styles/pages/admin.module.scss";
-import { Articles } from "../components/admin/Articles";
-import { AddArticle } from "../components/admin/AddArticle";
-import { NewArticle } from "../components/admin/NewArticle";
+import { NewArticle, AddArticle, Articles } from "../components/admin/index";
 
 const Admin = ({ IP, db_data }) => {
   const router = useRouter();
