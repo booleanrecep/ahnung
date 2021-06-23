@@ -130,7 +130,7 @@ export const Article = ({
                 <sup
                   style={{
                     animation: state.clapToggle
-                      ? "color-pop .2s linear "
+                      ? "color-pop .3s linear "
                       : "none",
                   }}
                 >

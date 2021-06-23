@@ -4,6 +4,7 @@
   padding-left: 5px;
   flex-direction: column;
   border: 1px solid #511281;
+  transition: height 0.3s ease-in-out;
   ol {
     display: inline-block;
     width: auto;
@@ -52,15 +53,10 @@
     }
   }
   .arrows {
-    // border: 2px solid red;
     align-self: center;
-    transition: margin-top 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-    transition: transform 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) reverse;
-    // margin-top: -180;
-
-    & > span {
-      font-size: 35px;
-    }
+    transition: transform 0.4s linear;
+    font-size: 35px;
+    height: 35px;
   }
 }
 @import "../media_queires";
