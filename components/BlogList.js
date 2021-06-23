@@ -19,6 +19,18 @@ const garbageSvg = (
     ></path>
   </svg>
 );
+
+const arrowSvg = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    viewBox="0 0 24 24"
+    fill="red"
+  >
+    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.218 19l-1.782-1.75 5.25-5.25-5.25-5.25 1.782-1.75 6.968 7-6.968 7z" />
+  </svg>
+);
 export const BlogList = ({
   handleArticleIndex,
   articles,
@@ -27,7 +39,38 @@ export const BlogList = ({
   handleDelete,
 }) => {
   const router = useRouter();
+  const [state, setState] = React.useState({
+    windowWidth: 0,
+    marginTop: -142,
+    arrowOffsetTop: 180,
+  });
+  const mobileWidth = 550;
+  const handleUpDownClick = () => {
+    const arrowOffsetTop =
+      state.windowWidth > mobileWidth
+        ? 0
+        : document.querySelector(`.${styles.arrows}`).offsetTop;
+    setState((prevS) => ({
+      ...prevS,
+      marginTop:
+        prevS.marginTop > -200 && arrowOffsetTop > 180
+          ? prevS.marginTop - 142
+          : 0,
+    }));
+  };
+  React.useEffect(() => {
+    const windowWidth = window.innerWidth;
 
+    const handleResize = () =>
+      setState((prevS) => ({
+        ...prevS,
+        windowWidth: windowWidth,
+      }));
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [router.query.lang, state.marginTop]);
   return (
     <div className={styles.bloglist}>
       <ol>
@@ -69,6 +112,18 @@ export const BlogList = ({
           </li>
         ))}
       </ol>
+      {state.windowWidth < mobileWidth && !showFunc ? (
+        <div
+          className={styles.arrows}
+          style={{
+            marginTop: state.marginTop + "px",
+            transform:
+              state.marginTop === 0 ? "rotate(-90deg)" : "rotate(90deg)",
+          }}
+        >
+          <span onClick={handleUpDownClick}>{arrowSvg} </span>
+        </div>
+      ) : null}
     </div>
   );
 };
