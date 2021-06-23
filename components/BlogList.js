@@ -41,26 +41,19 @@ export const BlogList = ({
   const router = useRouter();
   const [state, setState] = React.useState({
     windowWidth: 0,
-    marginTop: -142,
-    arrowOffsetTop: 180,
+    toggle: false,
   });
+
   const mobileWidth = 550;
   const handleUpDownClick = () => {
-    const arrowOffsetTop =
-      state.windowWidth > mobileWidth
-        ? 0
-        : document.querySelector(`.${styles.arrows}`).offsetTop;
     setState((prevS) => ({
       ...prevS,
-      marginTop:
-        prevS.marginTop > -200 && arrowOffsetTop > 180
-          ? prevS.marginTop - 142
-          : 0,
+      toggle: !prevS.toggle,
     }));
   };
+
   React.useEffect(() => {
     const windowWidth = window.innerWidth;
-
     const handleResize = () =>
       setState((prevS) => ({
         ...prevS,
@@ -70,9 +63,15 @@ export const BlogList = ({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [router.query.lang, state.marginTop]);
+  }, [router.query.lang]);
+
   return (
-    <div className={styles.bloglist}>
+    <div
+      className={styles.bloglist}
+      style={{
+        height: !state.toggle ? 160 + "px" : articles.length * 60 + "px",
+      }}
+    >
       <ol>
         {articles.map(({ title, _id, deletable }) => (
           <li
@@ -113,16 +112,15 @@ export const BlogList = ({
         ))}
       </ol>
       {state.windowWidth < mobileWidth && !showFunc ? (
-        <div
+        <span
           className={styles.arrows}
           style={{
-            marginTop: state.marginTop + "px",
-            transform:
-              state.marginTop === 0 ? "rotate(-90deg)" : "rotate(90deg)",
+            transform: state.toggle ? "rotate(-90deg)" : "rotate(90deg)",
           }}
+          onClick={handleUpDownClick}
         >
-          <span onClick={handleUpDownClick}>{arrowSvg} </span>
-        </div>
+          {arrowSvg}{" "}
+        </span>
       ) : null}
     </div>
   );

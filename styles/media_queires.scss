@@ -170,12 +170,12 @@ $descriptionFontSize: 17px;
       .admin {
         margin-left: -10px;
 
-        padding-top: 0;
+        margin-top: -30px;
         padding-right: 2px;
         padding-left: 2px;
         opacity: 0;
         pointer-events: none;
-        display: none;
+        width: 0;
         svg {
           .text {
             font-size: 12px;

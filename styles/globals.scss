@@ -183,10 +183,11 @@ h4 {
     transform: scale(0.8);
   }
   100% {
-    filter: invert(0.5);
+    filter: invert(0.3);
     filter: drop-shadow(5px 2px 2px green);
     -webkit-backdrop-filter: drop-shadow(5px 2px 2px green);
     transform: scale(1.5);
   }
 }
+
 @import "media_queires";
