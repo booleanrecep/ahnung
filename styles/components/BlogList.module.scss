@@ -2,7 +2,7 @@
   flex-grow: 1;
   display: flex;
   padding-left: 5px;
-
+  flex-direction: column;
   border: 1px solid #511281;
   ol {
     display: inline-block;
@@ -49,6 +49,17 @@
           color: #cfdce8;
         }
       }
+    }
+  }
+  .arrows {
+    // border: 2px solid red;
+    align-self: center;
+    transition: margin-top 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: transform 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) reverse;
+    // margin-top: -180;
+
+    & > span {
+      font-size: 35px;
     }
   }
 }
