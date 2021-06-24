@@ -5,7 +5,6 @@ import { NavLink } from "./index";
 
 export const Navcol = React.memo(({ handleDisplay }) => {
   const router = useRouter();
-  const ref = React.createRef();
   const changeText = () => {
     switch (router.query.lang) {
       case "tr":
@@ -74,12 +73,14 @@ export const Navcol = React.memo(({ handleDisplay }) => {
   };
   const nav_text = React.useMemo(() => changeText(), [router.query.lang]);
 
-  const handlePosition = () => {
-    window.pageYOffset > 50 && window.innerWidth > 768
-      ? (ref.current.style.top = "0px")
-      : (ref.current.style.top = "55px");
-  };
+ 
   React.useEffect(() => {
+    const handlePosition = () => {
+      const div= document.querySelector(`.${styles.tabs}`)
+      window.pageYOffset > 50 && window.innerWidth > 768
+        ? (div.style.top = "0px")
+        : (div.style.top = "55px");
+    };
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);
@@ -87,7 +88,7 @@ export const Navcol = React.memo(({ handleDisplay }) => {
   }, [router.query.lang, router.asPath]);
   return (
     <div className={styles.navcol}>
-      <div className={styles.tabs} ref={ref}>
+      <div className={styles.tabs} >
         <NavLink lang={router.query.lang} navbars={nav_text.navbars} />
       </div>
     </div>
