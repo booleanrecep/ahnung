@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 export const Header = () => {
   const router = useRouter();
-  console.log("HHH");
   return (
     <header className={`${styles.header}`}>
       <div id="lang">

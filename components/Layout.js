@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import { Header, Navcol, WIPGear } from "./index";
 export const Layout = ({ children }) => {
-  console.log("LLLLayout");
   return (
     <>
       <Head>
