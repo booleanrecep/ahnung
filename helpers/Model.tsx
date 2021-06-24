@@ -9,7 +9,7 @@ title: Thor and the Midgard Serpent
 import * as THREE from "three"
 import React, { useRef, useState, useEffect } from "react"
 import { useGLTF } from "@react-three/drei"
-type GLTFResult = GLTF & {
+type GLTFResult = THREE.GLTF & {
   nodes: {
     Circle011_EyeFire_0: THREE.Mesh
     Circle011_SerpentBake_0: THREE.Mesh
