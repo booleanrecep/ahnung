@@ -1,48 +1,11 @@
 import React from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/components/Navcol.module.scss";
 import { NavLink } from "./index";
 
-const articleSvg = (
-  <svg viewBox="-20 0 15 16">
-    <text className={styles.text} x="-42" y="10" fill="#768390">
-      ADMIN
-    </text>
-    <title>Admin</title>
-    <path
-      fillRule="evenodd"
-      d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"
-    ></path>
-  </svg>
-);
-const keyFrameForward = {
-  animation: "turnForward 0.3s linear",
-  animationFillMode: "forwards",
-};
-const keyFrameBackward = {
-  animation: "turnBackward 0.3s linear",
-  animationFillMode: "backwards",
-};
-
 export const Navcol = React.memo(({ handleDisplay }) => {
   const router = useRouter();
   const ref = React.createRef();
-  const [expand, setExpand] = React.useState({
-    toggle: true,
-    refer: null,
-  });
-  const handleStyleExpand = () => {
-    handleDisplay({ display: expand.toggle ? "none" : "flex" });
-    setExpand({
-      transform: expand.toggle ? keyFrameForward : keyFrameBackward,
-      opacity: expand.toggle ? "1" : "0",
-      marginTop: expand.toggle ? "10px" : "-30px",
-      pointerEvents: expand.toggle ? "inherit" : "none",
-      width: expand.toggle ? "inherit" : "0px",
-      toggle: !expand.toggle,
-    });
-  };
   const changeText = () => {
     switch (router.query.lang) {
       case "tr":
@@ -56,7 +19,8 @@ export const Navcol = React.memo(({ handleDisplay }) => {
                 ✔
               </b>,
             ],
-            "GALERİ"
+            "GALERİ",
+            "ADMİN",
           ],
         };
       case "en":
@@ -70,7 +34,8 @@ export const Navcol = React.memo(({ handleDisplay }) => {
                 ✔
               </b>,
             ],
-            "GALLERY"
+            "GALLERY",
+            "ADMIN",
           ],
         };
 
@@ -85,7 +50,8 @@ export const Navcol = React.memo(({ handleDisplay }) => {
                 ✔
               </b>,
             ],
-            "GALLERIE"
+            "GALLERIE",
+            "ADMIN",
           ],
         };
 
@@ -100,59 +66,29 @@ export const Navcol = React.memo(({ handleDisplay }) => {
                 ✔
               </b>,
             ],
-            "FOTOĞRAFLAR"
+            "FOTOĞRAFLAR",
+            "ADMİN",
           ],
         };
     }
   };
   const nav_text = React.useMemo(() => changeText(), [router.query.lang]);
 
-  const handlePosition = React.useCallback(() => {
+  const handlePosition = () => {
     window.pageYOffset > 50 && window.innerWidth > 768
-      ? (expand.refer.style.top = "0px")
-      : (expand.refer.style.top = "55px");
-  }, [expand.refer]);
+      ? (ref.current.style.top = "0px")
+      : (ref.current.style.top = "55px");
+  };
   React.useEffect(() => {
-    setExpand((preS) => ({ ...preS, refer: ref.current }));
     window.addEventListener("scroll", handlePosition);
     return () => {
       window.removeEventListener("scroll", handlePosition);
     };
-  }, [expand.refer, router.query.lang, router.asPath]);
+  }, [router.query.lang, router.asPath]);
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs} ref={ref}>
         <NavLink lang={router.query.lang} navbars={nav_text.navbars} />
-        <span
-          onClick={handleStyleExpand}
-          className={styles.expand}
-          style={expand.transform}
-        ></span>
-
-        <div
-          style={{
-            transition: "opacity 1s,margin-top 0.3s",
-            opacity: expand.opacity,
-            marginTop: expand.marginTop,
-            pointerEvents: expand.pointerEvents,
-            width: expand.width,
-          }}
-          className={styles.admin}
-        >
-          <Link
-            href={{
-              pathname: "/admin",
-              query: {
-                lang:
-                  router.query.lang === undefined ? "tr" : router.query.lang,
-              },
-            }}
-            // replace
-            // shallow
-          >
-            {articleSvg}
-          </Link>
-        </div>
       </div>
     </div>
   );

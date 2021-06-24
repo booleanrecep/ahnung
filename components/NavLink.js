@@ -5,6 +5,7 @@ export const NavLink = React.memo(({ lang, navbars }) => {
     { name: "about", navbar: navbars[0] },
     { name: "blog", navbar: navbars[1] },
     { name: "gallery", navbar: navbars[2] },
+    { name: "admin", navbar: navbars[3] },
   ].map(({ name, navbar }) => (
     <Link
       href={`/${name.toLowerCase()}?lang=${lang === undefined ? "tr" : lang}`}

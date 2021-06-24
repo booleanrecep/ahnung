@@ -109,8 +109,7 @@ export const Article = ({
       setState((prevS) => ({ ...prevS, load: true }));
       clearTimeout(id);
     };
-  }, [title, clapCount]);
-  console.log(state);
+  }, [title]);
 
   return (
     <>

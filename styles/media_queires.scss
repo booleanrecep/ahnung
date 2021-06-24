@@ -1,5 +1,5 @@
-$langFontSize: 16px;
-$tabsFontSize: 16px;
+$langFontSize: 14px;
+$tabsFontSize: 14px;
 $toolsFontSize: 12px;
 $articleFontSize: 17px;
 $userFontSize: 17px;
@@ -50,19 +50,19 @@ $descriptionFontSize: 17px;
     flex-grow: 0;
 
     .tabs {
-      margin-top: -52px;
+      margin-top: -48px;
       display: flex;
       font-size: $tabsFontSize;
-      .admin {
-        svg {
-          height: 21px;
-          width: 80px;
-        }
-      }
     }
   }
   .container > div:first-of-type {
     margin-top: 55px;
+  }
+  .full-screen {
+    margin-top: -5px;
+    p {
+      font-size: 18px;
+    }
   }
 }
 
@@ -119,16 +119,22 @@ $descriptionFontSize: 17px;
     }
   }
   .header {
+    height: 3em;
+
     div {
+      flex-direction: column;
+      margin-top: 50px;
       font-size: $langFontSize;
     }
   }
   .navcol {
     .tabs {
-      margin-top: -49px;
       font-size: $tabsFontSize;
       div:first-of-type {
         margin-right: 0px;
+      }
+      div {
+        margin: 5px;
       }
     }
   }
@@ -167,29 +173,5 @@ $descriptionFontSize: 17px;
   }
   .navcol {
     margin-left: -11px;
-    .tabs {
-      .admin {
-        margin-left: -10px;
-
-        margin-top: -30px;
-        padding-right: 2px;
-        padding-left: 2px;
-        opacity: 0;
-        pointer-events: none;
-        width: 0;
-        svg {
-          .text {
-            font-size: 12px;
-            transform: translate(0px, 1px);
-          }
-        }
-      }
-      .expand {
-        display: block;
-        width: 12px;
-        height: 12px;
-        left: -10px;
-      }
-    }
   }
 }

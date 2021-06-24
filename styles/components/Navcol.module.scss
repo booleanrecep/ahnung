@@ -35,47 +35,6 @@ $tabFontSize: 24px;
         background-color: #cc9b6d;
       }
     }
-    .admin {
-      border-radius: 3px;
-      color: #768390;
-      border: 1.5px solid #768390;
-      background-color: #211b12;
-      padding-left: 5px;
-      padding-right: 5px;
-      opacity: 1;
-      display: flex;
-
-      svg {
-        fill: inherit;
-        fill: #768390;
-        height: 30px;
-        width: 125px;
-        margin-bottom: -2px;
-        display: flex;
-        justify-content: flex-start;
-        .text {
-          font-size: 13px;
-          transform: translate(-3px, 1px);
-        }
-      }
-      span {
-        font-size: 16px;
-      }
-    }
-    .expand {
-      z-index: 5;
-      vertical-align: middle;
-      align-self: center;
-      font-size: 29px;
-      width: 15px;
-      height: 15px;
-      border: 4px solid red;
-      transform: rotate(45deg);
-      border-left: navajowhite;
-      border-bottom: none;
-      position: relative;
-      display: none;
-    }
   }
 }
 @import "../media_queires";

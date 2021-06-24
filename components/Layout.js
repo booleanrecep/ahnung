@@ -1,8 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import { Header, Navcol, WIPGear } from "./index";
-export const Layout = React.memo(({ children }) => {
-  const [style, setStyle] = React.useState({ display: "flex" });
+export const Layout = ({ children }) => {
+  console.log("LLLLayout");
   return (
     <>
       <Head>
@@ -12,13 +12,13 @@ export const Layout = React.memo(({ children }) => {
       </Head>
       <div className="container">
         <WIPGear />
-        <Header display={style.display} />
+        <Header />
         <main className="main">
-          <Navcol handleDisplay={setStyle} />
+          <Navcol />
           <div className="content">{children}</div>
         </main>
         <footer className="footer">Here comes the footer</footer>
       </div>
     </>
   );
-});
+};
