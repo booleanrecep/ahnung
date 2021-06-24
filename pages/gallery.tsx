@@ -1,7 +1,8 @@
 import * as THREE from "three"
 import React, { Suspense, useRef } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
-import { Loader ,TrackballControls} from "@react-three/drei"
+import { Loader } from "@react-three/drei"
+
 import Model from "../helpers/Model"
 
 function Rig({ children }) {
@@ -35,7 +36,6 @@ export default function App() {
             </mesh>
           </Rig>
         </Suspense>
-        <TrackballControls/>
       </Canvas>
       <Loader />
     </>
