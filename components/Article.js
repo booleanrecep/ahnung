@@ -124,7 +124,15 @@ export const Article = ({
             <div className={styles.tools}>
               <div className={styles.counts}>
                 {readMin} min read |{" "}
-                <span onClick={handleClapClick} onMouseUp={handleClapMouseUp}>
+                <span
+                  onClick={handleClapClick}
+                  onMouseUp={handleClapMouseUp}
+                  style={{
+                    animation: state.clapToggle
+                      ? "color-pop .3s linear "
+                      : "none",
+                  }}
+                >
                   {clapSvg}
                 </span>{" "}
                 <sup
