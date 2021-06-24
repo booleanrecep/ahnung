@@ -57,6 +57,7 @@
     transition: transform 0.4s linear;
     font-size: 35px;
     height: 35px;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 @import "../media_queires";

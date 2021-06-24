@@ -29,6 +29,9 @@ $tagsBgColor: #4184e41a;
       padding-left: 0.5em;
       padding-top: 5px;
       margin-right: 10px;
+      span {
+        -webkit-tap-highlight-color: transparent;
+      }
       sup {
         color: #0a402c;
         font-size: 13.5px;

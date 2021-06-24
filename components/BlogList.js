@@ -40,11 +40,9 @@ export const BlogList = ({
 }) => {
   const router = useRouter();
   const [state, setState] = React.useState({
-    windowWidth: 0,
     toggle: false,
   });
 
-  const mobileWidth = 550;
   const handleUpDownClick = () => {
     setState((prevS) => ({
       ...prevS,
@@ -53,23 +51,17 @@ export const BlogList = ({
   };
 
   React.useEffect(() => {
-    const windowWidth = window.innerWidth;
-    const handleResize = () =>
-      setState((prevS) => ({
-        ...prevS,
-        windowWidth: windowWidth,
-      }));
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    setState((prevS) => ({
+      ...prevS,
+      toggle: false,
+    }));
   }, [router.query.lang]);
 
   return (
     <div
       className={styles.bloglist}
       style={{
-        height: !state.toggle ? 160 + "px" : articles.length * 60 + "px",
+        height: !state.toggle ? 160 + "px" : articles.length * 65 + "px",
       }}
     >
       <ol>
@@ -111,17 +103,15 @@ export const BlogList = ({
           </li>
         ))}
       </ol>
-      {state.windowWidth < mobileWidth && !showFunc ? (
-        <span
-          className={styles.arrows}
-          style={{
-            transform: state.toggle ? "rotate(-90deg)" : "rotate(90deg)",
-          }}
-          onClick={handleUpDownClick}
-        >
-          {arrowSvg}{" "}
-        </span>
-      ) : null}
+      <span
+        className={styles.arrows}
+        style={{
+          transform: state.toggle ? "rotate(-90deg)" : "rotate(90deg)",
+        }}
+        onClick={handleUpDownClick}
+      >
+        {arrowSvg}{" "}
+      </span>
     </div>
   );
 };

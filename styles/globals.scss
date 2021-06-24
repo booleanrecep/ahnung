@@ -180,13 +180,15 @@ h4 {
 @keyframes created-pop {
   0% {
     filter: invert(0.1);
+    -webkit-filter: invert(0.1);
     transform: scale(0.8);
+    -webkit-transform: scale(0.8);
   }
   100% {
     filter: invert(0.3);
-    filter: drop-shadow(5px 2px 2px green);
-    -webkit-backdrop-filter: drop-shadow(5px 2px 2px green);
+    -webkit-filter: invert(0.3);
     transform: scale(1.5);
+    -webkit-transform: scale(1.5);
   }
 }
 
