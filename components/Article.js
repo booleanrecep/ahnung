@@ -100,6 +100,7 @@ export const Article = ({
     setState((preS) => ({ ...preS, clapToggle: false }));
   };
   React.useEffect(() => {
+    setState((preS) => ({ ...preS, clapToggle: false }));
     const id = setTimeout(
       () => setState((prevS) => ({ ...prevS, load: false, clapC: clapCount })),
       300
@@ -109,6 +110,8 @@ export const Article = ({
       clearTimeout(id);
     };
   }, [title, clapCount]);
+  console.log(state);
+
   return (
     <>
       {state.load === true ? (

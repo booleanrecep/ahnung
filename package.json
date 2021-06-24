@@ -10,13 +10,17 @@
     "fix": "prettier --write ./pages/*.js ./components/*.js ./styles/**"
   },
   "dependencies": {
+    "@react-three/drei": "^7.0.1",
+    "@react-three/fiber": "^7.0.1",
     "eslint-config-next": "^11.0.0",
     "mongodb": "^3.6.8",
     "mongoose": "^5.12.13",
     "next": "^11.0.0",
     "next-connect": "^0.10.1",
+    "random-words": "^1.1.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "three": "^0.129.0"
   },
   "devDependencies": {
     "eslint": "^7.26.0",

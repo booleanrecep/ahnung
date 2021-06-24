@@ -56,6 +56,7 @@ export const Navcol = React.memo(({ handleDisplay }) => {
                 ✔
               </b>,
             ],
+            "GALERİ"
           ],
         };
       case "en":
@@ -69,6 +70,7 @@ export const Navcol = React.memo(({ handleDisplay }) => {
                 ✔
               </b>,
             ],
+            "GALLERY"
           ],
         };
 
@@ -83,6 +85,7 @@ export const Navcol = React.memo(({ handleDisplay }) => {
                 ✔
               </b>,
             ],
+            "GALLERIE"
           ],
         };
 
@@ -97,6 +100,7 @@ export const Navcol = React.memo(({ handleDisplay }) => {
                 ✔
               </b>,
             ],
+            "FOTOĞRAFLAR"
           ],
         };
     }
