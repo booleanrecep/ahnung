@@ -19,7 +19,7 @@ export default function Blog({ db_data }) {
         <BlogList
           handleArticleIndex={handleIndex}
           articles={db_data.articles}
-        />
+          />
         <article className={styles.article}>
           <Article {...db_data.articles[index]} />
         </article>

@@ -1,9 +1,19 @@
 import * as THREE from "three"
 import React, { Suspense, useRef } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
-import { Loader } from "@react-three/drei"
+import { Canvas, useFrame,useLoader} from "@react-three/fiber"
+import { Loader,TrackballControls } from "@react-three/drei"
 
 import Model from "../helpers/Model"
+
+function Image() {
+  const texture = useLoader(THREE.TextureLoader, "/static/me.png")
+  return (
+    <mesh>
+      <planeBufferGeometry attach="geometry" args={[8, 8]} />
+      <meshBasicMaterial attach="material" map={texture} toneMapped={false} />
+    </mesh>
+  )
+}
 
 function Rig({ children }) {
   const outer = useRef<THREE.Group>(null!)
@@ -21,9 +31,10 @@ function Rig({ children }) {
   )
 }
 
-export default function App() {
+export default function Gallery(props) {
   return (
-    <>
+    <div style={{borderRadius: "10px",
+      border: "2px solid #21094e",height:"100%"}}>
       <Canvas linear camera={{ position: [0, 15, 30], fov: 70 }}>
         <fog attach="fog" args={[0xfff0ea, 10, 60]} />
         <ambientLight intensity={6} />
@@ -35,9 +46,11 @@ export default function App() {
               <meshBasicMaterial transparent opacity={0.7} color="skyblue" />
             </mesh>
           </Rig>
+          <Image/>
         </Suspense>
+        <TrackballControls {...props}/>
       </Canvas>
       <Loader />
-    </>
+    </div>
   )
 }
