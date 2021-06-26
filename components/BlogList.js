@@ -33,11 +33,11 @@ export const BlogList = ({
   return (
     <div
       className={styles.bloglist}
-      style={{
-        height: !state.toggle ? 170 + "px" : articles.length * 70 + "px",
-      }}
+      
     >
-      <ol>
+      <ol style={{
+        height: !state.toggle ? 100 + "px" : articles.length * 47 + "px",
+      }}>
         {articles.map(({ title, _id, deletable }) => (
           <li
             key={_id}

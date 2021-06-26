@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "../styles/components/Navcol.module.scss";
 import { NavLink } from "./index";
 
-export const Navcol = React.memo(({ handleDisplay }) => {
+export const Navcol = React.memo(() => {
   const router = useRouter();
   const changeText = () => {
     switch (router.query.lang) {
@@ -85,6 +85,8 @@ export const Navcol = React.memo(({ handleDisplay }) => {
       window.removeEventListener("scroll", handlePosition);
     };
   }, [router.query.lang, router.asPath]);
+  console.log(nav_text)
+
   return (
     <div className={styles.navcol}>
       <div className={styles.tabs}>
