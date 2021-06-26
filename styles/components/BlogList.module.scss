@@ -6,7 +6,6 @@
   border: 1px solid #511281;
   transition: height 0.4s ease;
   ol {
-
     display: inline-block;
     width: auto;
     list-style-type: malayalam;
@@ -15,7 +14,7 @@
     overflow: hidden !important;
     text-overflow: ellipsis;
     margin-right: 13px;
-  margin-top: 20px;
+    margin-top: 20px;
 
     li {
       display: flex;
@@ -61,7 +60,7 @@
     font-size: 35px;
     height: 35px;
     -webkit-tap-highlight-color: transparent;
-    margin-bottom: 10px
+    margin-bottom: 10px;
   }
 }
 @import "../media_queires";
