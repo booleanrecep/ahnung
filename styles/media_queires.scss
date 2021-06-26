@@ -6,6 +6,11 @@ $userFontSize: 17px;
 $userLinksFontSize: 13px;
 $descriptionFontSize: 17px;
 @media screen and (max-width: 768px) {
+  .gallery{
+    .photos{
+      // width: 45%;
+    }
+  }
   .content {
     margin-top: 60px;
     border: none;
@@ -67,6 +72,11 @@ $descriptionFontSize: 17px;
 }
 
 @media screen and (max-width: 550px) {
+  .gallery{
+    .photos{
+      width: 45%;
+    }
+  }
   .about {
     display: flex;
     flex-direction: column;
@@ -144,6 +154,11 @@ $descriptionFontSize: 17px;
 }
 
 @media screen and (max-width: 360px) {
+  .gallery{
+    .photos{
+      width: 85%;
+    }
+  }
   .about {
     .imagediv {
       padding-bottom: 0;
