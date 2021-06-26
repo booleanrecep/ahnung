@@ -73,10 +73,9 @@ export const Navcol = React.memo(({ handleDisplay }) => {
   };
   const nav_text = React.useMemo(() => changeText(), [router.query.lang]);
 
- 
   React.useEffect(() => {
     const handlePosition = () => {
-      const div= document.querySelector(`.${styles.tabs}`)
+      const div = document.querySelector(`.${styles.tabs}`);
       window.pageYOffset > 50 && window.innerWidth > 768
         ? (div.style.top = "0px")
         : (div.style.top = "55px");
@@ -88,7 +87,7 @@ export const Navcol = React.memo(({ handleDisplay }) => {
   }, [router.query.lang, router.asPath]);
   return (
     <div className={styles.navcol}>
-      <div className={styles.tabs} >
+      <div className={styles.tabs}>
         <NavLink lang={router.query.lang} navbars={nav_text.navbars} />
       </div>
     </div>
