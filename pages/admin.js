@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import os from "os";
-
+import {apiCallDelete} from "../helpers/index"
 import styles from "../styles/pages/admin.module.scss";
 import { NewArticle, AddArticle, Articles } from "../components/admin/index";
 
@@ -25,13 +25,7 @@ const Admin = ({ IP, db_data }) => {
   };
   const handleDelete = async (id) => {
     try {
-      const deleteArt = await fetch(
-        "/api/data?lang=" + router.query.lang + "&articleID=" + id,
-        {
-          method: "DELETE",
-          "content-type": "application/json; charset=UTF-8",
-        }
-      );
+      apiCallDelete(router.query.lang,id)
       const filteredList = await state.articlesList.filter(
         ({ _id }) => _id !== id
       );

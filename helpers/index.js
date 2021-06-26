@@ -7,11 +7,12 @@ export const capitalize = (text) => {
 export const countMinute = (text) => {
   const wordCount = text.split(" ").length;
   const wordPerMinute = 50;
-  const readMinute = wordCount < wordPerMinute ? 1 : Math.floor(wordCount / wordPerMinute);
+  const readMinute =
+    wordCount < wordPerMinute ? 1 : Math.floor(wordCount / wordPerMinute);
   return readMinute;
 };
 
-export const apiCallEdit = async (lang,state)=>{
+export const apiCallEdit = async (lang, state) => {
   const updatedArticle = await fetch("/api/data?lang=" + lang, {
     headers: {
       accept: "*/*",
@@ -26,17 +27,18 @@ export const apiCallEdit = async (lang,state)=>{
     }),
     method: "PUT",
     credentials: "omit",
-  }).then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
   })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-  return updatedArticle
-}
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  return updatedArticle;
+};
 
-export const apiCallAdd =async (lang,state)=>{
+export const apiCallAdd = async (lang, state) => {
   const newArticle = await fetch("/api/data?lang=" + lang, {
     headers: {
       accept: "*/*",
@@ -50,22 +52,23 @@ export const apiCallAdd =async (lang,state)=>{
     body: JSON.stringify({
       title: capitalize(state.title),
       text: state.text,
-      readMin:countMinute(state.text)
+      readMin: countMinute(state.text),
     }),
     method: "POST",
     mode: "cors",
     credentials: "omit",
-  }).then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
   })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-  return newArticle
-}
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  return newArticle;
+};
 
-export const apiCallClap =async (lang,state)=>{
+export const apiCallClap = async (lang, state) => {
   const incrementClap = await fetch("/api/clap?lang=" + lang, {
     headers: {
       accept: "*/*",
@@ -79,13 +82,28 @@ export const apiCallClap =async (lang,state)=>{
     }),
     method: "PUT",
     credentials: "omit",
-  }).then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
   })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-  return incrementClap
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  return incrementClap;
+};
 
-}
+export const apiCallDelete = async (lang, id) => {
+  const deleteArt = await fetch("/api/data?lang=" + lang + "&articleID=" + id, {
+    method: "DELETE",
+    "content-type": "application/json; charset=UTF-8",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  return deleteArt;
+};

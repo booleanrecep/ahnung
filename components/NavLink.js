@@ -8,7 +8,7 @@ export const NavLink = React.memo(({ lang, navbars }) => {
     { name: "admin", navbar: navbars[3] },
   ].map(({ name, navbar }) => (
     <Link
-      href={`/${name.toLowerCase()}?lang=${lang === undefined ? "tr" : lang}`}
+      href={`/${name}?lang=${lang === undefined ? "tr" : lang}`}
       passHref
       key={navbar}
     >
