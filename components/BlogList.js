@@ -61,7 +61,7 @@ export const BlogList = ({
     <div
       className={styles.bloglist}
       style={{
-        height: !state.toggle ? 170 + "px" : articles.length * 60 + "px",
+        height: !state.toggle ? 170 + "px" : articles.length * 70 + "px",
       }}
     >
       <ol>
