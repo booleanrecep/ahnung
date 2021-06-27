@@ -1,19 +1,22 @@
 import React from "react";
 import Link from "next/link";
-export const NavLink = React.memo(({ lang, navbars }) => {
-  const links = [
-    { name: "about", navbar: navbars[0] },
-    { name: "blog", navbar: navbars[1] },
-    { name: "gallery", navbar: navbars[2] },
-    { name: "admin", navbar: navbars[3] },
-  ].map(({ name, navbar }) => (
-    <Link
-      href={`/${name}?lang=${lang === undefined ? "tr" : lang}`}
+import { useRouter } from "next/router";
+import {changeUIText} from "../helpers/routeState"
+
+export const NavLink = React.memo(() => {
+  const router = useRouter();
+
+  const routeState = React.useMemo(() => changeUIText(router.query.lang), [router.query.lang]);
+  const {navbars} = routeState;
+  return <>{ navbars.map(({query,title})=>{
+    return(
+      <Link
+      href={`/${query}?lang=${router.query.lang === undefined ? "tr" : router.query.lang}`}
       passHref
-      key={navbar}
+      key={query}
     >
-      <div>{navbar}</div>
+      <div>{title}</div>
     </Link>
-  ));
-  return <>{links}</>;
-});
+    )
+  })}</>;
+})

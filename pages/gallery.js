@@ -1,5 +1,10 @@
+import React from "react"
+import { useRouter } from "next/router";
+
 import styles from "../styles/pages/gallery.module.scss";
 import { githubSvg, goToSiteSvg } from "../components/svg/index";
+import { changeUIText } from "../helpers/routeState";
+
 const images = [
   {
     src: "/static/fake_keep.png",
@@ -23,6 +28,13 @@ const images = [
 
 export default function Gallery() {
   let cat;
+  const router = useRouter();
+  const routeState = React.useMemo(
+    () => changeUIText(router.query.lang),
+    [router.query.lang]
+  );
+  const {gallery} = routeState
+
   const handlePlayMouseOver=()=>{
     cat.play()
   }
@@ -33,12 +45,12 @@ export default function Gallery() {
   return (
     <>
       <div className={styles.title}>
-        <h2>PROJECTS</h2>
+        <h2>{gallery.map(({title})=>title)}</h2>
       </div>
       <div className={styles.gallery}>
         {images.map(({ src, github, preview, title }) => {
           return (
-            <div className={styles.photos}>
+            <div className={styles.photos} key={title}>
               <div className={styles.image}>
                 <img src={src} title={title} />
               </div>
