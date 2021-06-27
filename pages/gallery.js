@@ -22,6 +22,14 @@ const images = [
 ];
 
 export default function Gallery() {
+  let cat;
+  const handlePlayMouseOver=()=>{
+    cat.play()
+  }
+  const handlePauseMouseOut=()=>{
+    cat.pause()
+    cat.currentTime=0
+  }
   return (
     <>
       <div className={styles.title}>
@@ -39,7 +47,12 @@ export default function Gallery() {
                   {goToSiteSvg}
                 </a>
                 <a target="_blank" href={github}>
-                  {githubSvg}
+                  <span onMouseOver={handlePlayMouseOver} onMouseOut={handlePauseMouseOut} >
+                    <audio ref={el=>cat=el}>
+                      <source src="/static/meow.ogg" type="audio/ogg" />
+                    </audio>
+                    {githubSvg}
+                  </span>
                 </a>
               </div>
             </div>
