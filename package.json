@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
-    "fix": "prettier --write ./pages/*.js ./components/*.js ./styles/**"
+    "fix": "prettier --write ./pages/*.js ./components/*.js ./styles/**",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@types/react": "^17.0.11",
@@ -19,12 +21,24 @@
     "random-words": "^1.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "sass-loader": "^12.1.0",
+    "storybook-addon-next-router": "^2.0.4",
     "typescript": "^4.3.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@storybook/addon-actions": "^6.3.0",
+    "@storybook/addon-essentials": "^6.3.0",
+    "@storybook/addon-links": "^6.3.0",
+    "@storybook/builder-webpack5": "^6.3.0",
+    "@storybook/manager-webpack5": "^6.3.0",
+    "@storybook/react": "^6.3.0",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.26.0",
     "eslint-plugin-react": "^7.23.2",
     "prettier": "2.3.0",
-    "sass": "^1.32.12"
+    "sass": "^1.32.12",
+    "webpack": "^5.40.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
