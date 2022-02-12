@@ -7,12 +7,6 @@
 > Linting Tool & Prettifying
 - Eslint
 - Prettier
-> Testing
-- Jest
-> Container Engine
-- Docker
-> Cloud Platform
-- AWS
 
 #### api
 - /api/data?lang=tr
