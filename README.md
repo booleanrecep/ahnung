@@ -4,8 +4,8 @@
 - Next.js
 > CSS Preprocessor
 - Scss
-> Linting Tool & Prettifying
-- Eslint
+> Linting  Tool & Prettifying
+- Eslint 
 - Prettier
 
 #### api
