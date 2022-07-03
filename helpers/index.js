@@ -30,7 +30,7 @@ export const apiCallEdit = async (lang, state) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
+      console.log("Success :", data);
     })
     .catch((error) => {
       console.error("Error:", error);
